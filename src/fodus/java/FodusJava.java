@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package fodus.java;
+import java.io.File;
+import java.util.Scanner;
 
 /**
  *
@@ -14,7 +16,7 @@ public class FodusJava {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Game g = new Game();
+        g.playIntro();
     }
-    
 }

@@ -10,15 +10,16 @@ package fodus.java;
  */
 public abstract class Player {
     protected String name;
-    protected int money, hit_points, strength, dexterity, endurance, intelligence, charisma;
+    protected int money, hit_points, speed;
+    protected int strength, dexterity, endurance, intelligence, charisma;
     
     public String getName() {
         return name;
     }
     public void getStats() {
-        System.out.println();
+        
     }
     
-    public void attack() {}
-    public void defend() {}
+    public abstract void attack();
+    public abstract void defend();
 }

@@ -8,21 +8,13 @@ package fodus.java;
  *
  * @author samac
  */
-public class Paladin extends Player implements Healer, Tank {
+public class Priest extends Player {
     @Override
     public void attack() {
-        System.out.println("Vous attaquez avec votre épée.");
+        System.out.println("Vous attaquez avec votre masse !");
     }
     @Override
     public void defend() {
         System.out.println("Vous brandissez votre égide devant vous.");
-    }
-    @Override
-    public void heal() {
-        System.out.println("Votre foi vous protège et vous soigne.");
-    }
-    @Override
-    public void warcry() {
-        System.out.println("Vous intimider l'ennemi par votre présence.");
     }
 }
