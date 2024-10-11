@@ -2,24 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package fodus.java.Player;
+package fodus.java.equipments;
 
 /**
  *
- * @author samac
+ * @author rmeun
  */
-public abstract class Player {
+public abstract class Equipments {
     protected String name;
-    protected int money, hit_points, speed;
+    protected int hit_points, speed, defense, heal_points;
     protected int strength, dexterity, endurance, intelligence, charisma;
     
     public String getName() {
-        return name;
+    return name;
     }
+    
     public void getStats() {
         
     }
-    
-    public abstract void attack();
-    public abstract void defend();
 }
+

@@ -5,6 +5,9 @@
 package fodus.java;
 import java.io.File;
 import java.util.Scanner;
+import fodus.java.player.*;
+import fodus.java.enemy.*;
+import fodus.java.equipments.*;
 
 /**
  *
@@ -17,6 +20,33 @@ public class FodusJava {
      */
     public static void main(String[] args) {
         Game g = new Game();
-        g.playIntro();
+        Scanner userInput = new Scanner(System.in); // Create a Scanner object
+        //g.intro();
+        g.menu();
+        
+        System.out.println("Un adversaire apprait ! Que faites-vous ?");
+        Paladin player = new Paladin();
+        Skeleton enemy = new Skeleton();
+        while(player.getHealth() > 0 && enemy.getHealth() > 0){
+            //player.printStats();
+            //player.printHealth();
+            //enemy.printHealth();
+            System.out.println("attack  -  defend  -  skill  -  flee");
+            switch(userInput.nextLine().toLowerCase()){
+                case "attack":
+                    player.attack();
+                    break;
+                case "defend":
+                    player.defend();
+                    break;
+                case "skill":
+                    player.warcry();
+                    break;
+                default:
+                    System.out.println("Commande non reconnue");
+                    break;
+            }
+            enemy.enemyAction();
+        }
     }
 }

@@ -3,20 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package fodus.java;
+import java.util.Scanner;
 
 /**
  *
  * @author samac
  */
+
+// Manage game loop, turn-based combat and player interactions
 public class Game {
-    public void waitMs(int t){
+    public static void waitMs(int t){
         try {
             Thread.sleep(t);
         } catch (InterruptedException e) {
             System.err.println("Le thread a été interrompu.");
         }
     }
-    public void playIntro(){
+    public void intro(){
         System.out.println("Je connais bien l'echec... j'ai en effet failli a ma tache.");
         waitMs(2000);
         System.out.println("C'est pourquoi c'est a vous de reprendre le flambeau.");
@@ -27,6 +30,23 @@ public class Game {
         waitMs(2000);
         System.out.println("Mais ne perdez pas espoir, regardez au loin, et affrontez la terrible verite de ce nouveau monde...");
         waitMs(2000);
-        System.out.println("Celui de : FODUS !");
+        System.out.println("Celui de : FODUS !");      
+    }
+    public void menu(){
+        Scanner userInput = new Scanner(System.in); // Create a Scanner object
+        System.out.println("Play  -  Quit");
+        switch(userInput.nextLine().toLowerCase()){
+            case "play":
+                System.out.println("Demarrage du jeu, bonne chance à vous !");
+                break;
+            case "quit":
+                System.out.println("Fermeture du jeu");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Commande non reconnue");
+                menu();
+                break;
+        }
     }
 }
