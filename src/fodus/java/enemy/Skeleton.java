@@ -12,8 +12,8 @@ import java.util.Random;
 public class Skeleton extends Enemy{
     Random r = new Random();
     public Skeleton(){
-        this.max_hit_points = 10;
-        this.hit_points = this.max_hit_points;
+        this.max_health_points = 10;
+        this.health_points = this.max_health_points;
     }
     @Override
     public void enemyAction(){

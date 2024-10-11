@@ -26,8 +26,8 @@ public class FodusJava {
         
         System.out.println("Un adversaire apprait ! Que faites-vous ?");
         Paladin player = new Paladin();
-        Skeleton enemy = new Skeleton();
-        while(player.getHealth() > 0 && enemy.getHealth() > 0){
+        Skeleton enemySkeleton = new Skeleton();
+        while(player.getHealth() > 0 && enemySkeleton.getHealth() > 0){
             //player.printStats();
             //player.printHealth();
             //enemy.printHealth();
@@ -46,7 +46,17 @@ public class FodusJava {
                     System.out.println("Commande non reconnue");
                     break;
             }
-            enemy.enemyAction();
+            if(enemySkeleton.getHealth() <= 0){
+                System.out.println("Vous avez triomphé !!");
+                break;
+            }
+            enemySkeleton.enemyAction();
+            player.health_points -= 10;
+            if(player.getHealth() <= 0){
+                System.out.println("Vous avez été vaincu...");
+                g.gameOver();
+                break;
+            }
         }
     }
 }

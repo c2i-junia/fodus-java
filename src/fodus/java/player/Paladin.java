@@ -10,8 +10,8 @@ package fodus.java.player;
  */
 public class Paladin extends Player implements Healer, Tank {
     public Paladin() {
-        this.max_hit_points = 25;
-        this.hit_points = max_hit_points;
+        this.max_health_points = 25;
+        this.health_points = max_health_points;
         this.speed = 5;
         this.strength = 15;
         this.dexterity = 5;
@@ -30,11 +30,11 @@ public class Paladin extends Player implements Healer, Tank {
     @Override
     public void heal() {
         System.out.println("Votre foi vous protège et vous soigne.");
-        if(this.hit_points >= this.max_hit_points - this.intelligence){
-            this.hit_points = this.max_hit_points;
+        if(this.health_points >= this.max_health_points - this.intelligence){
+            this.health_points = this.max_health_points;
         }
         else {
-            this.hit_points += this.intelligence;
+            this.health_points += this.intelligence;
         }
     }
     @Override

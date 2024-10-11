@@ -49,4 +49,17 @@ public class Game {
                 break;
         }
     }
+    public void gameOver(){
+        Scanner userInput = new Scanner(System.in); // Create a Scanner object
+        System.out.println("C'est la fin de votre aventure.");
+        System.out.println("Voulez-vous réessayez ?");
+        switch(userInput.nextLine().toLowerCase()){
+            case "yes":
+                System.out.println("Retour au menu.");
+                menu();
+                break;
+            case "no":
+                System.exit(0);
+        }   
+    }
 }
