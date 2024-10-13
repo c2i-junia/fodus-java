@@ -19,19 +19,16 @@ public class FodusJava {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Game g = new Game();
+        Game game = new Game();
         Scanner userInput = new Scanner(System.in); // Create a Scanner object
-        //g.intro();
-        g.menu();
+        //game.intro();
+        //game.menu();
+        Player player = game.characterCreation();
         
         System.out.println("Un adversaire apprait ! Que faites-vous ?");
-        Paladin player = new Paladin();
         Skeleton enemySkeleton = new Skeleton();
         while(player.getHealth() > 0 && enemySkeleton.getHealth() > 0){
-            //player.printStats();
-            //player.printHealth();
-            //enemy.printHealth();
-            System.out.println("attack  -  defend  -  skill  -  flee");
+            System.out.println("Attaque  -  Defense  -  Special  -  Fuite");
             switch(userInput.nextLine().toLowerCase()){
                 case "attack":
                     player.attack();
@@ -39,24 +36,22 @@ public class FodusJava {
                 case "defend":
                     player.defend();
                     break;
-                case "skill":
-                    player.warcry();
-                    break;
+//                case "skill":
+//                    player.warcry();
+//                    break;
                 default:
                     System.out.println("Commande non reconnue");
                     break;
             }
-            if(enemySkeleton.getHealth() <= 0){
-                System.out.println("Vous avez triomphé !!");
-                break;
-            }
             enemySkeleton.enemyAction();
             player.health_points -= 10;
-            if(player.getHealth() <= 0){
-                System.out.println("Vous avez été vaincu...");
-                g.gameOver();
-                break;
-            }
+        }
+        if(player.getHealth() <= 0){
+            System.out.println("Vous avez ete vaincu...");
+            game.gameOver();
+        }
+        else{
+            System.out.println("Vous avez triomphe !!");
         }
     }
 }
