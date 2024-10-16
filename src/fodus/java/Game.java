@@ -1,15 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fodus.java;
+
 import java.util.Scanner;
 import fodus.java.player.*;
-
-/**
- *
- * @author samac
- */
+import fodus.java.enemy.*;
 
 // Manage game loop, turn-based combat and player interactions
 public class Game {
@@ -78,6 +71,35 @@ public class Game {
             }
         }
         return player;
+    }
+    public void combat(Player player, Enemy enemy, Game game){
+        System.out.println(enemy.name + "apparait ! Le combat débute.");
+        while(player.getHealth() > 0 && enemy.getHealth() > 0){
+            if(player.speed >= enemy.speed){
+                player.playerAction(enemy);
+                if(enemy.getHealth() <= 0){
+                    System.out.println("Vous avez triomphe !!");
+                    break;
+                }
+                enemy.enemyAction(player);
+                if(player.getHealth() <= 0){
+                    System.out.println("Vous avez ete vaincu...");
+                    game.gameOver();
+                }
+            }
+            else if(player.speed < enemy.speed){
+                enemy.enemyAction(player);
+                if(player.getHealth() <= 0){
+                    System.out.println("Vous avez ete vaincu...");
+                    game.gameOver();
+                }
+                player.playerAction(enemy);
+                if(enemy.getHealth() <= 0){
+                    System.out.println("Vous avez triomphe !!");
+                    break;
+                }
+            }
+        }
     }
     public void gameOver(){
         Scanner userInput = new Scanner(System.in); // Create a Scanner object

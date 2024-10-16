@@ -1,14 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fodus.java.enemy;
+
 import fodus.java.Character;
 
-/**
- *
- * @author samac
- */
 public abstract class Enemy extends Character {    
-    public abstract void enemyAction();
+    public abstract void enemyAction(Character target);
+    @Override
+    public void receiveDamage(int damage){
+        if(this.healthPoints - (damage - this.endurance / 4) <= 0){
+            this.healthPoints = 0;
+            System.out.println(this.healthPoints);
+        }
+        else{
+            this.healthPoints -= damage - this.endurance / 4;
+            System.out.println(this.healthPoints);
+        }
+        System.out.println(this.name + " recoit " + (damage - this.endurance / 4) + " dommages !");
+    }
 }

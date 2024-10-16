@@ -1,26 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fodus.java.enemy;
-import java.util.Random;
 
-/**
- *
- * @author samac
- */
+import java.util.Random;
+import fodus.java.Character;
+
 public class Skeleton extends Enemy{
     Random r = new Random();
     public Skeleton(){
-        this.max_health_points = 10;
-        this.health_points = this.max_health_points;
+        this.name = "Squelette";
+        this.maxHealthPoints = 20;
+        this.healthPoints = this.maxHealthPoints;
+        this.speed = 3;
+        this.strength = 10;
+        this.dexterity = 5;
+        this.endurance = 10;
+        this.intelligence = 5;
+        this.charisma = 1;
     }
     @Override
-    public void enemyAction(){
+    public void enemyAction(Character target){
         int action = r.nextInt(2);
         switch(action){
             case 0:
-                attack();
+                attack(target);
                 break;
             case 1:
                 defend();
@@ -28,8 +29,9 @@ public class Skeleton extends Enemy{
         }
     }
     @Override
-    public void attack(){
+    public void attack(Character target){
         System.out.println("Le squelette brandit son epee et vous assene un coup !");
+        target.receiveDamage(this.strength);
     }
     @Override
     public void defend(){
