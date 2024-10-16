@@ -8,8 +8,8 @@ package fodus.java.equipments;
  *
  * @author rmeun
  */
-public class Swords extends Equipments {
-    public void attack_sword() {
-        System.out.println("Vous dechenez toute votre puissance avec votre epee !");
-    }
+public class Fiole_de_poison extends Potions{
+   public void spe_fiole_de_poison(){
+     System.out.println("Vous lancez une fiole de poison sur votre ennemi !");  
+   } 
 }

@@ -8,8 +8,8 @@ package fodus.java.equipments;
  *
  * @author rmeun
  */
-public class Swords extends Equipments {
-    public void attack_sword() {
-        System.out.println("Vous dechenez toute votre puissance avec votre epee !");
+public class Bouclier_perforant extends Shields {
+    public void spe_bouclier_perforant(){
+        System.out.println("Vous brandissez votre bouclier et brisez la defence de votre adversaire !");
     }
 }

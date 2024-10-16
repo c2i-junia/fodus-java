@@ -8,8 +8,8 @@ package fodus.java.equipments;
  *
  * @author rmeun
  */
-public class Swords extends Equipments {
-    public void attack_sword() {
-        System.out.println("Vous dechenez toute votre puissance avec votre epee !");
+public class Bouclier_du_temps extends Shields {
+    public void spe_bouclier_du_temps(){
+        System.out.println("Vous ralentissez l'ennemi, le rendant inopérant pendant 1 tour !");
     }
 }

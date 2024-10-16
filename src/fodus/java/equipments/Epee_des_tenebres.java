@@ -8,8 +8,8 @@ package fodus.java.equipments;
  *
  * @author rmeun
  */
-public class Swords extends Equipments {
-    public void attack_sword() {
-        System.out.println("Vous dechenez toute votre puissance avec votre epee !");
+public class Epee_des_tenebres extends Swords {
+    public void spe_epee_des_tenebres(){
+        System.out.println("Les tenebres s'abattent sur votre ennemi");
     }
 }

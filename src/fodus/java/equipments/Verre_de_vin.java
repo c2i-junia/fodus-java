@@ -8,8 +8,8 @@ package fodus.java.equipments;
  *
  * @author rmeun
  */
-public class Swords extends Equipments {
-    public void attack_sword() {
-        System.out.println("Vous dechenez toute votre puissance avec votre epee !");
+public class Verre_de_vin extends Potions {
+    public void spe_verre_de_vin(){
+        System.out.println("Vous vous régalez de verre de vin rouge et vous gagnez une dose infini de charisme et un important bonus d'attaque !");
     }
 }
