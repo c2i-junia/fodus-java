@@ -8,7 +8,7 @@ package fodus.java.player;
  *
  * @author samac
  */
-public class Priest extends Player {
+public class Priest extends Player implements Healer {
     @Override
     public void attack() {
         System.out.println("Vous attaquez avec votre masse !");
@@ -16,5 +16,13 @@ public class Priest extends Player {
     @Override
     public void defend() {
         System.out.println("Vous brandissez votre égide devant vous.");
+    }
+    @Override
+    public void se_soigner(){// soin 
+        
+    }
+    @Override
+    public void flammes_sacrées(){//dégats + brulure
+        
     }
 }

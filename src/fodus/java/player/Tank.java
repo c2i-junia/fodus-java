@@ -9,5 +9,5 @@ package fodus.java.player;
  * @author samac
  */
 public interface Tank {
-    public abstract void warcry();
+    public void cri_de_Guerre(); // oblige l'ennemi à attaquer et immunité pendant 1 tour
 }

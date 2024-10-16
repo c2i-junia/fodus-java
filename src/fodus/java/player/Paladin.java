@@ -27,19 +27,34 @@ public class Paladin extends Player implements Healer, Tank {
     public void defend() {
         System.out.println("Vous brandissez votre egide devant vous.");
     }
+        public void mur_de_Bouclier(){// immunisé pendant 2 tours
+            
+        }
     @Override
-    public void heal() {
-        System.out.println("Votre foi vous protège et vous soigne.");
-        if(this.health_points >= this.max_health_points - this.intelligence){
-            this.health_points = this.max_health_points;
+        public void cri_de_Guerre(){ // oblige l'ennemi à attaquer et immunité pendant 1 tour
+            
         }
-        else {
-            this.health_points += this.intelligence;
-        }
+    @Override
+    public void se_soigner(){// soin 
+        
     }
     @Override
-    public void warcry() {
-        System.out.println("Vous regagnez courage et vous vous sentez plus fort !");
-        this.strength += 5;
+    public void flammes_sacrées(){//dégats + brulure
+        
     }
+//    @Override
+//    public void heal() {
+//        System.out.println("Votre foi vous protège et vous soigne.");
+//        if(this.health_points >= this.max_health_points - this.intelligence){
+//            this.health_points = this.max_health_points;
+//        }
+//        else {
+//            this.health_points += this.intelligence;
+//        }
+//    }
+//    @Override
+//    public void warcry() {
+//        System.out.println("Vous regagnez courage et vous vous sentez plus fort !");
+//        this.strength += 5;
+//    }
 }

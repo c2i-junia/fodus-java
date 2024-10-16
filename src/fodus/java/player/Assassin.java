@@ -6,9 +6,9 @@ package fodus.java.player;
 
 /**
  *
- * @author samac
+ * @author rmeun
  */
-public class Barbarian extends Player implements Damage, Tank {
+public class Assassin extends Player implements Damage {
     @Override
     public void attack() {
         System.out.println("Vous attaquez avec votre hache à deux mains !");
@@ -17,10 +17,6 @@ public class Barbarian extends Player implements Damage, Tank {
     public void defend() {
         System.out.println("Vous vous préparez à encaisser les coups.");
     }
-    @Override
-        public void cri_de_Guerre(){ // oblige l'ennemi à attaquer et immunité pendant 1 tour
-            
-        }
     @Override    
         public void contre(){//pourcentage de chance d'infliger une attaque de base
             
@@ -29,4 +25,5 @@ public class Barbarian extends Player implements Damage, Tank {
         public void vol_de_vie(){//vol de points de vie de l'ennemi
             
         }
+    
 }
