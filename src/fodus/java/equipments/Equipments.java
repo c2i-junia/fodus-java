@@ -10,7 +10,7 @@ package fodus.java.equipments;
  */
 public abstract class Equipments {
     protected String name;
-    protected int hit_points, speed, defense, heal_points;
+    protected int attack_points, speed, defense, heal_points;
     protected int strength, dexterity, endurance, intelligence, charisma;
     
     public String getName() {

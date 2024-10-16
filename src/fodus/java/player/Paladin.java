@@ -39,7 +39,7 @@ public class Paladin extends Player implements Healer, Tank {
     }
     @Override
     public void warcry() {
-        System.out.println("Vous regagnez courage et vous sentez plus fort !");
+        System.out.println("Vous regagnez courage et vous vous sentez plus fort !");
         this.strength += 5;
     }
 }
