@@ -28,7 +28,7 @@ public class Game {
     }
     public void menu(){
         Scanner userInput = new Scanner(System.in); // Create a Scanner object
-        System.out.println("Jouer  -  Quitter");
+        System.out.println("Jouer   -   Quitter");
         switch(userInput.nextLine().toLowerCase()){
             case "jouer":
                 System.out.println("Demarrage du jeu, bonne chance a vous !");
@@ -53,17 +53,33 @@ public class Game {
         String userName = userInput.nextLine();
         System.out.println("Vous vous appelez donc " + userName);
         System.out.println("Mais qui etes-vous au fond de vous ? Quelles sont vos forces et qualites en tant qu'aventurier ?");
-        System.out.println("Paladin  -  Pretre  -  Medecin de la peste  -  Barbare");
+        System.out.println("Paladin  -  Pretre  -  Assassin  -  Barbare");
         while(player == null){
             switch(userInput.nextLine().toLowerCase()){
             case "paladin":
-                player = new Paladin();
+                System.out.println("Ce guerrier robuste est le défenseur ultime.");
+                System.out.println("Il peut  soigner ses blessures et obliterer ses adversaires grace à sa foi.");
+                System.out.println("Archetype : Tank, Soins");
+                System.out.println("Est-ce qui vous etes ?");
+                switch(userInput.nextLine().toLowerCase()){
+                    case "oui":
+                        player = new Paladin();
+                        break;
+                    case "non":
+                        break;
+                    default:
+                        System.out.println("Commande non reconnue");
+                        break;
+                }
                 break;
             case "pretre":
                 player = new Priest();
                 break;
-            case "barbarian":
+            case "barbare":
                 player = new Barbarian();
+                break;
+            case "assassin":
+                player = new Assassin();
                 break;
             default:
                 System.out.println("Commande non reconnue");
@@ -73,7 +89,7 @@ public class Game {
         return player;
     }
     public void combat(Player player, Enemy enemy, Game game){
-        System.out.println(enemy.name + "apparait ! Le combat débute.");
+        System.out.println(enemy.name + " apparait ! Le combat debute.");
         while(player.getHealth() > 0 && enemy.getHealth() > 0){
             if(player.speed >= enemy.speed){
                 player.playerAction(enemy);
@@ -102,20 +118,25 @@ public class Game {
         }
     }
     public void gameOver(){
-        Scanner userInput = new Scanner(System.in); // Create a Scanner object
+        boolean answer = false; // Boolean pour vérifier si le joueur a répondu et revenir dans la boucle si ce n'est pas le cas
+        Scanner userInput = new Scanner(System.in);
         System.out.println("Une longue route... et une fin abrupte.");
         System.out.println("Voulez-vous reessayer ?");
-        switch(userInput.nextLine().toLowerCase()){
-            case "oui":
-                System.out.println("Retour au menu.");
-                menu();
-                break;
-            case "non":
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Commande non reconnue");
-                break;
+        while(answer = false){
+            switch(userInput.nextLine().toLowerCase()){
+                case "oui":
+                    answer = true;
+                    System.out.println("Retour au menu.");
+                    menu();
+                    break;
+                case "non":
+                    answer = true;
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Commande non reconnue");
+                    break;
+            } 
         }
     }
 }

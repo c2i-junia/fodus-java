@@ -1,25 +1,37 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fodus.java.player;
 
-/**
- *
- * @author samac
- */
+import fodus.java.Character;
+
 public class Priest extends Player implements Healer {
+    public Priest() {
+        this.maxHealthPoints = 40;
+        this.healthPoints = maxHealthPoints;
+        this.speed = 5;
+        this.strength = 10;
+        this.dexterity = 5;
+        this.endurance = 15;
+        this.wisdom = 20;
+        this.intelligence = 15;
+        this.charisma = 10;
+    }
     @Override
-    public void attack() {
+    public void attack(Character target) {
         System.out.println("Vous attaquez avec votre masse !");
+        target.receiveDamage(this.strength);
     }
     @Override
     public void defend() {
         System.out.println("Vous brandissez votre égide devant vous.");
     }
     @Override
-    public void se_soigner(){// soin 
-        
+    public void heal(){
+        System.out.println("Votre foi vous soigne.");
+        if(this.healthPoints >= this.maxHealthPoints - this.intelligence){
+            this.healthPoints = this.maxHealthPoints;
+        }
+        else {
+            this.wisdom += this.wisdom;
+        }
     }
     @Override
     public void flammes_sacrées(){//dégats + brulure

@@ -3,7 +3,7 @@ package fodus.java;
 public abstract class Character {
     protected String name;
     protected int maxHealthPoints, healthPoints, speed;
-    protected int strength, dexterity, endurance, intelligence, charisma;
+    protected int strength, dexterity, endurance, wisdom, intelligence, charisma;
     public int getHealth(){
         return this.healthPoints;
     }

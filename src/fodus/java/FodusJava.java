@@ -1,4 +1,5 @@
 package fodus.java;
+
 import java.io.File;
 import java.util.Scanner;
 import fodus.java.player.*;

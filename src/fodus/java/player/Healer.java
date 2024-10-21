@@ -9,6 +9,6 @@ package fodus.java.player;
  * @author samac
  */
 public interface Healer {
-    public void se_soigner();// soin 
+    public void heal();// soin 
     public void flammes_sacrées();//dégats + brulure
 }
