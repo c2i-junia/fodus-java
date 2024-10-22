@@ -3,6 +3,9 @@ package fodus.java;
 import java.util.Scanner;
 
 public class Story {
+    public void Valley(){
+        
+    }
     public void village(){
         System.out.println("Vous arrivez enfin dans un petit village.");
         System.out.println("Vous voyez quelques maisons, quelques commerces dont une boutique de potion et une forge.");

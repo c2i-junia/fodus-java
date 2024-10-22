@@ -8,6 +8,9 @@ public abstract class Character {
     public int getHealth(){
         return this.healthPoints;
     }
+    public int getMaxHealth(){
+        return this.maxHealthPoints;
+    }
     public abstract void attack(Character target);
     public abstract void defend();
     public abstract void receiveDamage(int damage);

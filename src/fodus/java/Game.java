@@ -99,8 +99,9 @@ public class Game {
                     }
                     break;
                 case "barbare":
-                    System.out.println("Ce guerrier sans pitie est l'attaquant ultime.");
-                    System.out.println("Veritable berseker qui devient plus puissant a mesure qu'il subit des blessures.");
+                    System.out.println("Derrierre sa rage et sa soif de sang se cache le vide...");
+                    System.out.println("Et la cupabilité.");
+                    System.out.println("Ce berseker devient plus puissant a mesure qu'il subit des blessures.");
                     System.out.println("Etes-vous cet aventurier ?");
                     switch(userInput.nextLine().toLowerCase()){
                         case "oui":
@@ -194,6 +195,14 @@ public class Game {
                     System.out.println("Commande non reconnue");
                     break;
             } 
+        }
+    }
+    public void narratorQuotes(Player player, String situation){
+        switch(situation){
+            case "end of combat":
+                if(player.getHealth() < (player.getMaxHealth())){
+                    System.out.println("");
+                }
         }
     }
 }
