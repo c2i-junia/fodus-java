@@ -28,11 +28,23 @@ public class Game {
     }
     public void menu(){
         Scanner userInput = new Scanner(System.in); // Create a Scanner object
-        System.out.println("Jouer   -   Quitter");
+        System.out.println("Jouer   -   Comment jouer   -   Quitter");
         switch(userInput.nextLine().toLowerCase()){
             case "jouer":
                 System.out.println("Demarrage du jeu, bonne chance a vous !");
                 break;
+            case "comment jouer":
+                System.out.println("\"Fodus\" est un jeu d'aventure RPG dont les choix definiront votre parcours.");
+                waitMs(1500);
+                System.out.println("Les combats se derouleront au tour par tour et les statistiques de votre personage influeront sur les chances de reussite de vos actions.");
+                waitMs(2000);
+                System.out.println("A chaque fois que vous devrez agir, une ligne de ce type apparaitra :");
+                waitMs(1500);
+                System.out.println("Action 1   -   Action 2   - Action 3   -   etc...");
+                waitMs(1500);
+                System.out.println("Vous devrez alors taper dans le terminal l'action que vous souhaitez effectuer.");
+                waitMs(1500);
+                menu();
             case "quitter":
                 System.out.println("Fermeture du jeu.");
                 System.exit(0);
@@ -56,41 +68,79 @@ public class Game {
         System.out.println("Paladin  -  Pretre  -  Assassin  -  Barbare");
         while(player == null){
             switch(userInput.nextLine().toLowerCase()){
-            case "paladin":
-                System.out.println("Ce guerrier robuste est le défenseur ultime.");
-                System.out.println("Il peut  soigner ses blessures et obliterer ses adversaires grace à sa foi.");
-                System.out.println("Archetype : Tank, Soins");
-                System.out.println("Est-ce qui vous etes ?");
-                switch(userInput.nextLine().toLowerCase()){
-                    case "oui":
-                        player = new Paladin();
-                        break;
-                    case "non":
-                        break;
-                    default:
-                        System.out.println("Commande non reconnue");
-                        break;
-                }
-                break;
-            case "pretre":
-                player = new Priest();
-                break;
-            case "barbare":
-                player = new Barbarian();
-                break;
-            case "assassin":
-                player = new Assassin();
-                break;
-            default:
-                System.out.println("Commande non reconnue");
-                break;
+                case "paladin":
+                    System.out.println("Ce guerrier robuste est le défenseur ultime.");
+                    System.out.println("Il peut soigner ses blessures et obliterer ses adversaires grace à sa masse.");
+                    System.out.println("Etes-vous cet aventurier ?");
+                    switch(userInput.nextLine().toLowerCase()){
+                        case "oui":
+                            player = new Paladin(userName);
+                            break;
+                        case "non":
+                            break;
+                        default:
+                            System.out.println("Commande non reconnue");
+                            break;
+                    }
+                    break;
+                case "pretre":
+                    System.out.println("Ce pelerin zelote, derriere son fort physique, ne doit pas etre sous-estimer.");
+                    System.out.println("Il peut soigner ses blessures et obliterer ses adversaires grace à sa foi.");
+                    System.out.println("Etes-vous cet aventurier ?");
+                    switch(userInput.nextLine().toLowerCase()){
+                        case "oui":
+                            player = new Priest(userName);
+                            break;
+                        case "non":
+                            break;
+                        default:
+                            System.out.println("Commande non reconnue");
+                            break;
+                    }
+                    break;
+                case "barbare":
+                    System.out.println("Ce guerrier sans pitie est l'attaquant ultime.");
+                    System.out.println("Veritable berseker qui devient plus puissant a mesure qu'il subit des blessures.");
+                    System.out.println("Etes-vous cet aventurier ?");
+                    switch(userInput.nextLine().toLowerCase()){
+                        case "oui":
+                            player = new Barbarian(userName);
+                            break;
+                        case "non":
+                            break;
+                        default:
+                            System.out.println("Commande non reconnue");
+                            break;
+                    }
+                    break;
+                case "assassin":
+                    System.out.println("Ce bandit n'hesite pas a utiliser fourberie et piege pour parvenir a ses fins.");
+                    System.out.println("Sa ruse lui permet de passer inaperçu et de tuer sans se faire prendre.");
+                    System.out.println("Etes-vous cet aventurier ?");
+                    switch(userInput.nextLine().toLowerCase()){
+                        case "oui":
+                            player = new Assassin(userName);
+                            break;
+                        case "non":
+                            break;
+                        default:
+                            System.out.println("Commande non reconnue");
+                            break;
+                    }
+                    break;
+                default:
+                    System.out.println("Commande non reconnue");
+                    break;
             }
         }
         return player;
     }
-    public void combat(Player player, Enemy enemy, Game game){
+    public void combat(Player player, Enemy enemy){
         System.out.println(enemy.name + " apparait ! Le combat debute.");
+        waitMs(2000);
         while(player.getHealth() > 0 && enemy.getHealth() > 0){
+            printCombatStats(player, enemy);
+            waitMs(2000);
             if(player.speed >= enemy.speed){
                 player.playerAction(enemy);
                 if(enemy.getHealth() <= 0){
@@ -100,14 +150,14 @@ public class Game {
                 enemy.enemyAction(player);
                 if(player.getHealth() <= 0){
                     System.out.println("Vous avez ete vaincu...");
-                    game.gameOver();
+                    gameOver();
                 }
             }
             else if(player.speed < enemy.speed){
                 enemy.enemyAction(player);
                 if(player.getHealth() <= 0){
                     System.out.println("Vous avez ete vaincu...");
-                    game.gameOver();
+                    gameOver();
                 }
                 player.playerAction(enemy);
                 if(enemy.getHealth() <= 0){
@@ -117,12 +167,20 @@ public class Game {
             }
         }
     }
+    public void printCombatStats(Character player, Enemy enemy){
+        System.out.println("--------------------------------------------------------------");
+        System.out.println(enemy.name + " :");
+        System.out.println("HP : " + enemy.maxHealthPoints + " / " + enemy.healthPoints);
+        System.out.println(player.name + " :");
+        System.out.println("HP : " + player.maxHealthPoints + " / " + player.healthPoints);
+        System.out.println("--------------------------------------------------------------");
+    }
     public void gameOver(){
-        boolean answer = false; // Boolean pour vérifier si le joueur a répondu et revenir dans la boucle si ce n'est pas le cas
+        boolean answer = false; // Boolean pour vérifier si le joueur a répondu, et revenir dans la boucle si ce n'est pas le cas
         Scanner userInput = new Scanner(System.in);
         System.out.println("Une longue route... et une fin abrupte.");
         System.out.println("Voulez-vous reessayer ?");
-        while(answer = false){
+        while(answer == false){
             switch(userInput.nextLine().toLowerCase()){
                 case "oui":
                     answer = true;
@@ -130,7 +188,6 @@ public class Game {
                     menu();
                     break;
                 case "non":
-                    answer = true;
                     System.exit(0);
                     break;
                 default:
