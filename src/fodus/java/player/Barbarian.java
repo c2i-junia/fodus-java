@@ -3,7 +3,8 @@ package fodus.java.player;
 import fodus.java.Character;
 
 public class Barbarian extends Player implements Damage, Tank {
-    public Barbarian() {
+    public Barbarian(String playerName) {
+        this.name = playerName;
         this.maxHealthPoints = 45;
         this.healthPoints = maxHealthPoints;
         this.speed = 10;

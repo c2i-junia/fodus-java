@@ -3,7 +3,8 @@ package fodus.java.player;
 import fodus.java.Character;
 
 public class Assassin extends Player implements Damage {
-    public Assassin() {
+    public Assassin(String playerName) {
+        this.name = playerName;
         this.maxHealthPoints = 30;
         this.healthPoints = maxHealthPoints;
         this.speed = 15;
@@ -16,7 +17,7 @@ public class Assassin extends Player implements Damage {
     }
     @Override
     public void attack(Character target) {
-        System.out.println("Vous attaquez avec votre hache e deux mains !");
+        System.out.println("Vous attaquez avec votre hache a deux mains !");
         target.receiveDamage(this.strength);
     }
     @Override

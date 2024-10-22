@@ -3,7 +3,8 @@ package fodus.java.player;
 import fodus.java.Character;
 
 public class Paladin extends Player implements Healer, Tank {
-    public Paladin() {
+    public Paladin(String playerName) {
+        this.name = playerName;
         this.maxHealthPoints = 50;
         this.healthPoints = maxHealthPoints;
         this.speed = 5;

@@ -6,6 +6,7 @@ import fodus.java.Character;
 public abstract class Player extends Character{
     public int money;
     public int manaPoints, skillPoints;
+    
     public void printStats(){
         System.out.println("HP : " + maxHealthPoints + " / " + healthPoints);
         System.out.println("Vitesse : " + speed);
@@ -18,6 +19,7 @@ public abstract class Player extends Character{
     public void playerAction(Character target){
         Scanner userInput = new Scanner(System.in);
         boolean command_executed = false;
+            System.out.println("Que faites-vous ?");
             System.out.println("Attaque  -  Defense  -  Special  -  Fuite");
             while(!command_executed){
                 switch(userInput.nextLine().toLowerCase()){
@@ -39,11 +41,9 @@ public abstract class Player extends Character{
     public void receiveDamage(int damage){
         if(this.healthPoints - (damage - this.endurance / 4) <= 0){
             this.healthPoints = 0;
-            System.out.println(this.healthPoints);
         }
         else{
             this.healthPoints -= damage - this.endurance / 4;
-            System.out.println(this.healthPoints);
         }
         System.out.println("Vous recevez " + (damage - this.endurance / 4) + " dommages !");
     }

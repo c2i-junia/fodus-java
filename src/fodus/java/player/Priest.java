@@ -3,7 +3,8 @@ package fodus.java.player;
 import fodus.java.Character;
 
 public class Priest extends Player implements Healer {
-    public Priest() {
+    public Priest(String playerName) {
+        this.name = playerName;
         this.maxHealthPoints = 40;
         this.healthPoints = maxHealthPoints;
         this.speed = 5;
