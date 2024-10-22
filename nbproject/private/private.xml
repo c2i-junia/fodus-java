@@ -3,12 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/Character.java</file>
-            <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/player/Player.java</file>
-            <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/player/Barbarian.java</file>
-            <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/Game.java</file>
-            <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/FodusJava.java</file>
-            <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/Story.java</file>
+            <file>file:/D:/Projets-codage/fodus-java/src/fodus/java/status/Status.java</file>
+            <file>file:/D:/Projets-codage/fodus-java/src/fodus/java/enemy/Enemy.java</file>
+            <file>file:/D:/Projets-codage/fodus-java/src/fodus/java/FodusJava.java</file>
+            <file>file:/D:/Projets-codage/fodus-java/src/fodus/java/status/Bleed.java</file>
+            <file>file:/D:/Projets-codage/fodus-java/src/fodus/java/Game.java</file>
+            <file>file:/D:/Projets-codage/fodus-java/src/fodus/java/enemy/Skeleton.java</file>
+            <file>file:/D:/Projets-codage/fodus-java/src/fodus/java/player/Player.java</file>
+            <file>file:/D:/Projets-codage/fodus-java/src/fodus/java/Character.java</file>
+            <file>file:/D:/Projets-codage/fodus-java/src/fodus/java/player/Assassin.java</file>
         </group>
     </open-files>
 </project-private>

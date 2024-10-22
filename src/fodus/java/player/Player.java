@@ -8,7 +8,7 @@ public abstract class Player extends Character{
     public int manaPoints, skillPoints;
     
     public void printStats(){
-        System.out.println("HP : " + maxHealthPoints + " / " + healthPoints);
+        System.out.println("HP : " + healthPoints + " / " + maxHealthPoints);
         System.out.println("Vitesse : " + speed);
         System.out.println("Force : " + strength);
         System.out.println("Dexterite : " + dexterity);

@@ -100,7 +100,7 @@ public class Game {
                     break;
                 case "barbare":
                     System.out.println("Derrierre sa rage et sa soif de sang se cache le vide...");
-                    System.out.println("Et la cupabilité.");
+                    System.out.println("Et la cupabilite.");
                     System.out.println("Ce berseker devient plus puissant a mesure qu'il subit des blessures.");
                     System.out.println("Etes-vous cet aventurier ?");
                     switch(userInput.nextLine().toLowerCase()){
@@ -116,7 +116,7 @@ public class Game {
                     break;
                 case "assassin":
                     System.out.println("Ce bandit n'hesite pas a utiliser fourberie et piege pour parvenir a ses fins.");
-                    System.out.println("Sa ruse lui permet de passer inaperçu et de tuer sans se faire prendre.");
+                    System.out.println("Sa ruse lui permet de passer inapercu et de tuer sans se faire prendre.");
                     System.out.println("Etes-vous cet aventurier ?");
                     switch(userInput.nextLine().toLowerCase()){
                         case "oui":
@@ -142,6 +142,8 @@ public class Game {
         while(player.getHealth() > 0 && enemy.getHealth() > 0){
             printCombatStats(player, enemy);
             waitMs(2000);
+            player.updateEffects();
+            enemy.updateEffects();
             if(player.speed >= enemy.speed){
                 player.playerAction(enemy);
                 if(enemy.getHealth() <= 0){
@@ -171,9 +173,9 @@ public class Game {
     public void printCombatStats(Character player, Enemy enemy){
         System.out.println("--------------------------------------------------------------");
         System.out.println(enemy.name + " :");
-        System.out.println("HP : " + enemy.maxHealthPoints + " / " + enemy.healthPoints);
+        System.out.println("HP : " + enemy.healthPoints + " / " + enemy.maxHealthPoints);
         System.out.println(player.name + " :");
-        System.out.println("HP : " + player.maxHealthPoints + " / " + player.healthPoints);
+        System.out.println("HP : " + player.healthPoints + " / " + player.maxHealthPoints);
         System.out.println("--------------------------------------------------------------");
     }
     public void gameOver(){
