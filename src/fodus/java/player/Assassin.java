@@ -2,6 +2,9 @@ package fodus.java.player;
 
 import fodus.java.Character;
 import fodus.java.status.Bleed;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Assassin extends Player implements Damage {
     public Assassin(String playerName) {
@@ -15,6 +18,34 @@ public class Assassin extends Player implements Damage {
         this.wisdom = 10;
         this.intelligence = 15;
         this.charisma = 15;
+    }
+    
+    @Override
+    public List<String> getSpecificSkills() {
+        List<String> skills = new ArrayList<>();
+        skills.add("Ouvre-veines");
+        skills.add("Contre");
+        return skills;
+    }
+    @Override
+    public void useSpecificSkill(Character target) {
+        Scanner userInput = new Scanner(System.in);
+        boolean command_executed = false;
+        while(!command_executed){
+            switch(userInput.nextLine().toLowerCase()){
+                case "ouvre-veines":
+                    openVein(target);
+                    command_executed = true;
+                    break;
+                case "contre":
+                    counter();
+                    command_executed = true;
+                    break;
+                default:
+                    System.out.println("Commande non reconnue");
+                    break;
+            }
+        }
     }
     
     public void openVein(Character target) {
@@ -35,11 +66,11 @@ public class Assassin extends Player implements Damage {
         System.out.println("Vous vous preparez a encaisser les coups.");
     }
     @Override    
-    public void contre(){//pourcentage de chance d'infliger une attaque de base
+    public void counter(){//pourcentage de chance d'infliger une attaque de base
             
     }
     @Override    
-    public void vol_de_vie(Character target){//vol de points de vie de l'ennemi
+    public void stealHealthPoints(Character target){//vol de points de vie de l'ennemi
         System.out.println("Vous attaquez en volant la vie de votre ennemi !");
         target.receiveDamage(this.strength) ;
         if(this.healthPoints + this.intelligence >= this.maxHealthPoints){
