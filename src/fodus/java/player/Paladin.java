@@ -11,9 +11,9 @@ public class Paladin extends Player implements Healer, Tank {
         this.strength = 15;
         this.dexterity = 5;
         this.endurance = 15;
-        this.wisdom = 10;
+        //this.wisdom = 10;
         this.intelligence = 5;
-        this.charisma = 10;
+        //this.charisma = 10;
     }
     @Override
     public void attack(Character target) {

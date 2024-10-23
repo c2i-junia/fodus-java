@@ -4,12 +4,21 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import fodus.java.status.Status;
+import fodus.java.equipments.Equipments;
 
 public abstract class Character {
     public String name;
-    public int maxHealthPoints, healthPoints, speed;
-    public int strength, dexterity, endurance, wisdom, intelligence, charisma;
+    public int maxHealthPoints, healthPoints, speed, mana, maxmana;
+    public int strength, dexterity, endurance, intelligence;
+    // public int charisma;
     public List<Status> effects;
+    public List<Equipments> inventaire;
+    
+    public void addItem(Equipments equipment) {
+        inventaire.add(equipment); 
+        System.out.println("item " + equipment.getName() + " ajoute a l'inventaire.");
+    }
+    
     
     public Character(){
         this.effects = new ArrayList<>();

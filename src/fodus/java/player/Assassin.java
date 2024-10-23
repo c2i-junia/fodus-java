@@ -12,9 +12,9 @@ public class Assassin extends Player implements Damage {
         this.strength = 5;
         this.dexterity = 20;
         this.endurance = 10;
-        this.wisdom = 10;
+        //this.wisdom = 10;
         this.intelligence = 15;
-        this.charisma = 15;
+        //this.charisma = 15;
     }
     
     public void openVein(Character target) {
@@ -25,7 +25,7 @@ public class Assassin extends Player implements Damage {
     
     @Override
     public void attack(Character target) {
-        System.out.println("Vous attaquez avec votre hache a deux mains !");
+        System.out.println("Vous attaquez avec vos dagues !");
         target.receiveDamage(this.strength);
         Bleed bleedEffect = new Bleed(3, 2);
         target.addEffect(bleedEffect);

@@ -4,7 +4,7 @@ import java.util.Scanner;
 import fodus.java.Character;
 
 public abstract class Player extends Character{
-    public int money;
+    //public int money;
     public int manaPoints, skillPoints;
     
     public void printStats(){
@@ -14,7 +14,7 @@ public abstract class Player extends Character{
         System.out.println("Dexterite : " + dexterity);
         System.out.println("Endurance : " + endurance);
         System.out.println("Intelligence : " + intelligence);
-        System.out.println("Charisme : " + charisma);
+        //System.out.println("Charisme : " + charisma);
     }
     public void playerAction(Character target){
         Scanner userInput = new Scanner(System.in);

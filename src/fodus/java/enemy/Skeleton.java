@@ -14,7 +14,6 @@ public class Skeleton extends Enemy{
         this.dexterity = 5;
         this.endurance = 10;
         this.intelligence = 5;
-        this.charisma = 1;
     }
     @Override
     public void enemyAction(Character target){

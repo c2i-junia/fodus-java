@@ -11,9 +11,9 @@ public class Priest extends Player implements Healer {
         this.strength = 10;
         this.dexterity = 5;
         this.endurance = 15;
-        this.wisdom = 20;
+        //this.wisdom = 20;
         this.intelligence = 15;
-        this.charisma = 10;
+        //this.charisma = 10;
     }
     @Override
     public void attack(Character target) {
@@ -27,11 +27,11 @@ public class Priest extends Player implements Healer {
     @Override
     public void heal(){
         System.out.println("Votre foi vous soigne.");
-        if(this.healthPoints + this.wisdom >= this.maxHealthPoints){
+        if(this.healthPoints + this.intelligence >= this.maxHealthPoints){
             this.healthPoints = this.maxHealthPoints;
         }
         else {
-            this.healthPoints += this.wisdom;
+            this.healthPoints += this.intelligence;
         }
     }
     @Override

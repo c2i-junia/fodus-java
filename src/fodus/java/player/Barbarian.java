@@ -11,9 +11,9 @@ public class Barbarian extends Player implements Damage, Tank {
         this.strength = 20;
         this.dexterity = 10;
         this.endurance = 15;
-        this.wisdom = 5;
+        //this.wisdom = 5;
         this.intelligence = 5;
-        this.charisma = 10;
+        //this.charisma = 10;
     }
     @Override
     public void attack(Character target) {

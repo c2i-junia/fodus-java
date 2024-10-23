@@ -9,8 +9,10 @@ package fodus.java.equipments;
  * @author rmeun
  */
 public class Epee_du_dragon extends Swords {
+    public Epee_du_dragon(){
+        
+    }
     public void spe_epee_du_dragon(){
     System.out.println("Les dragons entendent votre appel, et dechaine les flammes sur votre ennemi");
     }
-    
 }
