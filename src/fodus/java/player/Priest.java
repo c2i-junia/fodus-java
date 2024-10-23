@@ -32,11 +32,11 @@ public class Priest extends Player implements Healer {
         boolean command_executed = false;
         while(!command_executed){
             switch(userInput.nextLine().toLowerCase()){
-                case "lumiere radieuse":
+                case "lumiere radieuse", "1":
                     heal();
                     command_executed = true;
                     break;
-                case "jugement":
+                case "jugement", "2":
                     flammes_sacrées();
                     command_executed = true;
                     break;

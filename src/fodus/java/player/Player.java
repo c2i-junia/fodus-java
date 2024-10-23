@@ -30,15 +30,15 @@ public abstract class Player extends Character{
             }
             while(!command_executed){
                 switch(userInput.nextLine().toLowerCase()){
-                    case "attaque":
+                    case "attaque", "1":
                         attack(target);
                         command_executed = true;
                         break;
-                    case "defense":
+                    case "defense", "2":
                         defend();
                         command_executed = true;
                         break;
-                    case "capacite":
+                    case "capacite", "3":
                         executeSpecificSkills(this, target);
                         command_executed = true;
                         break;

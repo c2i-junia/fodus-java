@@ -33,11 +33,11 @@ public class Assassin extends Player implements Damage {
         boolean command_executed = false;
         while(!command_executed){
             switch(userInput.nextLine().toLowerCase()){
-                case "ouvre-veines":
+                case "ouvre-veines", "1":
                     openVein(target);
                     command_executed = true;
                     break;
-                case "contre":
+                case "contre", "2":
                     counter();
                     command_executed = true;
                     break;

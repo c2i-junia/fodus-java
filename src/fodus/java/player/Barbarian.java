@@ -32,11 +32,11 @@ public class Barbarian extends Player implements Damage, Tank {
         boolean command_executed = false;
         while(!command_executed){
             switch(userInput.nextLine().toLowerCase()){
-                case "cri de guerre":
+                case "cri de guerre", "1":
                     warcry();
                     command_executed = true;
                     break;
-                case "contre":
+                case "contre", "2":
                     counter();
                     command_executed = true;
                     break;

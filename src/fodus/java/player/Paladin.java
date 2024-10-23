@@ -31,11 +31,11 @@ public class Paladin extends Player implements Healer, Tank {
         boolean command_executed = false;
         while(!command_executed){
             switch(userInput.nextLine().toLowerCase()){
-                case "soins de bataille":
+                case "soins de bataille", "1":
                     heal();
                     command_executed = true;
                     break;
-                case "ferventes accusations":
+                case "ferventes accusations", "2":
                     flammes_sacrées();
                     command_executed = true;
                     break;
