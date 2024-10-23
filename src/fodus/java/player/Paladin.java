@@ -1,6 +1,9 @@
 package fodus.java.player;
 
 import fodus.java.Character;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Paladin extends Player implements Healer, Tank {
     public Paladin(String playerName) {
@@ -16,6 +19,33 @@ public class Paladin extends Player implements Healer, Tank {
         //this.charisma = 10;
     }
     @Override
+    public List<String> getSpecificSkills() {
+        List<String> skills = new ArrayList<>();
+        skills.add("Soins de battailles");
+        skills.add("Ferventes accusations");
+        return skills;
+    }
+    @Override
+    public void useSpecificSkill(Character target) {
+        Scanner userInput = new Scanner(System.in);
+        boolean command_executed = false;
+        while(!command_executed){
+            switch(userInput.nextLine().toLowerCase()){
+                case "soins de bataille":
+                    heal();
+                    command_executed = true;
+                    break;
+                case "ferventes accusations":
+                    flammes_sacrées();
+                    command_executed = true;
+                    break;
+                default:
+                    System.out.println("Commande non reconnue");
+                    break;
+            }
+        }
+    }
+    @Override
     public void attack(Character target) {
         System.out.println("Vous attaquez avec votre epee.");
         target.receiveDamage(this.strength);
@@ -24,11 +54,8 @@ public class Paladin extends Player implements Healer, Tank {
     public void defend() {
         System.out.println("Vous brandissez votre egide devant vous.");
     }
-    public void mur_de_Bouclier(){// immunisé pendant 2 tours
-            
-    }
     @Override
-    public void cri_de_Guerre(){ // oblige l'ennemi à attaquer et immunité pendant 1 tour
+    public void warcry(){ // oblige l'ennemi à attaquer et immunité pendant 1 tour
             
     }
     @Override
@@ -45,9 +72,4 @@ public class Paladin extends Player implements Healer, Tank {
     public void flammes_sacrées(){//dégats + brulure
         
     }
-//    @Override
-//    public void warcry() {
-//        System.out.println("Vous regagnez courage et vous vous sentez plus fort !");
-//        this.strength += 5;
-//    }
 }
