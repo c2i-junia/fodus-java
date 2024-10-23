@@ -3,7 +3,7 @@ package fodus.java;
 import java.util.Scanner;
 
 public class Story {
-    public void Valley(){
+    public void valley(){
         
     }
     public void village(){
