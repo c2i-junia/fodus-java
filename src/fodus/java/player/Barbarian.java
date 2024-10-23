@@ -33,7 +33,14 @@ public class Barbarian extends Player implements Damage, Tank {
             
     }
     @Override    
-    public void vol_de_vie(){//vol de points de vie de l'ennemi
-            
+    public void vol_de_vie(Character target){//vol de points de vie de l'ennemi
+        System.out.println("Vous attaquez en volant la vie de votre ennemi !");
+        target.receiveDamage(this.strength) ;
+        if(this.healthPoints + this.intelligence >= this.maxHealthPoints){
+            this.healthPoints = this.maxHealthPoints;
+        }
+        else {
+            this.healthPoints += this.intelligence;
+        }    
     }
 }

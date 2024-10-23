@@ -27,11 +27,11 @@ public class Priest extends Player implements Healer {
     @Override
     public void heal(){
         System.out.println("Votre foi vous soigne.");
-        if(this.healthPoints >= this.maxHealthPoints - this.intelligence){
+        if(this.healthPoints + this.wisdom >= this.maxHealthPoints){
             this.healthPoints = this.maxHealthPoints;
         }
         else {
-            this.wisdom += this.wisdom;
+            this.healthPoints += this.wisdom;
         }
     }
     @Override

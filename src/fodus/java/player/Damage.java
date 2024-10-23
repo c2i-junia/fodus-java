@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package fodus.java.player;
+import fodus.java.Character;
 
 /**
  *
@@ -10,5 +11,5 @@ package fodus.java.player;
  */
 public interface Damage {
     public void contre();//pourcentage de chance d'infliger une attaque de base
-    public void vol_de_vie();//vol de points de vie de l'ennemi
+    public void vol_de_vie(Character target);//vol de points de vie de l'ennemi
 }
