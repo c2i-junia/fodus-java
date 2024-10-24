@@ -9,7 +9,7 @@ public class Skeleton extends Enemy{
         this.name = "Squelette";
         this.maxHealthPoints = 20;
         this.healthPoints = this.maxHealthPoints;
-        this.speed = 3;
+        this.speed = 5;
         this.strength = 10;
         this.dexterity = 5;
         this.endurance = 10;

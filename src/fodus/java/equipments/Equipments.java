@@ -4,10 +4,8 @@
  */
 package fodus.java.equipments;
 import fodus.java.player.Player;
-/**
- *
- * @author rmeun
- */
+
+
 public abstract class Equipments {
     protected String name_equipement;
     public int strength, dexterity, endurance, intelligence;

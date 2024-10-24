@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 import fodus.java.Character;
 import fodus.java.PlayerActions;
+import fodus.java.equipments.Equipments;
 
 public abstract class Player extends Character{
     //public int money;
@@ -77,4 +78,11 @@ public abstract class Player extends Character{
         }
         System.out.println("Vous recevez " + (damage - this.endurance / 4) + " dommages !");
     }
+    
+    public List<Equipments> inventaire;
+    
+    public void addItem(Equipments equipment) {
+        inventaire.add(equipment); 
+        System.out.println("item " + equipment.getName() + " ajoute a l'inventaire.");
+    }    
 }
