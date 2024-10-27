@@ -1,6 +1,7 @@
 package fodus.java.player;
 
 import fodus.java.Character;
+import fodus.java.status.Block;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -55,6 +56,8 @@ public class Priest extends Player implements Healer {
     @Override
     public void defend() {
         System.out.println("Vous brandissez votre égide devant vous.");
+        Block blockEffect = new Block(1, 50);
+        this.addToken(blockEffect);
     }
     @Override
     public void heal(){

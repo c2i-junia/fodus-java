@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fodus.java.enemy;
 
 import java.util.Random;
 import fodus.java.status.Bleed;
 import fodus.java.Character;
-
 
 public class Goblins extends Enemy {
     Random r = new Random();
@@ -48,7 +43,7 @@ public class Goblins extends Enemy {
     public void spe_goblin(Character target) {
         System.out.println("Le Gobelin décide de vous poignarder !");
         Bleed bleedEffect = new Bleed(4, 2);
-        target.addEffect(bleedEffect);
+        target.addDOT(bleedEffect);
     }
     
 }

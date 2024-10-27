@@ -3,19 +3,19 @@ package fodus.java;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
-import fodus.java.status.Status;
+import fodus.java.status.*;
 
 public abstract class Character {
     public String name;
     public int maxHealthPoints, healthPoints, speed, mana, maxmana;
     public int strength, dexterity, endurance, intelligence;
-    // public int charisma;
-    public List<Status> effects;
-
-    
+    //public int charisma;
+    public List<DOT> dot;
+    public List<Tokens> tokens;
     
     public Character(){
-        this.effects = new ArrayList<>();
+        this.dot = new ArrayList<>();
+        this.tokens = new ArrayList<>();
     }
     
     public int getHealth(){
@@ -25,22 +25,65 @@ public abstract class Character {
         return this.maxHealthPoints;
     }
     
-    // Status effects methods
-    public void addEffect(Status effect) {
-        effects.add(effect);
-        System.out.println(effect.getClass().getSimpleName() + " ajouté à " + this.name);
+    // Tokens and DOT effects methods
+    public void addDOT(DOT dotEffect) {
+        DOT existingDOT = findDOTType(dotEffect.getClass());
+        if(existingDOT != null){
+            System.out.println(this.name + " a deja le statut " + dotEffect.getName());
+        } 
+        else{
+            dot.add(dotEffect);
+            System.out.println(dotEffect.getName() + " ajoute a " + this.name);
+        }
     }
-    public void updateEffects() {
+    public void addToken(Tokens tokenEffect) {
+        Tokens existingToken = findTokenType(tokenEffect.getClass());
+        if(existingToken != null){
+            System.out.println(this.name + " a deja le statut " + tokenEffect.getName());
+        } 
+        else{
+            tokens.add(tokenEffect);
+            System.out.println(tokenEffect.getName() + " ajoute a " + this.name);
+        }
+    }
+    public void updateDOTEffects(){
         System.out.println("Mise a jour des effets pour " + this.name);
-        Iterator<Status> iter = effects.iterator();
-        while (iter.hasNext()) {
-            Status effect = iter.next();
-            effect.applyEffect(this);
-            if (!effect.updateEffect()) {
-                System.out.println(effect.getClass().getSimpleName() + " expire pour " + this.name);
+        Iterator<DOT> iter = dot.iterator();
+        while(iter.hasNext()){
+            DOT dotEffect = iter.next();
+            dotEffect.applyDOT(this);
+            if (!dotEffect.isActive()){
+                System.out.println(dotEffect.getName() + " expire pour " + this.name);
                 iter.remove();
             }
         }
+    }
+    public void updateTokenEffects(){
+        System.out.println("Mise a jour des tokens pour " + this.name);
+        Iterator<Tokens> iter = tokens.iterator();
+        while(iter.hasNext()){
+            Tokens tokenEffect = iter.next();
+            if (!tokenEffect.isActive()){
+                System.out.println(this.name + " n'a plus de " + tokenEffect.getName());
+                iter.remove();
+            }
+        }
+    }
+    public DOT findDOTType(Class<? extends DOT> typeDOT) {
+        for (DOT statut : dot) {
+            if (statut.getClass().equals(typeDOT)) {
+                return statut;
+            }
+        }
+        return null;
+    }
+    public Tokens findTokenType(Class<? extends Tokens> typeToken) {
+        for (Tokens tokenIter : tokens) {
+            if (tokenIter.getClass().equals(typeToken)) {
+                return tokenIter;
+            }
+        }
+        return null;
     }
     
     public abstract void attack(Character target);

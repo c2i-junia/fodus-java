@@ -1,6 +1,7 @@
 package fodus.java.player;
 
 import fodus.java.Character;
+import fodus.java.status.Block;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ public class Paladin extends Player implements Healer, Tank {
             }
         }
     }
+    
     @Override
     public void attack(Character target) {
         System.out.println("Vous attaquez avec votre epee.");
@@ -53,10 +55,12 @@ public class Paladin extends Player implements Healer, Tank {
     @Override
     public void defend() {
         System.out.println("Vous brandissez votre egide devant vous.");
+        Block blockEffect = new Block(1, 50);
+        this.addToken(blockEffect);
     }
     @Override
-    public void warcry(){ // oblige l'ennemi à attaquer et immunité pendant 1 tour
-            
+    public void warcry(){
+        // oblige l'ennemi à attaquer et immunité pendant 1 tour            
     }
     @Override
     public void heal(){

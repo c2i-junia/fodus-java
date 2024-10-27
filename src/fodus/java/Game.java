@@ -3,6 +3,8 @@ package fodus.java;
 import java.util.Scanner;
 import fodus.java.player.*;
 import fodus.java.enemy.*;
+import fodus.java.status.*;
+import java.util.Iterator;
 
 // Manage game loop, turn-based combat and player interactions
 public class Game {
@@ -142,8 +144,10 @@ public class Game {
         while(player.getHealth() > 0 && enemy.getHealth() > 0){
             printCombatStats(player, enemy);
             waitMs(2000);
-            player.updateEffects();
-            enemy.updateEffects();
+            player.updateDOTEffects();
+            enemy.updateDOTEffects();
+            player.updateTokenEffects();
+            enemy.updateTokenEffects();
             if(player.speed >= enemy.speed){
                 player.playerAction(enemy);
                 if(enemy.getHealth() <= 0){
@@ -172,10 +176,20 @@ public class Game {
     }
     public void printCombatStats(Character player, Enemy enemy){
         System.out.println("--------------------------------------------------------------");
-        System.out.println(enemy.name + " :");
-        System.out.println("HP : " + enemy.healthPoints + " / " + enemy.maxHealthPoints);
         System.out.println(player.name + " :");
         System.out.println("HP : " + player.healthPoints + " / " + player.maxHealthPoints);
+        Iterator<Tokens> iter = player.tokens.iterator();
+        while(iter.hasNext()){
+            Tokens tokenEffect = iter.next();
+            System.out.println(tokenEffect.getName() + " : " + tokenEffect.getNbToken() + "   ");
+        }
+        System.out.println(enemy.name + " :");
+        System.out.println("HP : " + enemy.healthPoints + " / " + enemy.maxHealthPoints);
+        iter = enemy.tokens.iterator();
+        while(iter.hasNext()){
+            Tokens tokenEffect = iter.next();
+            System.out.println(tokenEffect.getName() + " : " + tokenEffect.getNbToken() + "   ");
+        }        
         System.out.println("--------------------------------------------------------------");
     }
     public void gameOver(){

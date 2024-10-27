@@ -5,11 +5,24 @@ import java.util.List;
 import java.util.ArrayList;
 import fodus.java.Character;
 import fodus.java.PlayerActions;
+import fodus.java.status.*;
 import fodus.java.equipments.Equipments;
 
 public abstract class Player extends Character{
     //public int money;
     public int manaPoints, skillPoints;
+    public List<Equipments> inventory;
+    public List<Equipments> combatInventory;
+    
+    public Player(){
+        inventory = new ArrayList<>();
+        combatInventory = new ArrayList<>();
+    }
+    
+    public void addItem(Equipments equipment) {
+        inventory.add(equipment); 
+        System.out.println("Item " + equipment.getName() + " ajoute a l'inventaire.");
+    }
     
     public void printStats(){
         System.out.println("HP : " + healthPoints + " / " + maxHealthPoints);
@@ -23,26 +36,29 @@ public abstract class Player extends Character{
     
     public void playerAction(Character target){
         Scanner userInput = new Scanner(System.in);
-        boolean command_executed = false;
+        boolean commandExecuted = false;
         List<PlayerActions> actions = this.getAvailableActions();
             System.out.println("Que faites-vous ?");
             for(int i = 0; i < actions.size(); i++){
                 System.out.println((i+1) + ") " + actions.get(i).getText());
             }
-            while(!command_executed){
+            while(!commandExecuted){
                 switch(userInput.nextLine().toLowerCase()){
                     case "attaque", "1":
                         attack(target);
-                        command_executed = true;
+                        commandExecuted = true;
                         break;
                     case "defense", "2":
                         defend();
-                        command_executed = true;
+                        commandExecuted = true;
                         break;
                     case "capacite", "3":
                         executeSpecificSkills(this, target);
-                        command_executed = true;
+                        commandExecuted = true;
                         break;
+//                    case "objets", "4":
+//                        listAvailableWeapons(this, target);
+//                        commandExecuted = true;
                     default:
                         System.out.println("Commande non reconnue");
                         break;
@@ -60,29 +76,47 @@ public abstract class Player extends Character{
     public abstract List<String> getSpecificSkills();
     public abstract void useSpecificSkill(Character target);
     public void executeSpecificSkills(Character player, Character target){
-        Scanner userInput = new Scanner(System.in);
+        //Scanner userInput = new Scanner(System.in);
         List<String> classSkills = this.getSpecificSkills();
         for (int i = 0; i < classSkills.size(); i++) {
-            System.out.print((i + 1) + " " + classSkills.get(i) + "   -   ");
+            System.out.print((i + 1) + " " + classSkills.get(i) + "   ");
         }
         useSpecificSkill(target);
     }
     
+    public void chooseWeapon(List<Equipments> inventory, List<Equipments> combatInventory) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Armes disponibles :");
+        for(int i = 0; i < inventory.size(); i++) {
+            System.out.println((i + 1) + ") " + inventory.get(i).getName());
+            System.out.println(inventory.get(i).getClass().getSuperclass().getSimpleName());
+        }
+        System.out.print("Choisissez une arme : ");
+        int choice = scanner.nextInt();
+        if(choice > 0 && choice <= inventory.size()) {
+            Equipments chosenWeapon = inventory.get(choice - 1);
+            combatInventory.add(chosenWeapon);
+            System.out.println("Vous avez choisi : " + chosenWeapon.getName());
+        } else {
+            System.out.println("Choix invalide.");
+        }
+    }
+    
     @Override
     public void receiveDamage(int damage){
-        if(this.healthPoints - (damage - this.endurance / 4) <= 0){
+        Block defenseStatut = (Block) findTokenType(Block.class);
+        if (defenseStatut != null) {
+            int damageReduction = damage * defenseStatut.getDamageReduction() / 100;
+            damage = damage - damageReduction;
+            System.out.println("Degats reduits de " + defenseStatut.getDamageReduction() + "% !");
+            defenseStatut.updateToken();
+        }     
+        if(this.healthPoints <= damage){
             this.healthPoints = 0;
         }
         else{
-            this.healthPoints -= damage - this.endurance / 4;
+            this.healthPoints -= damage;
         }
-        System.out.println("Vous recevez " + (damage - this.endurance / 4) + " dommages !");
-    }
-    
-    public List<Equipments> inventaire;
-    
-    public void addItem(Equipments equipment) {
-        inventaire.add(equipment); 
-        System.out.println("item " + equipment.getName() + " ajoute a l'inventaire.");
-    }    
+        System.out.println("Vous recevez " + damage + " dommages !");
+    }  
 }
