@@ -7,10 +7,10 @@ import fodus.java.status.*;
 
 public abstract class Character {
     public String name;
-    public int maxHealthPoints, healthPoints, speed, mana, maxmana;
+    public int maxHealthPoints, healthPoints, maxMana, mana, speed;
     public int strength, dexterity, endurance, intelligence;
     //public int charisma;
-    public List<DOT> dot;
+    public List<DOTs> dot;
     public List<Tokens> tokens;
     
     public Character(){
@@ -25,9 +25,9 @@ public abstract class Character {
         return this.maxHealthPoints;
     }
     
-    // Tokens and DOT effects methods
-    public void addDOT(DOT dotEffect) {
-        DOT existingDOT = findDOTType(dotEffect.getClass());
+    // Tokens and DOTs effects methods
+    public void addDOT(DOTs dotEffect) {
+        DOTs existingDOT = findDOTType(dotEffect.getClass());
         if(existingDOT != null){
             System.out.println(this.name + " a deja le statut " + dotEffect.getName());
         } 
@@ -48,9 +48,9 @@ public abstract class Character {
     }
     public void updateDOTEffects(){
         System.out.println("Mise a jour des effets pour " + this.name);
-        Iterator<DOT> iter = dot.iterator();
+        Iterator<DOTs> iter = dot.iterator();
         while(iter.hasNext()){
-            DOT dotEffect = iter.next();
+            DOTs dotEffect = iter.next();
             dotEffect.applyDOT(this);
             if (!dotEffect.isActive()){
                 System.out.println(dotEffect.getName() + " expire pour " + this.name);
@@ -69,8 +69,8 @@ public abstract class Character {
             }
         }
     }
-    public DOT findDOTType(Class<? extends DOT> typeDOT) {
-        for (DOT statut : dot) {
+    public DOTs findDOTType(Class<? extends DOTs> typeDOT) {
+        for (DOTs statut : dot) {
             if (statut.getClass().equals(typeDOT)) {
                 return statut;
             }
