@@ -10,7 +10,7 @@ import fodus.java.enemy.Enemy;
 
 public abstract class Character {
     public String name;
-    public int maxHealthPoints, healthPoints, speed, mana, maxmana;
+    public int maxHealthPoints, healthPoints, maxmana, mana, speed;
     public int strength, dexterity, endurance, intelligence;
     //public int charisma;
     public List<DOTs> dot;
@@ -28,7 +28,7 @@ public abstract class Character {
         return this.maxHealthPoints;
     }
     
-    // Tokens and DOT effects methods
+
     public void addDOT(DOTs dotEffect) {
         DOTs existingDOT = findDOTType(dotEffect.getClass());
         if(existingDOT != null){
