@@ -1,16 +1,19 @@
 package fodus.java;
 
+import fodus.java.equipments.Equipments;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import fodus.java.status.*;
+import fodus.java.player.Player;
+import fodus.java.enemy.Enemy;
 
 public abstract class Character {
     public String name;
     public int maxHealthPoints, healthPoints, speed, mana, maxmana;
     public int strength, dexterity, endurance, intelligence;
     //public int charisma;
-    public List<DOT> dot;
+    public List<DOTs> dot;
     public List<Tokens> tokens;
     
     public Character(){
@@ -26,8 +29,8 @@ public abstract class Character {
     }
     
     // Tokens and DOT effects methods
-    public void addDOT(DOT dotEffect) {
-        DOT existingDOT = findDOTType(dotEffect.getClass());
+    public void addDOT(DOTs dotEffect) {
+        DOTs existingDOT = findDOTType(dotEffect.getClass());
         if(existingDOT != null){
             System.out.println(this.name + " a deja le statut " + dotEffect.getName());
         } 
@@ -36,6 +39,7 @@ public abstract class Character {
             System.out.println(dotEffect.getName() + " ajoute a " + this.name);
         }
     }
+    
     public void addToken(Tokens tokenEffect) {
         Tokens existingToken = findTokenType(tokenEffect.getClass());
         if(existingToken != null){
@@ -48,9 +52,9 @@ public abstract class Character {
     }
     public void updateDOTEffects(){
         System.out.println("Mise a jour des effets pour " + this.name);
-        Iterator<DOT> iter = dot.iterator();
+        Iterator<DOTs> iter = dot.iterator();
         while(iter.hasNext()){
-            DOT dotEffect = iter.next();
+            DOTs dotEffect = iter.next();
             dotEffect.applyDOT(this);
             if (!dotEffect.isActive()){
                 System.out.println(dotEffect.getName() + " expire pour " + this.name);
@@ -69,8 +73,8 @@ public abstract class Character {
             }
         }
     }
-    public DOT findDOTType(Class<? extends DOT> typeDOT) {
-        for (DOT statut : dot) {
+    public DOTs findDOTType(Class<? extends DOTs> typeDOT) {
+        for (DOTs statut : dot) {
             if (statut.getClass().equals(typeDOT)) {
                 return statut;
             }
@@ -89,4 +93,12 @@ public abstract class Character {
     public abstract void attack(Character target);
     public abstract void defend();
     public abstract void receiveDamage(int damage);
+    
+    public void addItem(Equipments equipment, Player player) {
+        player.inventory.add(equipment); 
+        System.out.println("Item " + equipment.getName() + " ajoute a l'inventaire.");
+    }
+    public void giveDrop(Enemy enemy, Player player){
+        addItem(enemy.drop, player);
+    }
 }

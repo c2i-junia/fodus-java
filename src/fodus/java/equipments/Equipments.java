@@ -7,7 +7,7 @@ import fodus.java.player.Player;
 
 
 public abstract class Equipments {
-    protected String name_equipement;
+    private String name_equipement;
     public int strength, dexterity, endurance, intelligence;
     public int speed, maxmana, maxHealthPoints;
     

@@ -2,7 +2,7 @@ package fodus.java.status;
 
 import fodus.java.Character;
 
-public class Bleed extends DOT {
+public class Bleed extends DOTs {
     public Bleed(int duration, int newDamage) {
         super(duration);
         this.name = "Saignement";

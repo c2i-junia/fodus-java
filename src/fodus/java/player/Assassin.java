@@ -46,6 +46,7 @@ public class Assassin extends Player implements Damage {
                 case 3:
                     stealHealthPoints(target);
                     commandExecuted = true;
+                    break;
                 default:
                     System.out.println("Commande non reconnue");
                     break;
@@ -69,7 +70,7 @@ public class Assassin extends Player implements Damage {
     // Special attacks and skills of the class
     public void openVein(Character target) {
         System.out.println("Vous taillader votre adversaire a l'aide de votre poignard !");
-        target.receiveDamage(this.strength / 4);
+        target.receiveDamage(this.strength);
         Bleed bleedEffect = new Bleed(3, 2);
         target.addDOT(bleedEffect);
     }

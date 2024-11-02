@@ -2,6 +2,7 @@ package fodus.java.enemy;
 
 import java.util.Random;
 import fodus.java.Character;
+import fodus.java.equipments.Epee_du_dragon;
 
 public class Skeleton extends Enemy{
     Random r = new Random();
@@ -14,6 +15,7 @@ public class Skeleton extends Enemy{
         this.dexterity = 5;
         this.endurance = 10;
         this.intelligence = 5;
+        this.drop=new Epee_du_dragon();
     }
     @Override
     public void enemyAction(Character target){

@@ -5,6 +5,7 @@ import fodus.java.player.*;
 import fodus.java.enemy.*;
 import fodus.java.status.*;
 import java.util.Iterator;
+import fodus.java.equipments.*;
 
 // Manage game loop, turn-based combat and player interactions
 public class Game {
@@ -152,6 +153,8 @@ public class Game {
                 player.playerAction(enemy);
                 if(enemy.getHealth() <= 0){
                     System.out.println("Vous avez triomphe !!");
+                    enemy.giveDrop(enemy, player);
+                    System.out.println(player.inventory);
                     break;
                 }
                 enemy.enemyAction(player);

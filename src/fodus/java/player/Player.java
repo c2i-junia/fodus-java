@@ -19,10 +19,7 @@ public abstract class Player extends Character{
         combatInventory = new ArrayList<>();
     }
     
-    public void addItem(Equipments equipment) {
-        inventory.add(equipment); 
-        System.out.println("Item " + equipment.getName() + " ajoute a l'inventaire.");
-    }
+    
     
     public void printStats(){
         System.out.println("HP : " + healthPoints + " / " + maxHealthPoints);

@@ -1,10 +1,10 @@
 package fodus.java.status;
 
-public abstract class DOT {
+public abstract class DOTs {
     public String name;
     public int maxDuration = 3, duration, damage;
     
-    public DOT(int newDuration){
+    public DOTs(int newDuration){
         this.duration = newDuration;
     }
     

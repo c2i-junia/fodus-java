@@ -10,7 +10,6 @@ package fodus.java.equipments;
  */
 public class Potions extends Equipments {
     public void attack_potions() {
-        System.out.println("Vous utilisez toute votre puissance pour vous soignez !");
+        System.out.println("Vous utilisez votre potion !");
     }
-
 }

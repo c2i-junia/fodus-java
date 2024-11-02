@@ -1,8 +1,10 @@
 package fodus.java.enemy;
 
 import fodus.java.Character;
+import fodus.java.equipments.Equipments;
 
-public abstract class Enemy extends Character {    
+public abstract class Enemy extends Character {
+    public Equipments drop;
     public abstract void enemyAction(Character target);
     @Override
     public void receiveDamage(int damage){
@@ -14,4 +16,7 @@ public abstract class Enemy extends Character {
         }
         System.out.println(this.name + " recoit " + damage + " dommages !");
     }
+    
 }
+
+

@@ -9,6 +9,10 @@ package fodus.java.equipments;
  * @author rmeun
  */
 public class Fiole_de_poison extends Potions{
+    public Fiole_de_poison(){
+        this.maxmana=10;
+        this.intelligence=10;
+    }
    public void spe_fiole_de_poison(){
      System.out.println("Vous lancez une fiole de poison sur votre ennemi !");  
    } 
