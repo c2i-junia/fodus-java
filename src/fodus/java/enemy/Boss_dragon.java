@@ -6,6 +6,7 @@ package fodus.java.enemy;
 
 import java.util.Random;
 import fodus.java.Character;
+import fodus.java.status.Burn;
 
 public class Boss_dragon extends Enemy {
     Random r = new Random();
@@ -41,8 +42,9 @@ public class Boss_dragon extends Enemy {
     public void defend(){
         System.out.println("Le squelette se cache derriere ses ailes pour se defendre.");
     }
-//    public void spe_dragon(Character targer){
-//        System.out.println("Le Dragon crache ses flammes gigantesques et vous brule !");
-//        Ajouter effet brulure
-//    }
+    public void spe_dragon(Character target){
+        System.out.println("Le Dragon crache ses flammes gigantesques et vous brule !");
+        Burn bleedEffect = new Burn(5, 2);
+        target.addDOT(bleedEffect);
+    }
 }

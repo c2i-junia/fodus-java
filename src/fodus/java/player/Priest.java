@@ -23,8 +23,8 @@ public class Priest extends Player implements Healer {
     @Override
     public List<String> getSpecificSkills() {
         List<String> skills = new ArrayList<>();
-        skills.add("Lumiere radieuse");
-        skills.add("Jugement");
+        skills.add("Soins");
+        skills.add("Flammes sacrees");
         return skills;
     }
     @Override
@@ -33,11 +33,11 @@ public class Priest extends Player implements Healer {
         boolean command_executed = false;
         while(!command_executed){
             switch(userInput.nextLine().toLowerCase()){
-                case "lumiere radieuse", "1":
+                case "soins", "1":
                     heal();
                     command_executed = true;
                     break;
-                case "jugement", "2":
+                case "flamme sacrees", "2":
                     flammes_sacrées();
                     command_executed = true;
                     break;

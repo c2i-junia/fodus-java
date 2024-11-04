@@ -7,12 +7,12 @@ import fodus.java.player.Player;
 
 
 public abstract class Equipments {
-    private String name_equipement;
+    protected String name_equipment;
     public int strength, dexterity, endurance, intelligence;
     public int speed, maxmana, maxHealthPoints;
     
     public String getName() {
-    return name_equipement;
+        return name_equipment;
     }
     public void addStats(Player player, Equipments equipment){
         player.strength += equipment.strength;

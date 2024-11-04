@@ -10,6 +10,7 @@ package fodus.java.equipments;
  */
 public class Fiole_de_poison extends Potions{
     public Fiole_de_poison(){
+        name_equipment="Fiole de Poison";
         this.maxmana=10;
         this.intelligence=10;
     }

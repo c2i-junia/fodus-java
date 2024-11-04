@@ -10,6 +10,7 @@ package fodus.java.equipments;
  */
 public class Bouclier_du_temps extends Shields {
     public Bouclier_du_temps(){
+        name_equipment="Bouclier du Temps";
         this.maxHealthPoints=10;
         this.maxmana=15;
         this.endurance=5;

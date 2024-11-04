@@ -10,6 +10,7 @@ package fodus.java.equipments;
  */
 public class Epee_des_tenebres extends Swords {
     public Epee_des_tenebres(){
+        name_equipment="Epee des Tenebres";
         this.strength=10;
         this.speed=10;
         this.intelligence=5;

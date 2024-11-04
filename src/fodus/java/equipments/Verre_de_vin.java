@@ -10,6 +10,7 @@ package fodus.java.equipments;
  */
 public class Verre_de_vin extends Potions {
     public Verre_de_vin(){
+        name_equipment="Verre de Vin";
         this.maxHealthPoints=10;
         this.strength=10;
         this.maxmana=10;

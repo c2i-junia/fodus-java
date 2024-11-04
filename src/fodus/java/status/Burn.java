@@ -10,7 +10,7 @@ public class Burn extends DOTs {
     @Override
     public void applyDOT(fodus.java.Character entity) {
         entity.receiveDamage(this.damage);
-        System.out.println(entity.name + " perd " + this.damage + " PV a cause du poison.");
+        System.out.println(entity.name + " perd " + this.damage + " PV a cause des brulures.");
         updateDOT();
     }
 }

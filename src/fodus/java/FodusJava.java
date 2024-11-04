@@ -14,9 +14,6 @@ public class FodusJava {
         Player player = game.characterCreation();
         
         Skeleton enemySkeleton = new Skeleton();
-        game.combat(player, enemySkeleton);
-        Goblins enemyGoblin = new Goblins();
-        game.combat(player, enemyGoblin);
-        
+        game.combat(player, enemySkeleton);   
     }
 }

@@ -154,7 +154,6 @@ public class Game {
                 if(enemy.getHealth() <= 0){
                     System.out.println("Vous avez triomphe !!");
                     enemy.giveDrop(enemy, player);
-                    System.out.println(player.inventory);
                     break;
                 }
                 enemy.enemyAction(player);

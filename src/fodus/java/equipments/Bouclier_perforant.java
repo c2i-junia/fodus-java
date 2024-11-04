@@ -10,6 +10,7 @@ package fodus.java.equipments;
  */
 public class Bouclier_perforant extends Shields {
     public Bouclier_perforant(){
+        name_equipment="Bouclier Perforant";
         this.maxHealthPoints=10;
         this.intelligence=5;
         this.strength=5;
