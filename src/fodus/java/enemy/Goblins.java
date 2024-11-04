@@ -45,5 +45,4 @@ public class Goblins extends Enemy {
         Bleed bleedEffect = new Bleed(4, 2);
         target.addDOT(bleedEffect);
     }
-    
 }

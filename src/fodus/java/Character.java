@@ -10,7 +10,7 @@ import fodus.java.enemy.Enemy;
 
 public abstract class Character {
     public String name;
-    public int maxHealthPoints, healthPoints, maxmana, mana, speed;
+    public int maxHealthPoints, healthPoints, maxMana, mana, speed;
     public int strength, dexterity, endurance, intelligence;
     //public int charisma;
     public List<DOTs> dot;

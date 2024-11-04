@@ -1,30 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fodus.java.equipments;
 import fodus.java.player.Player;
 
-
 public abstract class Equipments {
-    protected String name_equipment;
+    protected String name;
     public int strength, dexterity, endurance, intelligence;
-    public int speed, maxmana, maxHealthPoints;
+    public int maxHealthPoints, maxMana, speed;
     
     public String getName() {
-        return name_equipment;
+        return this.name;
     }
+    
     public void addStats(Player player, Equipments equipment){
+        player.maxHealthPoints += equipment.maxHealthPoints;
+        player.maxMana += equipment.maxMana;
+        player.speed += equipment.speed;
         player.strength += equipment.strength;
         player.dexterity += equipment.dexterity;
         player.endurance += equipment.endurance;
         player.intelligence += equipment.intelligence;
-        player.maxmana += equipment.maxmana;
-        player.maxHealthPoints += equipment.maxHealthPoints;
-        player.speed += equipment.speed;   
     }
-    
-    public void getStats() {
+    public void printStats() {
         System.out.println("Vitesse : +" + speed);
         System.out.println("Force : +" + strength);
         System.out.println("Dexterite : +" + dexterity);
