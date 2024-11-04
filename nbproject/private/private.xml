@@ -3,14 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/status/Tokens.java</file>
+            <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/player/Priest.java</file>
             <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/Character.java</file>
-            <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/status/Block.java</file>
             <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/player/Player.java</file>
-            <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/status/Bleed.java</file>
-            <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/Game.java</file>
+            <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/equipments/Potions.java</file>
+            <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/equipments/Fiole_de_poison.java</file>
+            <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/equipments/PotionOfPoison.java</file>
             <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/FodusJava.java</file>
-            <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/status/DOT.java</file>
+            <file>file:/C:/Projets-Java/fodus-java/src/fodus/java/equipments/Verre_de_vin.java</file>
         </group>
     </open-files>
 </project-private>
