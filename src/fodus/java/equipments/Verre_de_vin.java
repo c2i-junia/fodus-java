@@ -1,7 +1,7 @@
 package fodus.java.equipments;
 
 import fodus.java.Character;
-import fodus.java.status.Bonus_strength;
+import fodus.java.status.Strength;
 
 public class Verre_de_vin extends Potions {
     public Verre_de_vin(){
@@ -22,7 +22,7 @@ public class Verre_de_vin extends Potions {
         else {
             target.healthPoints += this.intelligence;
         }
-        Bonus_strength incr_srength_effect = new Bonus_strength(3,50);
+        Strength incr_srength_effect = new Strength(3,50);
         target.addToken(incr_srength_effect);
     }
 }

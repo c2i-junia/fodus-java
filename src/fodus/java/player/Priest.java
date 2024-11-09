@@ -54,7 +54,15 @@ public class Priest extends Player implements Healer {
     @Override
     public void attack(Character target) {
         System.out.println("Vous attaquez avec votre masse !");
-        target.receiveDamage(this.strength);
+        int damage = this.strength;
+        Strength strengthStatut = (Strength) findTokenType(Strength.class);
+        if (strengthStatut != null) {
+            int damageBonus = damage * strengthStatut.getStrengthBonus() / 100;
+            System.out.println("Vos dégats sont augmentes de " + damageBonus + "% !");
+            damage = damage + damageBonus;
+            strengthStatut.updateToken();
+        }
+        target.receiveDamage(damage);
     }
     @Override
     public void defend() {
