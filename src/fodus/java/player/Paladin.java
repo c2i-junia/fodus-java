@@ -61,7 +61,8 @@ public class Paladin extends Player implements Tank, Healer {
     }
     @Override
     public void warcry(){
-        // oblige l'ennemi à attaquer et immunité pendant 1 tour            
+        System.out.println("Vous dechainez votre rage et ne ressentez plus la douleur !");
+        this.isInvulnerable = true;      
     }
     @Override
     public void heal(){

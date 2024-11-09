@@ -13,6 +13,7 @@ public abstract class Character {
     public int maxHealthPoints, healthPoints, maxMana, mana, speed;
     public int strength, dexterity, endurance, intelligence;
     //public int charisma;
+    public boolean isInvulnerable = false;
     public List<DOTs> dot;
     public List<Tokens> tokens;
     

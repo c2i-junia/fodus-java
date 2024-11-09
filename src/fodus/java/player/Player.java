@@ -170,6 +170,11 @@ public abstract class Player extends Character{
     
     @Override
     public void receiveDamage(int damage){
+        if(this.isInvulnerable){
+            this.isInvulnerable = false;
+            System.out.println("Vous ne recevez aucuns dommages !");
+            return;
+        }
         Block defenseStatut = (Block) findTokenType(Block.class);
         if (defenseStatut != null) {
             int damageReduction = damage * defenseStatut.getDamageReduction() / 100;

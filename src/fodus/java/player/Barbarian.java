@@ -61,7 +61,8 @@ public class Barbarian extends Player implements Damage, Tank {
     }
     @Override
     public void warcry(){
-            
+        System.out.println("Les dieux vous viennent en aide, vous ne ressentez plus la douleur !");
+        this.isInvulnerable = true;
     }
     @Override    
     public void counter(){
