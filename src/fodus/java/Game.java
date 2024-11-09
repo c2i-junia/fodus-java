@@ -73,10 +73,10 @@ public class Game {
         String userName = userInput.nextLine();
         System.out.println("Vous vous appelez donc " + userName);
         System.out.println("Mais qui etes-vous au fond de vous ? Quelles sont vos forces et qualites en tant qu'aventurier ?");
-        System.out.println("1) Paladin  -  2) Pretre  -  3) Assassin  -  4) Barbare");
         while(player == null){
+            System.out.println("1) Paladin  -  2) Pretre  -  3) Assassin  -  4) Barbare");
             switch(userInput.nextLine().toLowerCase()){
-                case "paladin":
+                case "1", "paladin":
                     System.out.println("Ce guerrier robuste est le défenseur ultime.");
                     System.out.println("Il peut soigner ses blessures et obliterer ses adversaires grace à sa masse.");
                     System.out.println("Etes-vous cet aventurier ?");
@@ -85,30 +85,28 @@ public class Game {
                             player = new Paladin(userName);
                             break;
                         case "non":
-                            characterCreation();
                             break;
                         default:
                             System.out.println("Commande non reconnue");
                             break;
                     }
                     break;
-                case "pretre":
+                case "2", "pretre":
                     System.out.println("Ce pelerin zelote, derriere son fort physique, ne doit pas etre sous-estimer.");
-                    System.out.println("Il peut soigner ses blessures et obliterer ses adversaires grace à sa foi.");
+                    System.out.println("Il peut soigner ses blessures et obliterer ses adversaires grace a sa foi.");
                     System.out.println("Etes-vous cet aventurier ?");
                     switch(userInput.nextLine().toLowerCase()){
                         case "oui":
                             player = new Priest(userName);
                             break;
                         case "non":
-                            characterCreation();
                             break;
                         default:
                             System.out.println("Commande non reconnue");
                             break;
                     }
                     break;
-                case "barbare":
+                case "3", "barbare":
                     System.out.println("Derrierre sa rage et sa soif de sang se cache le vide...");
                     System.out.println("Et la cupabilite.");
                     System.out.println("Ce berseker devient plus puissant a mesure qu'il subit des blessures.");
@@ -118,14 +116,13 @@ public class Game {
                             player = new Barbarian(userName);
                             break;
                         case "non":
-                            characterCreation();
                             break;
                         default:
                             System.out.println("Commande non reconnue");
                             break;
                     }
                     break;
-                case "assassin":
+                case "4", "assassin":
                     System.out.println("Ce bandit n'hesite pas a utiliser fourberie et piege pour parvenir a ses fins.");
                     System.out.println("Sa ruse lui permet de passer inapercu et de tuer sans se faire prendre.");
                     System.out.println("Etes-vous cet aventurier ?");
@@ -134,7 +131,6 @@ public class Game {
                             player = new Assassin(userName);
                             break;
                         case "non":
-                            characterCreation();
                             break;
                         default:
                             System.out.println("Commande non reconnue");
