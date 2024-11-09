@@ -179,15 +179,15 @@ public class Game {
     public void printCombatStats(Character player, Enemy enemy){
         System.out.println("--------------------------------------------------------------");
         System.out.println(player.name + " :");
-        System.out.println("HP : " + player.healthPoints + " / " + player.maxhealthpoints);
-        System.out.println("Mana :" + player.mana + " / " + player.maxmana);
+        System.out.println("HP : " + player.healthPoints + " / " + player.maxHealthPoints);
+        System.out.println("Mana :" + player.mana + " / " + player.maxMana);
         Iterator<Tokens> iter = player.tokens.iterator();
         while(iter.hasNext()){
             Tokens tokenEffect = iter.next();
             System.out.println(tokenEffect.getName() + " : " + tokenEffect.getNbToken() + "   ");
         }
         System.out.println(enemy.name + " :");
-        System.out.println("HP : " + enemy.healthPoints + " / " + enemy.maxhealthpoints);
+        System.out.println("HP : " + enemy.healthPoints + " / " + enemy.maxHealthPoints);
         iter = enemy.tokens.iterator();
         while(iter.hasNext()){
             Tokens tokenEffect = iter.next();
