@@ -8,17 +8,20 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Priest extends Player implements Healer {
+    private final int healManaCost = 10;
+    private final int flamesManaCost = 15;
+    
     public Priest(String playerName) {
         this.name = playerName;
         this.maxHealthPoints = 40;
         this.healthPoints = maxHealthPoints;
+        this.mana=40;
+        this.maxMana=40;
         this.speed = 5;
         this.strength = 10;
         this.dexterity = 5;
         this.endurance = 15;
-        //this.wisdom = 20;
         this.intelligence = 15;
-        //this.charisma = 10;
     }
     
     @Override
@@ -61,19 +64,20 @@ public class Priest extends Player implements Healer {
         this.addToken(blockEffect);
     }
     @Override
-    public void heal(){
-        System.out.println("Votre foi vous soigne.");
-        if(this.healthPoints + this.intelligence >= this.maxHealthPoints){
-            this.healthPoints = this.maxHealthPoints;
-        }
-        else {
-            this.healthPoints += this.intelligence;
+    public void heal() {
+        if (useMana(healManaCost)) { // Vérifie et consomme le mana avec la méthode de Player
+            System.out.println(name + " utilise Soins.");
+            this.healthPoints = Math.min(this.healthPoints + 15, maxHealthPoints);
+            System.out.println("Points de vie restaurés. Vie actuelle : " + this.healthPoints);
         }
     }
     @Override
-    public void flammes_sacrees(Character target){
-        target.receiveDamage(this.intelligence);
-        Burn burneffect = new Burn(3, 3);
-        target.addDOT(burneffect);
+    public void flammes_sacrees(Character target) {
+        if (useMana(flamesManaCost)) { 
+            System.out.println(name + " utilise Flammes Sacrées.");
+            target.receiveDamage(20);
+            Burn burnEffect = new Burn(3, 3);
+            target.addDOT(burnEffect);
+        }
     }
 }
