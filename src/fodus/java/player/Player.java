@@ -78,6 +78,16 @@ public abstract class Player extends Character{
         }
         useSpecificSkill(target);
     }
+    
+    public boolean useMana(int cost) {
+        if (mana >= cost) {
+            mana -= cost;
+            return true; // Indique que le coût en mana a été déduit avec succès
+        } else {
+            System.out.println("Pas assez de mana pour utiliser cette compétence.");
+            return false;
+        }
+    }
 
     public void useCombatObjects(Character target) {
         combatInventory.clear();
@@ -189,5 +199,5 @@ public abstract class Player extends Character{
             this.healthPoints -= damage;
         }
         System.out.println("Vous recevez " + damage + " dommages !");
-    }  
+    }
 }

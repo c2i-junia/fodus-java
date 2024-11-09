@@ -8,17 +8,21 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Paladin extends Player implements Tank, Healer {
+    private final int healManaCost = 10;
+    private final int flamesManaCost = 15;
+    private final int warcrycost=10;
+    
     public Paladin(String playerName) {
         this.name = playerName;
         this.maxHealthPoints = 50;
         this.healthPoints = maxHealthPoints;
+        this.mana=35;
+        this.maxMana=35;
         this.speed = 5;
         this.strength = 15;
         this.dexterity = 5;
         this.endurance = 15;
-        //this.wisdom = 10;
         this.intelligence = 5;
-        //this.charisma = 10;
     }
     @Override
     public List<String> getSpecificSkills() {
@@ -61,23 +65,26 @@ public class Paladin extends Player implements Tank, Healer {
     }
     @Override
     public void warcry(){
-        System.out.println("Vous dechainez votre rage et ne ressentez plus la douleur !");
-        this.isInvulnerable = true;      
-    }
-    @Override
-    public void heal(){
-        System.out.println("Votre foi vous soigne.");
-        if(this.healthPoints >= this.maxHealthPoints - this.intelligence){
-            this.healthPoints = this.maxHealthPoints;
-        }
-        else {
-            this.healthPoints += this.intelligence;
+        if(useMana(warcrycost)){
+        System.out.println("Les dieux vous viennent en aide, vous ne ressentez plus la douleur !");
+        this.isInvulnerable = true;
         }
     }
     @Override
-    public void flammes_sacrees(Character target){
-        target.receiveDamage(this.intelligence);
-        Burn burneffect = new Burn(3, 3);
-        target.addDOT(burneffect);
+    public void heal() {
+        if (useMana(healManaCost)) { // Vérifie et consomme le mana avec la méthode de Player
+            System.out.println(name + " utilise Soins.");
+            this.healthPoints = Math.min(this.healthPoints + 15, maxHealthPoints);
+            System.out.println("Points de vie restaurés. Vie actuelle : " + this.healthPoints);
+        }
+    }
+    @Override
+    public void flammes_sacrees(Character target) {
+        if (useMana(flamesManaCost)) { 
+            System.out.println(name + " utilise Flammes Sacrées.");
+            target.receiveDamage(20);
+            Burn burnEffect = new Burn(3, 3);
+            target.addDOT(burnEffect);
+        }
     }
 }

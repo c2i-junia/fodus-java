@@ -7,17 +7,21 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Barbarian extends Player implements Damage, Tank {
+        
+    private final int warcrycost=5;
+    private final int stealHealthcost = 15;
+        
     public Barbarian(String playerName) {
         this.name = playerName;
         this.maxHealthPoints = 45;
         this.healthPoints = maxHealthPoints;
+        this.mana=20;
+        this.maxMana=20;
         this.speed = 10;
         this.strength = 20;
         this.dexterity = 10;
         this.endurance = 15;
-        //this.wisdom = 5;
         this.intelligence = 5;
-        //this.charisma = 10;
     }
     
     @Override
@@ -61,8 +65,10 @@ public class Barbarian extends Player implements Damage, Tank {
     }
     @Override
     public void warcry(){
+        if(useMana(warcrycost)){
         System.out.println("Les dieux vous viennent en aide, vous ne ressentez plus la douleur !");
         this.isInvulnerable = true;
+        }
     }
     @Override    
     public void counter(){
@@ -70,13 +76,11 @@ public class Barbarian extends Player implements Damage, Tank {
     }
     @Override    
     public void stealHealthPoints(Character target){//vol de points de vie de l'ennemi
-        System.out.println("Vous attaquez en volant la vie de votre ennemi !");
-        target.receiveDamage(this.strength) ;
-        if(this.healthPoints + this.intelligence >= this.maxHealthPoints){
-            this.healthPoints = this.maxHealthPoints;
+        if (useMana(stealHealthcost)){
+            System.out.println("Vous attaquez en volant la vie de votre ennemi !");
+            target.receiveDamage(this.strength) ;
+            this.healthPoints = Math.min(this.healthPoints + this.intelligence, maxHealthPoints);
+            System.out.println("Points de vie restaurés. Vie actuelle : " + this.healthPoints);
         }
-        else {
-            this.healthPoints += this.intelligence;
-        }    
     }
 }

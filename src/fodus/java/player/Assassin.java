@@ -8,17 +8,20 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Assassin extends Player implements Damage {
+    private final int openVeincost = 10;
+    private final int stealHealthcost = 15;
+    
     public Assassin(String playerName) {
         this.name = playerName;
         this.maxHealthPoints = 30;
         this.healthPoints = maxHealthPoints;
+        this.mana=30;
+        this.maxMana=30;
         this.speed = 15;
         this.strength = 5;
         this.dexterity = 20;
         this.endurance = 10;
-        //this.wisdom = 10;
         this.intelligence = 15;
-        //this.charisma = 15;
     }
     
     @Override
@@ -69,10 +72,12 @@ public class Assassin extends Player implements Damage {
     
     // Special attacks and skills of the class
     public void openVein(Character target) {
-        System.out.println("Vous taillader votre adversaire a l'aide de votre poignard !");
-        target.receiveDamage(this.strength);
-        Bleed bleedEffect = new Bleed(3, 2);
-        target.addDOT(bleedEffect);
+        if(useMana(openVeincost)){
+            System.out.println("Vous taillader votre adversaire a l'aide de votre poignard !");
+            target.receiveDamage(this.strength);
+            Bleed bleedEffect = new Bleed(3, 2);
+            target.addDOT(bleedEffect);
+        }
     }
     @Override    
     public void counter(){
@@ -80,13 +85,11 @@ public class Assassin extends Player implements Damage {
     }
     @Override    
     public void stealHealthPoints(Character target){//vol de points de vie de l'ennemi
-        System.out.println("Vous attaquez en volant la vie de votre ennemi !");
-        target.receiveDamage(this.strength / 3);
-        if(this.healthPoints + this.intelligence >= this.maxHealthPoints){
-            this.healthPoints = this.maxHealthPoints;
-        }
-        else {
-            this.healthPoints += this.intelligence;
+         if (useMana(stealHealthcost)){
+            System.out.println("Vous attaquez en volant la vie de votre ennemi !");
+            target.receiveDamage(this.strength) ;
+            this.healthPoints = Math.min(this.healthPoints + this.intelligence, maxHealthPoints);
+            System.out.println("Points de vie restaurés. Vie actuelle : " + this.healthPoints);
         }    
     }    
 }
