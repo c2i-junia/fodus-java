@@ -2,17 +2,17 @@ package fodus.java.equipments;
 import fodus.java.player.Player;
 
 public abstract class Equipments {
-    protected String name;
+    protected String name_equipment;
     public int strength, dexterity, endurance, intelligence;
-    public int maxHealthPoints, maxMana, speed;
+    public int maxhealthpoints, maxmana, speed;
     
     public String getName() {
-        return this.name;
+        return this.name_equipment;
     }
     
     public void addStats(Player player, Equipments equipment){
-        player.maxHealthPoints += equipment.maxHealthPoints;
-        player.maxMana += equipment.maxMana;
+        player.maxhealthpoints += equipment.maxhealthpoints;
+        player.maxmana += equipment.maxmana;
         player.speed += equipment.speed;
         player.strength += equipment.strength;
         player.dexterity += equipment.dexterity;

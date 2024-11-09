@@ -9,8 +9,8 @@ import java.util.Scanner;
 public class Priest extends Player implements Healer {
     public Priest(String playerName) {
         this.name = playerName;
-        this.maxHealthPoints = 40;
-        this.healthPoints = maxHealthPoints;
+        this.maxhealthpoints = 40;
+        this.healthPoints = maxhealthpoints;
         this.speed = 5;
         this.strength = 10;
         this.dexterity = 5;
@@ -38,7 +38,7 @@ public class Priest extends Player implements Healer {
                     command_executed = true;
                     break;
                 case "flamme sacrees", "2":
-                    flammes_sacrées();
+                    flammes_sacrees();
                     command_executed = true;
                     break;
                 default:
@@ -62,15 +62,15 @@ public class Priest extends Player implements Healer {
     @Override
     public void heal(){
         System.out.println("Votre foi vous soigne.");
-        if(this.healthPoints + this.intelligence >= this.maxHealthPoints){
-            this.healthPoints = this.maxHealthPoints;
+        if(this.healthPoints + this.intelligence >= this.maxhealthpoints){
+            this.healthPoints = this.maxhealthpoints;
         }
         else {
             this.healthPoints += this.intelligence;
         }
     }
     @Override
-    public void flammes_sacrées(){//dégats + brulure
+    public void flammes_sacrees(){//dégats + brulure
         
     }
 }

@@ -10,7 +10,6 @@ import fodus.java.equipments.Equipments;
 
 public abstract class Player extends Character{
     //public int money;
-    public int manaPoints, skillPoints;
     public List<Equipments> inventory;
     public List<Equipments> combatInventory;
     

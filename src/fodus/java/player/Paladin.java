@@ -37,7 +37,7 @@ public class Paladin extends Player implements Healer, Tank {
                     command_executed = true;
                     break;
                 case "ferventes accusations", "2":
-                    flammes_sacrées();
+                    flammes_sacrees();
                     command_executed = true;
                     break;
                 default:
@@ -73,7 +73,7 @@ public class Paladin extends Player implements Healer, Tank {
         }
     }
     @Override
-    public void flammes_sacrées(){//dégats + brulure
+    public void flammes_sacrees(){//dégats + brulure
         
     }
 }
