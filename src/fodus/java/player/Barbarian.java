@@ -10,6 +10,8 @@ public class Barbarian extends Player implements Damage, Tank {
         
     private final int warcrycost=5;
     private final int stealHealthcost = 15;
+    private final int dodgecost=5;
+
         
     public Barbarian(String playerName) {
         this.name = playerName;
@@ -72,9 +74,11 @@ public class Barbarian extends Player implements Damage, Tank {
     }
     @Override    
     public void dodgeMovement(){
-        System.out.println("Vous vous preparez a esquiver les prochains coups.");
-        Dodge dodgeEffect = new Dodge(2, 50);
-        this.addToken(dodgeEffect);
+        if(useMana(dodgecost)){
+            System.out.println("Vous vous placez stratégiquement pour esquiver les prochaisn coups.");
+            Dodge dodgeEffect = new Dodge(1, 80);
+            this.addToken(dodgeEffect);
+        }
     }
     @Override    
     public void stealHealthPoints(Character target){//vol de points de vie de l'ennemi

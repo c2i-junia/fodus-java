@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Assassin extends Player implements Damage {
     private final int openVeincost = 10;
     private final int stealHealthcost = 15;
+    private final int dodgecost=5;
     
     public Assassin(String playerName) {
         this.name = playerName;
@@ -80,9 +81,11 @@ public class Assassin extends Player implements Damage {
     }
     @Override    
     public void dodgeMovement(){
-        System.out.println("Vous vous placez stratégiquement pour esquiver les prochaisn coups.");
-        Dodge dodgeEffect = new Dodge(1, 80);
-        this.addToken(dodgeEffect);
+        if(useMana(dodgecost)){
+            System.out.println("Vous vous placez stratégiquement pour esquiver les prochaisn coups.");
+            Dodge dodgeEffect = new Dodge(1, 80);
+            this.addToken(dodgeEffect);
+        }
     }
     @Override    
     public void stealHealthPoints(Character target){
