@@ -1,11 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fodus.java.enemy;
 
 import java.util.Random;
 import fodus.java.Character;
+import fodus.java.status.Block;
 
 public class Vampire extends Enemy{
     Random r = new Random();
@@ -42,6 +39,8 @@ public class Vampire extends Enemy{
     @Override
     public void defend(){
         System.out.println("Le squelette brandit son bouclier pour encaisser votre attaque.");
+        Block blockEffect = new Block(3, 25);
+        this.addToken(blockEffect);
     }
     public void spe_vampire(Character target){//vol de points de vie de l'ennemi
         System.out.println("Le Vampire aspire votre sang !");

@@ -1,19 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fodus.java.enemy;
 
 import fodus.java.status.Bleed;
 import java.util.Random;
 
-
 public class Bandit_captain_boss extends Enemy {
    Random r = new Random();
     public Bandit_captain_boss(){
         this.name = "Dragon";
-        this.maxhealthpoints = 60;
-        this.healthPoints = this.maxhealthpoints;
+        this.maxHealthPoints = 60;
+        this.healthPoints = this.maxHealthPoints;
         this.speed = 7;
         this.strength = 10;
         this.dexterity = 7;

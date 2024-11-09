@@ -1,10 +1,11 @@
 package fodus.java.enemy;
+import fodus.java.status.Block;
 import java.util.Random;
 
 public class Dark_elemental extends Enemy {
     Random r = new Random();
     public Dark_elemental(){
-        this.name = "Squelette";
+        this.name = "Elementaire de tenebres";
         this.maxHealthPoints = 25;
         this.healthPoints = this.maxHealthPoints;
         this.speed = 7;
@@ -29,7 +30,8 @@ public class Dark_elemental extends Enemy {
     @Override
     public void attack(fodus.java.Character target){
         System.out.println("L'élémentaire sombre vous lance un sort !");
-        target.receiveDamage(this.intelligence);
+        Block blockEffect = new Block(2, 50);
+        this.addToken(blockEffect);
     }
     @Override
     public void defend(){

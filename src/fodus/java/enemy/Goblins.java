@@ -3,6 +3,7 @@ package fodus.java.enemy;
 import java.util.Random;
 import fodus.java.status.Bleed;
 import fodus.java.Character;
+import fodus.java.status.Block;
 
 public class Goblins extends Enemy {
     Random r = new Random();
@@ -33,12 +34,14 @@ public class Goblins extends Enemy {
     }
     @Override
     public void attack(Character target){
-        System.out.println("Le squelette brandit son epee et vous assene un coup !");
+        System.out.println("Le gobelin brandit son epee et vous assene un coup !");
         target.receiveDamage(this.strength);
     }
     @Override
     public void defend(){
-        System.out.println("Le squelette brandit son bouclier pour encaisser votre attaque.");
+        Block blockEffect = new Block(1, 50);
+        this.addToken(blockEffect);
+        System.out.println("Le gobelin brandit son bouclier pour encaisser votre attaque.");
     }
     public void spe_goblin(Character target) {
         System.out.println("Le Gobelin décide de vous poignarder !");

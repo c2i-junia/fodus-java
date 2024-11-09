@@ -1,18 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fodus.java.enemy;
 
+import fodus.java.status.Block;
 import fodus.java.status.Burn;
 import fodus.java.status.Poison;
 import java.util.Random;
 
-
 public class Demon_king_boss extends Enemy {
     Random r = new Random();
     public Demon_king_boss(){
-        this.name = "Dragon";
+        this.name = "Demon King Boss";
         this.maxHealthPoints = 80;
         this.healthPoints = this.maxHealthPoints;
         this.speed = 6;
@@ -42,6 +38,8 @@ public class Demon_king_boss extends Enemy {
     @Override
     public void defend(){
         System.out.println("Le squelette se cache derriere ses ailes pour se defendre.");
+        Block blockEffect = new Block(2, 50);
+        this.addToken(blockEffect);
     }
     public void spe_Demon_King(fodus.java.Character target){
         System.out.println("Le roi Démon vous crache ses flammes des ténèbres, vous brule et vous empoisonne !");

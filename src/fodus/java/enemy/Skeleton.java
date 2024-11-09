@@ -3,6 +3,7 @@ package fodus.java.enemy;
 import java.util.Random;
 import fodus.java.Character;
 import fodus.java.equipments.Epee_du_dragon;
+import fodus.java.status.Block;
 
 public class Skeleton extends Enemy{
     Random r = new Random();
@@ -37,5 +38,7 @@ public class Skeleton extends Enemy{
     @Override
     public void defend(){
         System.out.println("Le squelette brandit son bouclier pour encaisser votre attaque.");
+        Block blockEffect = new Block(1, 50);
+        this.addToken(blockEffect);
     }
 }

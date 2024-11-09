@@ -6,6 +6,7 @@ package fodus.java.enemy;
 
 import java.util.Random;
 import fodus.java.Character;
+import fodus.java.status.Block;
 import fodus.java.status.Burn;
 
 public class Dragon_boss extends Enemy {
@@ -45,6 +46,8 @@ public class Dragon_boss extends Enemy {
     @Override
     public void defend(){
         System.out.println("Le squelette se cache derriere ses ailes pour se defendre.");
+        Block blockEffect = new Block(2, 50);
+        this.addToken(blockEffect);
     }
     public void spe_Dragon_Boss(Character target){
         System.out.println("Le Dragon crache ses flammes gigantesques et vous brule !");
