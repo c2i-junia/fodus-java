@@ -3,6 +3,7 @@ package fodus.java.enemy;
 
 import java.util.Random;
 import fodus.java.Character;
+import fodus.java.equipments.PotionOfRage;
 
 public class Troll extends Enemy {
     Random r = new Random();
@@ -15,6 +16,7 @@ public class Troll extends Enemy {
         this.dexterity = 5;
         this.endurance = 7;
         this.intelligence = 3;
+        this.drop = new PotionOfRage();
     }
     @Override
     public void enemyAction(Character target){

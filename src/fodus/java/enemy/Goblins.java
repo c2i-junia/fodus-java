@@ -3,6 +3,7 @@ package fodus.java.enemy;
 import java.util.Random;
 import fodus.java.status.Bleed;
 import fodus.java.Character;
+import fodus.java.equipments.Bouclier_perforant;
 import fodus.java.status.Block;
 
 public class Goblins extends Enemy {
@@ -16,6 +17,7 @@ public class Goblins extends Enemy {
         this.dexterity = 10;
         this.endurance = 10;
         this.intelligence = 15;
+        this.drop = new Bouclier_perforant();
     }
     @Override
     public void enemyAction(Character target){

@@ -31,12 +31,12 @@ public class Game {
     }
     public void menu(){
         Scanner userInput = new Scanner(System.in); // Create a Scanner object
-        System.out.println("Jouer   -   Comment jouer   -   Quitter");
+        System.out.println("1) Jouer   -   Comment jouer   -   Quitter");
         switch(userInput.nextLine().toLowerCase()){
-            case "jouer":
+            case "1", "jouer":
                 System.out.println("Demarrage du jeu, bonne chance a vous !");
                 break;
-            case "comment jouer":
+            case "2", "comment jouer":
                 System.out.println("\"Fodus\" est un jeu d'aventure RPG dont les choix definiront votre parcours.");
                 waitMs(1500);
                 System.out.println("Les combats se derouleront au tour par tour et les statistiques de votre personage influeront sur les chances de reussite de vos actions.");
@@ -45,10 +45,10 @@ public class Game {
                 waitMs(1500);
                 System.out.println("Action 1   -   Action 2   - Action 3   -   etc...");
                 waitMs(1500);
-                System.out.println("Vous devrez alors taper dans le terminal l'action que vous souhaitez effectuer.");
+                System.out.println("Vous devrez alors taper dans le terminal le numero que vous souhaitez effectuer.");
                 waitMs(1500);
                 menu();
-            case "quitter":
+            case "3", "quitter":
                 System.out.println("Fermeture du jeu.");
                 System.exit(0);
                 break;
@@ -68,7 +68,7 @@ public class Game {
         String userName = userInput.nextLine();
         System.out.println("Vous vous appelez donc " + userName);
         System.out.println("Mais qui etes-vous au fond de vous ? Quelles sont vos forces et qualites en tant qu'aventurier ?");
-        System.out.println("Paladin  -  Pretre  -  Assassin  -  Barbare");
+        System.out.println("1) Paladin  -  2) Pretre  -  3) Assassin  -  4) Barbare");
         while(player == null){
             switch(userInput.nextLine().toLowerCase()){
                 case "paladin":
@@ -144,7 +144,6 @@ public class Game {
         waitMs(2000);
         while(player.getHealth() > 0 && enemy.getHealth() > 0){
             printCombatStats(player, enemy);
-            waitMs(2000);
             player.updateDOTEffects();
             enemy.updateDOTEffects();
             player.updateTokenEffects();
@@ -176,6 +175,9 @@ public class Game {
             }
         }
     }
+    public void healPlayer(Player player){
+        player.healthPoints = player.maxHealthPoints;
+    }
     public void printCombatStats(Character player, Enemy enemy){
         System.out.println("--------------------------------------------------------------");
         System.out.println(player.name + " :");
@@ -196,10 +198,10 @@ public class Game {
         System.out.println("--------------------------------------------------------------");
     }
     public void gameOver(){
-        boolean answer = false; // Boolean pour vérifier si le joueur a répondu, et revenir dans la boucle si ce n'est pas le cas
         Scanner userInput = new Scanner(System.in);
         System.out.println("Une longue route... et une fin abrupte.");
         System.out.println("Voulez-vous reessayer ?");
+        boolean answer = false;
         while(answer == false){
             switch(userInput.nextLine().toLowerCase()){
                 case "oui":
@@ -214,14 +216,6 @@ public class Game {
                     System.out.println("Commande non reconnue");
                     break;
             } 
-        }
-    }
-    public void narratorQuotes(Player player, String situation){
-        switch(situation){
-            case "end of combat":
-                if(player.getHealth() < (player.getMaxHealth())){
-                    System.out.println("");
-                }
         }
     }
 }

@@ -2,7 +2,7 @@ package fodus.java.enemy;
 
 import java.util.Random;
 import fodus.java.Character;
-import fodus.java.equipments.Epee_du_dragon;
+import fodus.java.equipments.PotionOfPoison;
 import fodus.java.status.Block;
 
 public class Skeleton extends Enemy{
@@ -16,7 +16,7 @@ public class Skeleton extends Enemy{
         this.dexterity = 5;
         this.endurance = 10;
         this.intelligence = 5;
-        this.drop=new Epee_du_dragon();
+        this.drop = new PotionOfPoison();
     }
     @Override
     public void enemyAction(Character target){
