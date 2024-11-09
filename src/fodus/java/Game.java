@@ -5,7 +5,6 @@ import fodus.java.player.*;
 import fodus.java.enemy.*;
 import fodus.java.status.*;
 import java.util.Iterator;
-import fodus.java.equipments.*;
 
 // Manage game loop, turn-based combat and player interactions
 public class Game {
@@ -27,14 +26,27 @@ public class Game {
         waitMs(2000);
         System.out.println("Mais ne perdez pas espoir, regardez au loin, et affrontez la terrible verite de ce nouveau monde...");
         waitMs(4500);
-        System.out.println("Celui de : FODUS !");
+        System.out.println("Celui de : ");
+        System.out.println("""
+                           .%%%%%%...%%%%...%%%%%...%%..%%...%%%%..
+                           .%%......%%..%%..%%..%%..%%..%%..%%.....
+                           .%%%%....%%..%%..%%..%%..%%..%%...%%%%..
+                           .%%......%%..%%..%%..%%..%%..%%......%%.
+                           .%%.......%%%%...%%%%%....%%%%....%%%%..
+                           ........................................""")
+                
+                ;
+        
+        
     }
     public void menu(){
+
         Scanner userInput = new Scanner(System.in);
         boolean answered = false;
         while(answered == false){
             System.out.println("1) Jouer   -  2) Comment jouer   -  3) Quitter");
             switch(userInput.nextLine().toLowerCase()){
+
             case "1", "jouer":
                 System.out.println("Demarrage du jeu, bonne chance a vous !");
                 answered = true;
@@ -190,6 +202,7 @@ public class Game {
                 player.playerAction(enemy);
                 if(enemy.getHealth() <= 0){
                     System.out.println("Vous avez triomphe !!");
+                    mana_recovery(player);
                     enemy.giveDrop(enemy, player);
                     break;
                 }
@@ -215,6 +228,10 @@ public class Game {
     }
     public void healPlayer(Player player){
         player.healthPoints = player.maxHealthPoints;
+    }
+    public void mana_recovery(Player player){
+        player.mana=player.maxMana;
+        System.out.println("\nMana réstauré");
     }
     public void printCombatStats(Character player, Enemy enemy){
         System.out.println("--------------------------------------------------------------");
