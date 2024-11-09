@@ -85,6 +85,7 @@ public abstract class Player extends Character{
             return true; // Indique que le coût en mana a été déduit avec succès
         } else {
             System.out.println("Pas assez de mana pour utiliser cette compétence.");
+            playerAction(this);
             return false;
         }
     }
