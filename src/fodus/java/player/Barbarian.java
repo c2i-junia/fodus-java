@@ -1,7 +1,7 @@
 package fodus.java.player;
 
 import fodus.java.Character;
-import fodus.java.status.Block;
+import fodus.java.status.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -42,7 +42,7 @@ public class Barbarian extends Player implements Damage, Tank {
                     command_executed = true;
                     break;
                 case "contre", "2":
-                    counter();
+                    dodgeMovement();
                     command_executed = true;
                     break;
                 default:
@@ -71,8 +71,10 @@ public class Barbarian extends Player implements Damage, Tank {
         }
     }
     @Override    
-    public void counter(){
-            
+    public void dodgeMovement(){
+        System.out.println("Vous vous preparez a esquiver les prochains coups.");
+        Dodge dodgeEffect = new Dodge(2, 50);
+        this.addToken(dodgeEffect);
     }
     @Override    
     public void stealHealthPoints(Character target){//vol de points de vie de l'ennemi

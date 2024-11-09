@@ -1,8 +1,7 @@
 package fodus.java.player;
 
 import fodus.java.Character;
-import fodus.java.status.Bleed;
-import fodus.java.status.Block;
+import fodus.java.status.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -43,7 +42,7 @@ public class Assassin extends Player implements Damage {
                     commandExecuted = true;
                     break;
                 case 2:
-                    counter();
+                    dodgeMovement();
                     commandExecuted = true;
                     break;
                 case 3:
@@ -80,11 +79,13 @@ public class Assassin extends Player implements Damage {
         }
     }
     @Override    
-    public void counter(){
-        //pourcentage de chance d'infliger une attaque de base
+    public void dodgeMovement(){
+        System.out.println("Vous vous placez stratégiquement pour esquiver les prochaisn coups.");
+        Dodge dodgeEffect = new Dodge(1, 80);
+        this.addToken(dodgeEffect);
     }
     @Override    
-    public void stealHealthPoints(Character target){//vol de points de vie de l'ennemi
+    public void stealHealthPoints(Character target){
          if (useMana(stealHealthcost)){
             System.out.println("Vous attaquez en volant la vie de votre ennemi !");
             target.receiveDamage(this.strength) ;

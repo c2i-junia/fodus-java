@@ -1,4 +1,5 @@
 package fodus.java.enemy;
+import fodus.java.equipments.Epee_des_tenebres;
 import fodus.java.status.Block;
 import java.util.Random;
 
@@ -13,7 +14,7 @@ public class Dark_elemental extends Enemy {
         this.dexterity = 6;
         this.endurance = 15;
         this.intelligence = 7;
-        
+        this.drop = new Epee_des_tenebres();
     }
     @Override
     public void enemyAction(fodus.java.Character target){

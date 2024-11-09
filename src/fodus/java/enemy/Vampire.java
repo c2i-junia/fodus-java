@@ -2,6 +2,7 @@ package fodus.java.enemy;
 
 import java.util.Random;
 import fodus.java.Character;
+import fodus.java.equipments.Bouclier_du_temps;
 import fodus.java.status.Block;
 
 public class Vampire extends Enemy{
@@ -15,6 +16,7 @@ public class Vampire extends Enemy{
         this.dexterity = 5;
         this.endurance = 12;
         this.intelligence = 6;
+        this.drop = new Bouclier_du_temps();
     }
     @Override
     public void enemyAction(Character target){

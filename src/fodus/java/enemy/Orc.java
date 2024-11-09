@@ -2,6 +2,7 @@ package fodus.java.enemy;
 
 import java.util.Random;
 import fodus.java.Character;
+import fodus.java.equipments.PotionOfRage;
 import fodus.java.status.Block;
 
 public class Orc extends Enemy{
@@ -15,6 +16,7 @@ public class Orc extends Enemy{
         this.dexterity = 15;
         this.endurance = 15;
         this.intelligence = 10;
+        this.drop = new PotionOfRage();
     }
     @Override
     public void enemyAction(Character target){

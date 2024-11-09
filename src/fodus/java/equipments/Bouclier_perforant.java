@@ -7,7 +7,10 @@ public class Bouclier_perforant extends Shields {
         this.intelligence=5;
         this.strength=5;
     }
-    public void spe_bouclier_perforant(){
-        System.out.println("Vous brandissez votre bouclier et brisez la defence de votre adversaire !");
+    
+    @Override
+    public void specialAttack(fodus.java.Character target) {
+        System.out.println("Vous transpercez l'ennemi grace a la pointe de votre bouclier !");
+        target.receiveDamage(this.strength * 3);
     }
 }
