@@ -1,11 +1,10 @@
 package fodus.java.player;
 
-import fodus.java.Character;
-import fodus.java.status.Block;
-import fodus.java.status.Burn;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import fodus.java.Character;
+import fodus.java.status.*;
 
 public class Priest extends Player implements Healer {
     private final int healManaCost = 10;

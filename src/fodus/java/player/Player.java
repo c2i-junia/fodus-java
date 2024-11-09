@@ -7,6 +7,7 @@ import fodus.java.Character;
 import fodus.java.PlayerActions;
 import fodus.java.status.*;
 import fodus.java.equipments.*;
+import java.util.Random;
 
 public abstract class Player extends Character{
     //public int money;
@@ -107,20 +108,25 @@ public abstract class Player extends Character{
         String userInput = scanner.nextLine();
         int index = Integer.parseInt(userInput) - 1;
         if (index >= 0 && index <= j) {
-            if (index == 0) {
-                displaySwordMethods((Swords) equipedWeapon, target);
-            } else {
-                Equipments selectedItem = combatInventory.get(index);
-                String weaponMotherClass = selectedItem.getClass().getSuperclass().getSimpleName();
-                if (weaponMotherClass.equals("Potions")) {
+            Equipments selectedItem = combatInventory.get(index);
+            String weaponMotherClass = selectedItem.getClass().getSuperclass().getSimpleName();
+            switch (weaponMotherClass) {
+                case "Swords":
+                    displaySwordMethods((Swords) equipedWeapon, target);
+                    break;
+                case "Shields":
+                    displayShieldMethods((Shields) equipedWeapon, target);
+                    break;
+                case "Potions":
                     if(((Potions) selectedItem).throwable == true){
                         ((Potions) selectedItem).usePotion(target);
                     } else {
                         ((Potions) selectedItem).usePotion(this);
-                    }
-                    this.inventory.remove(selectedItem);
+                    }   this.inventory.remove(selectedItem);
                     this.combatInventory.remove(selectedItem);
-                }
+                    break;
+                default:
+                    break;
             }
         } else {
             System.out.println("Index invalide. Veuillez réessayer.");
@@ -141,6 +147,29 @@ public abstract class Player extends Character{
                     break;
                 case "2":
                     sword.specialAttack(target);
+                    answered = true;
+                    break;
+                default:
+                    System.out.println("Chommande non reconnue.");
+                    break;
+            }
+        }
+    }
+    private void displayShieldMethods(Shields shield, Character target) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Méthodes d'attaque disponibles pour " + shield.getName() + ":");
+        System.out.println("1) Attaque standard");
+        System.out.println("2) Attaque speciale");
+        String attackChoice = scanner.nextLine();
+        boolean answered = false;
+        while(answered == false){
+            switch(attackChoice) {
+                case "1":
+                    shield.shieldAttack(target);
+                    answered = true;
+                    break;
+                case "2":
+                    shield.specialAttack(target);
                     answered = true;
                     break;
                 default:
@@ -184,6 +213,19 @@ public abstract class Player extends Character{
             this.isInvulnerable = false;
             System.out.println("Vous ne recevez aucuns dommages !");
             return;
+        }
+        Dodge riposteStatut = (Dodge) findTokenType(Dodge.class);
+        if (riposteStatut != null) {
+            Random r = new Random();
+            int proba = r.nextInt(100);
+            if(proba < riposteStatut.getDodgeProbability()){
+                System.out.println("Vous ne recevez aucuns dommages !");
+                riposteStatut.updateToken();
+                return;
+            } else {
+                System.out.println("Vous n'avez pas réussi à esquiver !");
+            }
+            riposteStatut.updateToken();
         }
         Block defenseStatut = (Block) findTokenType(Block.class);
         if (defenseStatut != null) {

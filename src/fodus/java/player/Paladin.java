@@ -1,8 +1,7 @@
 package fodus.java.player;
 
 import fodus.java.Character;
-import fodus.java.status.Block;
-import fodus.java.status.Burn;
+import fodus.java.status.*;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
@@ -42,7 +41,7 @@ public class Paladin extends Player implements Tank, Healer {
                     command_executed = true;
                     break;
                 case "ferventes accusations", "2":
-                    flammes_sacrees(target);                    
+                    flammes_sacrees(target); 
                     command_executed = true;
                     break;
                 default:
@@ -60,7 +59,7 @@ public class Paladin extends Player implements Tank, Healer {
     @Override
     public void defend() {
         System.out.println("Vous brandissez votre egide devant vous.");
-        Block blockEffect = new Block(1, 50);
+        Block blockEffect = new Block(2, 50);
         this.addToken(blockEffect);
     }
     @Override
