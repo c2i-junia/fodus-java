@@ -20,10 +20,26 @@ public class FodusJava {
         player.addItem(verre, player);
         player.addItem(poisonPotion, player);
         player.chooseWeapon();
-        
-        Skeleton enemySkeleton = new Skeleton();
-        game.combat(player, enemySkeleton); 
+         
         Goblins enemygoblin = new Goblins();
         game.combat(player, enemygoblin);
+        Troll enemyTroll = new Troll();
+        game.combat(player, enemyTroll);
+        Dragon_boss enemyDragon = new Dragon_boss();
+        game.combat(player, enemyDragon);
+        game.healPlayer(player);
+        Skeleton enemySkeleton = new Skeleton();
+        game.combat(player, enemySkeleton);
+        Vampire enemyVampire = new Vampire();
+        game.combat(player, enemyVampire);
+        Bandit_captain_boss enemyBandit = new Bandit_captain_boss();
+        game.combat(player, enemyBandit);
+        game.healPlayer(player);
+        Orc enemyOrc = new Orc();
+        game.combat(player, enemyOrc);
+        Dark_elemental enemyDarkElemental = new Dark_elemental();
+        game.combat(player, enemyDarkElemental);
+        Demon_king_boss enemyDemonKing = new Demon_king_boss();
+        game.combat(player, enemyDemonKing);
     }
 }

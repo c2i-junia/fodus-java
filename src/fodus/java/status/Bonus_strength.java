@@ -9,7 +9,7 @@ public class Bonus_strength extends Tokens{
         this.strengthpoints = new_increase_strength;
     }
     
-    public int getDamageReduction(){
+    public int getStrengthBonus(){
         return this.strengthpoints;
     }
     
