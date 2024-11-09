@@ -1,20 +1,28 @@
-
 package fodus.java.equipments;
+
+import fodus.java.Character;
 import fodus.java.status.Bonus_strength;
 
 public class Verre_de_vin extends Potions {
     public Verre_de_vin(){
-        name_equipment="Verre de Vin";
-        this.maxhealthpoints=10;
-        this.strength=10;
-        this.maxmana=10;
-        this.intelligence=5;
+        this.name="Verre de Vin";
+        this.throwable = false;
+        this.maxHealthPoints = 10;
+        this.strength = 10;
+        this.maxMana = 10;
+        this.intelligence = 5;
     }
-    public void spe_verre_de_vin(fodus.java.Character player){
-        System.out.println("Vous vous régalez de verre de vin rouge et vous gagnez une dose infini de charisme et un important bonus d'attaque !");
-        player.strength+=10;
-        player.healthPoints+=20;
+    
+    @Override
+    public void usePotion(Character target){
+        System.out.println("Vous vous delectez de ce delicieux nectar !");
+        if(target.healthPoints + this.intelligence >= this.maxHealthPoints){
+            target.healthPoints = target.maxHealthPoints;
+        }
+        else {
+            target.healthPoints += this.intelligence;
+        }
         Bonus_strength incr_srength_effect = new Bonus_strength(3,50);
-        player.addToken(incr_srength_effect);
+        target.addToken(incr_srength_effect);
     }
 }

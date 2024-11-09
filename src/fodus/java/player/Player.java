@@ -6,19 +6,19 @@ import java.util.ArrayList;
 import fodus.java.Character;
 import fodus.java.PlayerActions;
 import fodus.java.status.*;
-import fodus.java.equipments.Equipments;
+import fodus.java.equipments.*;
 
 public abstract class Player extends Character{
     //public int money;
     public List<Equipments> inventory;
     public List<Equipments> combatInventory;
+    public Equipments equipedWeapon;
     
     public Player(){
         inventory = new ArrayList<>();
         combatInventory = new ArrayList<>();
+        equipedWeapon = null;
     }
-    
-    
     
     public void printStats(){
         System.out.println("HP : " + healthPoints + " / " + maxHealthPoints);
@@ -34,30 +34,30 @@ public abstract class Player extends Character{
         Scanner userInput = new Scanner(System.in);
         boolean commandExecuted = false;
         List<PlayerActions> actions = this.getAvailableActions();
-            System.out.println("Que faites-vous ?");
-            for(int i = 0; i < actions.size(); i++){
-                System.out.println((i+1) + ") " + actions.get(i).getText());
-            }
-            while(!commandExecuted){
-                switch(userInput.nextLine().toLowerCase()){
-                    case "attaque", "1":
-                        attack(target);
-                        commandExecuted = true;
-                        break;
-                    case "defense", "2":
-                        defend();
-                        commandExecuted = true;
-                        break;
-                    case "capacite", "3":
-                        executeSpecificSkills(this, target);
-                        commandExecuted = true;
-                        break;
-//                    case "objets", "4":
-//                        listAvailableWeapons(this, target);
-//                        commandExecuted = true;
-                    default:
-                        System.out.println("Commande non reconnue");
-                        break;
+        System.out.println("Que faites-vous ?");
+        for(int i = 0; i < actions.size(); i++){
+            System.out.println((i+1) + ") " + actions.get(i).getText());
+        }
+        while(!commandExecuted){
+            switch(userInput.nextLine().toLowerCase()){
+                case "attaque", "1":
+                    attack(target);
+                    commandExecuted = true;
+                    break;
+                case "defense", "2":
+                    defend();
+                    commandExecuted = true;
+                    break;
+                case "capacite", "3":
+                    executeSpecificSkills(this, target);
+                    commandExecuted = true;
+                    break;
+                case "objets", "4":
+                    useCombatObjects(target);
+                    commandExecuted = true;
+                default:
+                    System.out.println("Commande non reconnue");
+                    break;
             }
         }
     }
@@ -72,29 +72,99 @@ public abstract class Player extends Character{
     public abstract List<String> getSpecificSkills();
     public abstract void useSpecificSkill(Character target);
     public void executeSpecificSkills(Character player, Character target){
-        //Scanner userInput = new Scanner(System.in);
         List<String> classSkills = this.getSpecificSkills();
         for (int i = 0; i < classSkills.size(); i++) {
             System.out.print((i + 1) + " " + classSkills.get(i) + "   ");
         }
         useSpecificSkill(target);
     }
-    
-    public void chooseWeapon(List<Equipments> inventory, List<Equipments> combatInventory) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Armes disponibles :");
-        for(int i = 0; i < inventory.size(); i++) {
-            System.out.println((i + 1) + ") " + inventory.get(i).getName());
-            System.out.println(inventory.get(i).getClass().getSuperclass().getSimpleName());
+
+    public void useCombatObjects(Character target) {
+        combatInventory.clear();
+        System.out.println("Objets de combat disponibles : ");
+        int j = 0;
+        System.out.println((j + 1) + ") " + this.equipedWeapon.getName());
+        combatInventory.add(equipedWeapon);
+        for (int i = 0; i < inventory.size(); i++) {
+            String weaponMotherClass = inventory.get(i).getClass().getSuperclass().getSimpleName();
+            if (weaponMotherClass.equals("Potions")) {
+                j++;
+                System.out.println((j + 1) + ") " + inventory.get(i).getName());
+                combatInventory.add(inventory.get(i));
+            }
         }
-        System.out.print("Choisissez une arme : ");
-        int choice = scanner.nextInt();
-        if(choice > 0 && choice <= inventory.size()) {
-            Equipments chosenWeapon = inventory.get(choice - 1);
-            combatInventory.add(chosenWeapon);
-            System.out.println("Vous avez choisi : " + chosenWeapon.getName());
+        Scanner scanner = new Scanner(System.in);
+        String userInput = scanner.nextLine();
+        int index = Integer.parseInt(userInput) - 1;
+        if (index >= 0 && index <= j) {
+            if (index == 0) {
+                displaySwordMethods((Swords) equipedWeapon, target);
+            } else {
+                Equipments selectedItem = combatInventory.get(index);
+                String weaponMotherClass = selectedItem.getClass().getSuperclass().getSimpleName();
+                if (weaponMotherClass.equals("Potions")) {
+                    if(((Potions) selectedItem).throwable == true){
+                        ((Potions) selectedItem).usePotion(target);
+                    } else {
+                        ((Potions) selectedItem).usePotion(this);
+                    }
+                    this.inventory.remove(selectedItem);
+                    this.combatInventory.remove(selectedItem);
+                }
+            }
         } else {
+            System.out.println("Index invalide. Veuillez réessayer.");
+        }
+    }
+    private void displaySwordMethods(Swords sword, Character target) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Méthodes d'attaque disponibles pour " + sword.getName() + ":");
+        System.out.println("1) Attaque standard");
+        System.out.println("2) Attaque speciale");
+        String attackChoice = scanner.nextLine();
+        boolean answered = false;
+        while(answered == false){
+            switch(attackChoice) {
+                case "1":
+                    sword.swordAttack(target);
+                    answered = true;
+                    break;
+                case "2":
+                    sword.specialAttack(target);
+                    answered = true;
+                    break;
+                default:
+                    System.out.println("Chommande non reconnue.");
+                    break;
+            }
+        }
+    }
+    public void printWeaponsFromInventory(){
+        System.out.println("Armes disponibles : ");
+        String weaponMotherClass;
+        int j = 0;
+        for(int i = 0; i < inventory.size(); i++) {
+            weaponMotherClass = inventory.get(i).getClass().getSuperclass().getSimpleName();
+            if(weaponMotherClass.equals("Swords") || weaponMotherClass.equals("Shields")){
+                j++;
+                System.out.println(j + ") " + inventory.get(i).getName());
+            }
+        }
+    }
+    public void chooseWeapon() {
+        Scanner userInput = new Scanner(System.in);
+        boolean answer = false;
+        printWeaponsFromInventory();
+        System.out.print("Choisissez une arme : ");
+        while(answer == false){
+            int choice = userInput.nextInt();
+            if(choice > 0 && choice <= this.inventory.size()) {
+                this.equipedWeapon = this.inventory.get(choice - 1);
+                System.out.println("Vous avez choisi : " + this.equipedWeapon.getName());
+                answer = true;
+            } else {
             System.out.println("Choix invalide.");
+            }
         }
     }
     
@@ -106,7 +176,7 @@ public abstract class Player extends Character{
             damage = damage - damageReduction;
             System.out.println("Degats reduits de " + defenseStatut.getDamageReduction() + "% !");
             defenseStatut.updateToken();
-        }     
+        }
         if(this.healthPoints <= damage){
             this.healthPoints = 0;
         }
