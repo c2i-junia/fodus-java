@@ -159,22 +159,32 @@ public class Game {
     public void mainGame(Player player){
         Goblins enemygoblin = new Goblins();
         combat(player, enemygoblin);
+        
         Troll enemyTroll = new Troll();
         combat(player, enemyTroll);
+        
         Dragon_boss enemyDragon = new Dragon_boss();
         combat(player, enemyDragon);
+        
         healPlayer(player);
+        
         Skeleton enemySkeleton = new Skeleton();
         combat(player, enemySkeleton);
+        
         Vampire enemyVampire = new Vampire();
         combat(player, enemyVampire);
+        
         Bandit_captain_boss enemyBandit = new Bandit_captain_boss();
         combat(player, enemyBandit);
+        
         healPlayer(player);
+        
         Orc enemyOrc = new Orc();
         combat(player, enemyOrc);
+        
         Dark_elemental enemyDarkElemental = new Dark_elemental();
         combat(player, enemyDarkElemental);
+        
         Demon_king_boss enemyDemonKing = new Demon_king_boss();
         combat(player, enemyDemonKing);
     }
@@ -221,6 +231,8 @@ public class Game {
                 player.playerAction(enemy);
                 if(enemy.getHealth() <= 0){
                     System.out.println("Vous avez triomphe !!");
+                    mana_recovery(player);
+                    enemy.giveDrop(enemy, player);
                     break;
                 }
             }
@@ -228,10 +240,11 @@ public class Game {
     }
     public void healPlayer(Player player){
         player.healthPoints = player.maxHealthPoints;
+        System.out.println("Points de vie restaures");
     }
     public void mana_recovery(Player player){
         player.mana=player.maxMana;
-        System.out.println("\nMana réstauré");
+        System.out.println("Mana restaure");
     }
     public void printCombatStats(Character player, Enemy enemy){
         System.out.println("--------------------------------------------------------------");

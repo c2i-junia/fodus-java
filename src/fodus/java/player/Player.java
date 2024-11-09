@@ -28,7 +28,6 @@ public abstract class Player extends Character{
         System.out.println("Dexterite : " + dexterity);
         System.out.println("Endurance : " + endurance);
         System.out.println("Intelligence : " + intelligence);
-        //System.out.println("Charisme : " + charisma);
     }
     
     public void playerAction(Character target){
@@ -83,9 +82,9 @@ public abstract class Player extends Character{
     public boolean useMana(int cost) {
         if (mana >= cost) {
             mana -= cost;
-            return true; // Indique que le coût en mana a été déduit avec succès
+            return true; 
         } else {
-            System.out.println("Pas assez de mana pour utiliser cette compétence.");
+            System.out.println("Pas assez de mana pour utiliser cette competence.");
             playerAction(this);
             return false;
         }

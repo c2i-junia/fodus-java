@@ -58,7 +58,7 @@ public class Priest extends Player implements Healer {
         Strength strengthStatut = (Strength) findTokenType(Strength.class);
         if (strengthStatut != null) {
             int damageBonus = damage * strengthStatut.getStrengthBonus() / 100;
-            System.out.println("Vos dégats sont augmentes de " + damageBonus + "% !");
+            System.out.println("Vos degats sont augmentes de " + damageBonus + "% !");
             damage = damage + damageBonus;
             strengthStatut.updateToken();
         }
@@ -66,7 +66,7 @@ public class Priest extends Player implements Healer {
     }
     @Override
     public void defend() {
-        System.out.println("Vous brandissez votre égide devant vous.");
+        System.out.println("Vous brandissez votre egide devant vous.");
         Block blockEffect = new Block(1, 50);
         this.addToken(blockEffect);
     }
@@ -74,14 +74,14 @@ public class Priest extends Player implements Healer {
     public void heal() {
         if (useMana(healManaCost)) { // Vérifie et consomme le mana avec la méthode de Player
             System.out.println(name + " utilise Soins.");
-            this.healthPoints = Math.min(this.healthPoints + 15, maxHealthPoints);
-            System.out.println("Points de vie restaurés. Vie actuelle : " + this.healthPoints);
+            this.healthPoints = Math.min(this.healthPoints + this.intelligence, maxHealthPoints);
+            System.out.println("Points de vie restaurés.");
         }
     }
     @Override
     public void flammes_sacrees(Character target) {
         if (useMana(flamesManaCost)) { 
-            System.out.println(name + " utilise Flammes Sacrées.");
+            System.out.println(name + " utilise Flammes Sacrees.");
             target.receiveDamage(20);
             Burn burnEffect = new Burn(3, 3);
             target.addDOT(burnEffect);
