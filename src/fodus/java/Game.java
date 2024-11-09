@@ -139,9 +139,32 @@ public class Game {
         }
         return player;
     }
+    public void mainGame(Player player){
+        Goblins enemygoblin = new Goblins();
+        combat(player, enemygoblin);
+        Troll enemyTroll = new Troll();
+        combat(player, enemyTroll);
+        Dragon_boss enemyDragon = new Dragon_boss();
+        combat(player, enemyDragon);
+        healPlayer(player);
+        Skeleton enemySkeleton = new Skeleton();
+        combat(player, enemySkeleton);
+        Vampire enemyVampire = new Vampire();
+        combat(player, enemyVampire);
+        Bandit_captain_boss enemyBandit = new Bandit_captain_boss();
+        combat(player, enemyBandit);
+        healPlayer(player);
+        Orc enemyOrc = new Orc();
+        combat(player, enemyOrc);
+        Dark_elemental enemyDarkElemental = new Dark_elemental();
+        combat(player, enemyDarkElemental);
+        Demon_king_boss enemyDemonKing = new Demon_king_boss();
+        combat(player, enemyDemonKing);
+    }
     public void combat(Player player, Enemy enemy){
         System.out.println(enemy.name + " apparait ! Le combat debute.");
         waitMs(2000);
+        player.chooseWeapon();
         while(player.getHealth() > 0 && enemy.getHealth() > 0){
             printCombatStats(player, enemy);
             player.updateDOTEffects();
@@ -217,5 +240,11 @@ public class Game {
                     break;
             } 
         }
+    }
+    public void ending(Player player){
+        System.out.println("Bravo à vous, Lord " + player.name + ".");
+        System.out.println("Vous avez terasse le roi demon et sauver ce monde.");
+        System.out.println("Vous avez brave les bugs, le manque d'inspiration et le gameplay douteux cree par les deux createurs de ce monde.");
+        System.out.println("Et pour cela, nous vous remercions. Bravo à vous !");
     }
 }
