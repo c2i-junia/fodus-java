@@ -203,7 +203,7 @@ public abstract class Player extends Character{
                 System.out.println("Vous avez choisi : " + this.equipedWeapon.getName());
                 answer = true;
             } else {
-            System.out.println("Choix invalide.");
+                System.out.println("Choix invalide.");
             }
         }
     }

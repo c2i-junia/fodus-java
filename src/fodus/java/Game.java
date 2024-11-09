@@ -173,7 +173,17 @@ public class Game {
     public void combat(Player player, Enemy enemy){
         System.out.println(enemy.name + " apparait ! Le combat debute.");
         waitMs(2000);
-        player.chooseWeapon();
+        String weaponMotherClass;
+        boolean weaponInInventory = false;
+        for(int i = 0; i < player.inventory.size(); i++) {
+            weaponMotherClass = player.inventory.get(i).getClass().getSuperclass().getSimpleName();
+            if(weaponMotherClass.equals("Swords") || weaponMotherClass.equals("Shields")){
+                weaponInInventory = true;
+            }
+        }
+        if(weaponInInventory){
+            player.chooseWeapon();
+        }
         while(player.getHealth() > 0 && enemy.getHealth() > 0){
             printCombatStats(player, enemy);
             player.updateDOTEffects();
