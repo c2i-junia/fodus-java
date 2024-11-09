@@ -2,11 +2,12 @@ package fodus.java.player;
 
 import fodus.java.Character;
 import fodus.java.status.Block;
+import fodus.java.status.Burn;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Paladin extends Player implements Healer, Tank {
+public class Paladin extends Player implements Tank, Healer {
     public Paladin(String playerName) {
         this.name = playerName;
         this.maxHealthPoints = 50;
@@ -37,7 +38,7 @@ public class Paladin extends Player implements Healer, Tank {
                     command_executed = true;
                     break;
                 case "ferventes accusations", "2":
-                    flammes_sacrees();
+                    flammes_sacrees(target);                    
                     command_executed = true;
                     break;
                 default:
@@ -73,7 +74,9 @@ public class Paladin extends Player implements Healer, Tank {
         }
     }
     @Override
-    public void flammes_sacrees(){//dégats + brulure
-        
+    public void flammes_sacrees(Character target){
+        target.receiveDamage(this.intelligence);
+        Burn burneffect = new Burn(3, 3);
+        target.addDOT(burneffect);
     }
 }

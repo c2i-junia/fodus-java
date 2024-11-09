@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package fodus.java.enemy;
 
 import java.util.Random;
@@ -45,7 +42,7 @@ public class Dragon_boss extends Enemy {
     }
     @Override
     public void defend(){
-        System.out.println("Le squelette se cache derriere ses ailes pour se defendre.");
+        System.out.println("Le Dragon se cache derriere ses ailes pour se defendre.");
         Block blockEffect = new Block(2, 50);
         this.addToken(blockEffect);
     }

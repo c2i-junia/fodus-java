@@ -1,12 +1,15 @@
+
 package fodus.java.enemy;
 
 import fodus.java.status.Bleed;
+import fodus.java.status.Block;
 import java.util.Random;
+
 
 public class Bandit_captain_boss extends Enemy {
    Random r = new Random();
     public Bandit_captain_boss(){
-        this.name = "Dragon";
+        this.name = "Capitaine des bandits";
         this.maxHealthPoints = 60;
         this.healthPoints = this.maxHealthPoints;
         this.speed = 7;
@@ -26,20 +29,24 @@ public class Bandit_captain_boss extends Enemy {
                 defend();
                 break;
             case 3:
+                spe_Bandit_Captain(target);
+                break;
         }
     }
 
     @Override
     public void attack(fodus.java.Character target){
-        System.out.println("Le Dragon vous assene un coup de griffe !");
+        System.out.println("Le Capitaine des bandits vous assene un coup de griffe !");
         target.receiveDamage(this.strength);
     }
     @Override
     public void defend(){
-        System.out.println("Le squelette se cache derriere ses ailes pour se defendre.");
+        Block blockEffect = new Block(2, 50);
+        this.addToken(blockEffect);
+        System.out.println("Le Capitaine des bandits se cache derriere ses ailes pour se defendre.");
     }
     public void spe_Bandit_Captain(fodus.java.Character target){
-        System.out.println("Le Bandit avec sa roubladise vous surprend et vous blesse !");
+        System.out.println("Le bandit avec sa roubladise vous surprend et vous blesse !");
         target.receiveDamage(this.intelligence);
         Bleed bleedEffect = new Bleed(5, 3);
         target.addDOT(bleedEffect);

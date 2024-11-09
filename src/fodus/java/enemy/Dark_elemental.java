@@ -5,7 +5,7 @@ import java.util.Random;
 public class Dark_elemental extends Enemy {
     Random r = new Random();
     public Dark_elemental(){
-        this.name = "Elementaire de tenebres";
+        this.name = "Elementaire des ténèbres";
         this.maxHealthPoints = 25;
         this.healthPoints = this.maxHealthPoints;
         this.speed = 7;
@@ -17,28 +17,32 @@ public class Dark_elemental extends Enemy {
     }
     @Override
     public void enemyAction(fodus.java.Character target){
-        int action = r.nextInt(2);
+        int action = r.nextInt(4);
         switch(action){
-            case 0:
+            case 0,1,2:
                 attack(target);
                 break;
-            case 1:
+            case 3:
                 defend();
+                break;
+            case 4:
+                spe_dark_elemenetal();
                 break;
         }
     }
     @Override
     public void attack(fodus.java.Character target){
-        System.out.println("L'élémentaire sombre vous lance un sort !");
-        Block blockEffect = new Block(2, 50);
-        this.addToken(blockEffect);
+        System.out.println("L'élémentaire des ténèbres vous lance un sort !");
+        target.receiveDamage(this.intelligence);
     }
     @Override
     public void defend(){
-        System.out.println("L'élémentaire sombre se forme un bouclier autour de lui.");
+        Block blockEffect = new Block(1, 50);
+        this.addToken(blockEffect);
+        System.out.println("L'élémentaire des ténèbres se forme un bouclier autour de lui.");
     }
     public void spe_dark_elemenetal(){
-        System.out.println("L'élémentaire sombre augmente son pouvoir !");
+        System.out.println("L'élémentaire des ténèbres augmente son pouvoir !");
         this.intelligence+=2;
     }
 }

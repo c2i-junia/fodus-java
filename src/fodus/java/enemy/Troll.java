@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package fodus.java.enemy;
 
 import java.util.Random;
@@ -36,15 +33,15 @@ public class Troll extends Enemy {
     }
     @Override
     public void attack(Character target){
-        System.out.println("Le squelette brandit son epee et vous assene un coup !");
+        System.out.println("Le Troll brandit son epee et vous assene un coup !");
         target.receiveDamage(this.strength);
     }
     @Override
     public void defend(){
-        System.out.println("Le squelette brandit son bouclier pour encaisser votre attaque.");
+        System.out.println("Le Troll brandit son bouclier pour encaisser votre attaque.");
     }
     public void eat_man(){
-        System.out.println("Le troll croque un voyageur perdu et regagne de la vie");
+        System.out.println("Le Troll croque un voyageur perdu et regagne de la vie");
         if(this.healthPoints + 10 >= this.maxHealthPoints){
             this.healthPoints = this.maxHealthPoints;
         }

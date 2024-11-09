@@ -32,12 +32,12 @@ public class Skeleton extends Enemy{
     }
     @Override
     public void attack(Character target){
-        System.out.println("Le squelette brandit son epee et vous assene un coup !");
+        System.out.println("Le Squelette brandit son epee et vous assene un coup !");
         target.receiveDamage(this.strength);
     }
     @Override
     public void defend(){
-        System.out.println("Le squelette brandit son bouclier pour encaisser votre attaque.");
+        System.out.println("Le Squelette brandit son bouclier pour encaisser votre attaque.");
         Block blockEffect = new Block(1, 50);
         this.addToken(blockEffect);
     }
