@@ -52,7 +52,6 @@ public abstract class Character {
         }
     }
     public void updateDOTEffects(){
-        System.out.println("Mise a jour des effets pour " + this.name);
         Iterator<DOTs> iter = dot.iterator();
         while(iter.hasNext()){
             DOTs dotEffect = iter.next();
@@ -64,7 +63,6 @@ public abstract class Character {
         }
     }
     public void updateTokenEffects(){
-        System.out.println("Mise a jour des tokens pour " + this.name);
         Iterator<Tokens> iter = tokens.iterator();
         while(iter.hasNext()){
             Tokens tokenEffect = iter.next();

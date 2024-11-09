@@ -30,11 +30,14 @@ public class Game {
         System.out.println("Celui de : FODUS !");
     }
     public void menu(){
-        Scanner userInput = new Scanner(System.in); // Create a Scanner object
-        System.out.println("1) Jouer   -   Comment jouer   -   Quitter");
-        switch(userInput.nextLine().toLowerCase()){
+        Scanner userInput = new Scanner(System.in);
+        boolean answered = false;
+        while(answered == false){
+            System.out.println("1) Jouer   -  2) Comment jouer   -  3) Quitter");
+            switch(userInput.nextLine().toLowerCase()){
             case "1", "jouer":
                 System.out.println("Demarrage du jeu, bonne chance a vous !");
+                answered = true;
                 break;
             case "2", "comment jouer":
                 System.out.println("\"Fodus\" est un jeu d'aventure RPG dont les choix definiront votre parcours.");
@@ -47,15 +50,17 @@ public class Game {
                 waitMs(1500);
                 System.out.println("Vous devrez alors taper dans le terminal le numero que vous souhaitez effectuer.");
                 waitMs(1500);
-                menu();
+                break;
             case "3", "quitter":
                 System.out.println("Fermeture du jeu.");
+                answered = true;
                 System.exit(0);
                 break;
             default:
                 System.out.println("Commande non reconnue");
                 menu();
                 break;
+            }
         }
     }
     public Player characterCreation(){
@@ -80,6 +85,7 @@ public class Game {
                             player = new Paladin(userName);
                             break;
                         case "non":
+                            characterCreation();
                             break;
                         default:
                             System.out.println("Commande non reconnue");
@@ -95,6 +101,7 @@ public class Game {
                             player = new Priest(userName);
                             break;
                         case "non":
+                            characterCreation();
                             break;
                         default:
                             System.out.println("Commande non reconnue");
@@ -111,6 +118,7 @@ public class Game {
                             player = new Barbarian(userName);
                             break;
                         case "non":
+                            characterCreation();
                             break;
                         default:
                             System.out.println("Commande non reconnue");
@@ -126,6 +134,7 @@ public class Game {
                             player = new Assassin(userName);
                             break;
                         case "non":
+                            characterCreation();
                             break;
                         default:
                             System.out.println("Commande non reconnue");
@@ -246,5 +255,6 @@ public class Game {
         System.out.println("Vous avez terasse le roi demon et sauver ce monde.");
         System.out.println("Vous avez brave les bugs, le manque d'inspiration et le gameplay douteux cree par les deux createurs de ce monde.");
         System.out.println("Et pour cela, nous vous remercions. Bravo à vous !");
+        System.exit(0);
     }
 }
