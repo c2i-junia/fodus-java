@@ -8,17 +8,16 @@ import java.util.Scanner;
 
 public class Barbarian extends Player implements Damage, Tank {
         
-    private final int warcrycost=5;
-    private final int stealHealthcost = 15;
-    private final int dodgecost=5;
-
-        
+    private final int warcryCost = 5;
+    private final int stealHealthCost = 15;
+    private final int dodgeCost = 5;
+    
     public Barbarian(String playerName) {
         this.name = playerName;
         this.maxHealthPoints = 45;
         this.healthPoints = maxHealthPoints;
-        this.mana=20;
-        this.maxMana=20;
+        this.mana = 20;
+        this.maxMana = 20;
         this.speed = 10;
         this.strength = 20;
         this.dexterity = 10;
@@ -31,6 +30,7 @@ public class Barbarian extends Player implements Damage, Tank {
         List<String> skills = new ArrayList<>();
         skills.add("Warcry");
         skills.add("Contre");
+        skills.add("Vol de vie");
         return skills;
     }
     @Override
@@ -47,6 +47,10 @@ public class Barbarian extends Player implements Damage, Tank {
                     dodgeMovement();
                     command_executed = true;
                     break;
+                case "vol de vie", "3":
+                    stealHealthPoints(target);
+                    command_executed = true;
+                    break;
                 default:
                     System.out.println("Commande non reconnue");
                     break;
@@ -61,7 +65,7 @@ public class Barbarian extends Player implements Damage, Tank {
         Strength strengthStatut = (Strength) findTokenType(Strength.class);
         if (strengthStatut != null) {
             int damageBonus = damage * strengthStatut.getStrengthBonus() / 100;
-            System.out.println("Vos dégats sont augmentes de " + damageBonus + "% !");
+            System.out.println("Vos degats sont augmentes de " + damageBonus + "% !");
             damage = damage + damageBonus;
             strengthStatut.updateToken();
         }
@@ -69,28 +73,28 @@ public class Barbarian extends Player implements Damage, Tank {
     }
     @Override
     public void defend() {
-        System.out.println("Vous vous préparez à encaisser les coups.");
+        System.out.println("Vous vous preparez a encaisser les coups.");
         Block blockEffect = new Block(1, 50);
         this.addToken(blockEffect);
     }
     @Override
     public void warcry(){
-        if(useMana(warcrycost)){
+        if(useMana(warcryCost)){
         System.out.println("Les dieux vous viennent en aide, vous ne ressentez plus la douleur !");
         this.isInvulnerable = true;
         }
     }
     @Override    
     public void dodgeMovement(){
-        if(useMana(dodgecost)){
-            System.out.println("Vous vous placez stratégiquement pour esquiver les prochaisn coups.");
+        if(useMana(dodgeCost)){
+            System.out.println("Vous vous placez strategiquement pour esquiver les prochaisn coups.");
             Dodge dodgeEffect = new Dodge(1, 80);
             this.addToken(dodgeEffect);
         }
     }
     @Override    
-    public void stealHealthPoints(Character target){//vol de points de vie de l'ennemi
-        if (useMana(stealHealthcost)){
+    public void stealHealthPoints(Character target){
+        if (useMana(stealHealthCost)){
             System.out.println("Vous attaquez en volant la vie de votre ennemi !");
             target.receiveDamage(this.strength) ;
             this.healthPoints = Math.min(this.healthPoints + this.intelligence, maxHealthPoints);
