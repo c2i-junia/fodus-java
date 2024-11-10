@@ -1,5 +1,8 @@
 package fodus.java;
 
+/**
+ * Enum representing the different basic actions a player can do during combat.
+ */
 public enum PlayerActions {
     ATTACK("Attaque"),
     DEFEND("Defense"),

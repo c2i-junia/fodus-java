@@ -1,13 +1,19 @@
 package fodus.java;
 
 import java.util.Scanner;
+import java.util.Iterator;
 import fodus.java.player.*;
 import fodus.java.enemy.*;
 import fodus.java.status.*;
-import java.util.Iterator;
 
-// Manage game loop, turn-based combat and player interactions
+/**
+ * Manage game loop, turn-based combat and player interactions.
+ */
 public class Game {
+    /**
+    * Method primarly used to wait before printing next sentence.
+    * @param t the time to wait in milliseconds
+    */
     public static void waitMs(int t){
         try {
             Thread.sleep(t);
@@ -15,6 +21,9 @@ public class Game {
             System.err.println("Le thread a été interrompu.");
         }
     }
+    /**
+    * Display the intro.
+    */
     public void intro(){
         System.out.println("Je connais bien l'echec... j'ai en effet failli a ma tache.");
         waitMs(3000);
@@ -33,14 +42,12 @@ public class Game {
                            .%%%%....%%..%%..%%..%%..%%..%%...%%%%..
                            .%%......%%..%%..%%..%%..%%..%%......%%.
                            .%%.......%%%%...%%%%%....%%%%....%%%%..
-                           ........................................""")
-                
-                ;
-        
-        
+                           ........................................""");
     }
+    /**
+    * Display the menu with the different options (Play, How to play and Quit).
+    */
     public void menu(){
-
         Scanner userInput = new Scanner(System.in);
         boolean answered = false;
         while(answered == false){
@@ -75,6 +82,9 @@ public class Game {
             }
         }
     }
+    /**
+    * Method to create the player character.
+    */
     public Player characterCreation(){
         Scanner userInput = new Scanner(System.in);
         Player player = null;
@@ -118,7 +128,22 @@ public class Game {
                             break;
                     }
                     break;
-                case "3", "barbare":
+                case "3", "assassin":
+                    System.out.println("Ce bandit n'hesite pas a utiliser fourberie et piege pour parvenir a ses fins.");
+                    System.out.println("Sa ruse lui permet de passer inapercu et de tuer sans se faire prendre.");
+                    System.out.println("Etes-vous cet aventurier ?");
+                    switch(userInput.nextLine().toLowerCase()){
+                        case "oui":
+                            player = new Assassin(userName);
+                            break;
+                        case "non":
+                            break;
+                        default:
+                            System.out.println("Commande non reconnue");
+                            break;
+                    }
+                    break;
+                case "4", "barbare":
                     System.out.println("Derrierre sa rage et sa soif de sang se cache le vide...");
                     System.out.println("Et la cupabilite.");
                     System.out.println("Ce berseker devient plus puissant a mesure qu'il subit des blessures.");
@@ -134,21 +159,6 @@ public class Game {
                             break;
                     }
                     break;
-                case "4", "assassin":
-                    System.out.println("Ce bandit n'hesite pas a utiliser fourberie et piege pour parvenir a ses fins.");
-                    System.out.println("Sa ruse lui permet de passer inapercu et de tuer sans se faire prendre.");
-                    System.out.println("Etes-vous cet aventurier ?");
-                    switch(userInput.nextLine().toLowerCase()){
-                        case "oui":
-                            player = new Assassin(userName);
-                            break;
-                        case "non":
-                            break;
-                        default:
-                            System.out.println("Commande non reconnue");
-                            break;
-                    }
-                    break;
                 default:
                     System.out.println("Commande non reconnue");
                     break;
@@ -156,6 +166,10 @@ public class Game {
         }
         return player;
     }
+    /**
+    * Method to start the main part of the game : the combats.
+    * @param player instance of the player, used to start the combat
+    */
     public void mainGame(Player player){
         Goblins enemygoblin = new Goblins();
         combat(player, enemygoblin);
@@ -188,6 +202,11 @@ public class Game {
         DemonKingBoss enemyDemonKing = new DemonKingBoss();
         combat(player, enemyDemonKing);
     }
+    /**
+    * Method primarly used to wait before printing next sentence.
+    * @param player instance of the player
+    * @param enemy enemy that the player has to face
+    */
     public void combat(Player player, Enemy enemy){
         System.out.println(enemy.name + " apparait ! Le combat debute.");
         waitMs(2000);
@@ -238,14 +257,27 @@ public class Game {
             }
         }
     }
+    /**
+    * Heal the player --> called to heal the player after each boss.
+    * @param player instance of the player
+    */
     public void healPlayer(Player player){
         player.healthPoints = player.maxHealthPoints;
         System.out.println("Points de vie restaures");
     }
+    /**
+    * Restore player's mana --> called after each combat
+    * @param player instance of the player
+    */
     public void mana_recovery(Player player){
         player.mana=player.maxMana;
         System.out.println("Mana restaure");
     }
+    /**
+    * Method to print the stats of the enemy and the player during the battle.
+    * @param player instance of the player
+    * @param enemy enemy that the player has to face
+    */
     public void printCombatStats(Character player, Enemy enemy){
         System.out.println("--------------------------------------------------------------");
         System.out.println(player.name + " :");
@@ -265,6 +297,9 @@ public class Game {
         }        
         System.out.println("--------------------------------------------------------------");
     }
+    /**
+    * Called after the player has lost a combat, it lets him choose if he wants to restart or quit.
+    */
     public void gameOver(){
         Scanner userInput = new Scanner(System.in);
         System.out.println("Une longue route... et une fin abrupte.");
@@ -286,6 +321,10 @@ public class Game {
             } 
         }
     }
+    /**
+    * Prints the "ending" text after the player has win the game.
+    * @param player instance of the player
+    */
     public void ending(Player player){
         System.out.println("Bravo à vous, Lord " + player.name + ".");
         System.out.println("Vous avez terasse le roi demon et sauver ce monde.");

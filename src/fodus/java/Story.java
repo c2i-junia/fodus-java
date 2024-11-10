@@ -2,6 +2,9 @@ package fodus.java;
 
 import java.util.Scanner;
 
+/**
+ * NOT USED : Manages the story progression and events in the game.
+ */
 public class Story {
     public void valley(){
         
