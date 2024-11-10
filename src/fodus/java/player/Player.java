@@ -173,7 +173,7 @@ public abstract class Player extends Character{
                     break;
             }
         } else {
-            System.out.println("Index invalide. Veuillez réessayer.");
+            System.out.println("Index invalide. Veuillez reessayer.");
         }
     }
     /**
