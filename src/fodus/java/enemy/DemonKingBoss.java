@@ -6,7 +6,9 @@ import fodus.java.status.Burn;
 import fodus.java.status.Poison;
 import java.util.Random;
 
-
+/**
+ * Demon King : the final boss.
+ */
 public class DemonKingBoss extends Enemy {
     Random r = new Random();
     public DemonKingBoss(){
@@ -30,7 +32,7 @@ public class DemonKingBoss extends Enemy {
                 defend();
                 break;
             case 5:
-                spe_Demon_King(target);
+                specialDemonKing(target);
                 break;        
         }
     }
@@ -46,7 +48,7 @@ public class DemonKingBoss extends Enemy {
         this.addToken(blockEffect);
         System.out.println("Le Roi Démon s'apprete à encaisser votre attaque.");
     }
-    public void spe_Demon_King(fodus.java.Character target){
+    public void specialDemonKing(fodus.java.Character target){
         System.out.println("Le Roi Démon vous crache ses flammes des ténèbres, vous brule et vous empoisonne !");
         target.receiveDamage(this.intelligence);
         target.receiveDamage(this.dexterity);

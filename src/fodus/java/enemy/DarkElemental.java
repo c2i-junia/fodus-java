@@ -3,6 +3,9 @@ import fodus.java.equipments.SwordOfDarkness;
 import fodus.java.status.Block;
 import java.util.Random;
 
+/**
+ * Dark elemental : one of the many enemies.
+ */
 public class DarkElemental extends Enemy {
     Random r = new Random();
     public DarkElemental(){
@@ -27,7 +30,7 @@ public class DarkElemental extends Enemy {
                 defend();
                 break;
             case 4:
-                spe_dark_elemenetal();
+                specialDarkElemental();
                 break;
         }
     }
@@ -42,7 +45,7 @@ public class DarkElemental extends Enemy {
         this.addToken(blockEffect);
         System.out.println("L'élémentaire des ténèbres se forme un bouclier autour de lui.");
     }
-    public void spe_dark_elemenetal(){
+    public void specialDarkElemental(){
         System.out.println("L'élémentaire des ténèbres augmente son pouvoir !");
         this.intelligence+=2;
     }

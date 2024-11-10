@@ -5,6 +5,9 @@ import fodus.java.Character;
 import fodus.java.equipments.TimeShield;
 import fodus.java.status.Block;
 
+/**
+ * Vampire : one of the many enemies.
+ */
 public class Vampire extends Enemy{
     Random r = new Random();
     public Vampire(){
@@ -29,7 +32,7 @@ public class Vampire extends Enemy{
                 defend();
                 break;
             case 4:
-                spe_vampire(target);
+                specialVampire(target);
                 break;
         }
     }
@@ -44,7 +47,7 @@ public class Vampire extends Enemy{
         Block blockEffect = new Block(3, 25);
         this.addToken(blockEffect);
     }
-    public void spe_vampire(Character target){//vol de points de vie de l'ennemi
+    public void specialVampire(Character target){
         System.out.println("Le Vampire aspire votre sang !");
         target.receiveDamage(this.strength) ;
         if(this.healthPoints + this.intelligence >= this.maxHealthPoints){
