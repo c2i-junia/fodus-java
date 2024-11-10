@@ -53,29 +53,28 @@ public class Game {
         while(answered == false){
             System.out.println("1) Jouer   -  2) Comment jouer   -  3) Quitter");
             switch(userInput.nextLine().toLowerCase()){
-
-            case "1", "jouer":
-                System.out.println("Demarrage du jeu, bonne chance a vous !");
-                answered = true;
-                break;
-            case "2", "comment jouer":
-                System.out.println("\"Fodus\" est un jeu d'aventure RPG dont les choix definiront votre parcours.");
-                waitMs(1500);
-                System.out.println("Les combats se derouleront au tour par tour et les statistiques de votre personage influeront sur les chances de reussite de vos actions.");
-                waitMs(2000);
-                System.out.println("A chaque fois que vous devrez agir, une ligne de ce type apparaitra :");
-                waitMs(1500);
-                System.out.println("Action 1   -   Action 2   - Action 3   -   etc...");
-                waitMs(1500);
-                System.out.println("Vous devrez alors taper dans le terminal le numero que vous souhaitez effectuer.");
-                waitMs(1500);
-                break;
-            case "3", "quitter":
-                System.out.println("Fermeture du jeu.");
-                answered = true;
-                System.exit(0);
-                break;
-            default:
+                case "1", "jouer":
+                    System.out.println("Demarrage du jeu, bonne chance a vous !");
+                    answered = true;
+                    break;
+                case "2", "comment jouer":
+                    System.out.println("\"Fodus\" est un jeu d'aventure RPG dont les choix definiront votre parcours.");
+                    waitMs(1500);
+                    System.out.println("Les combats se derouleront au tour par tour et les statistiques de votre personage influeront sur les chances de reussite de vos actions.");
+                    waitMs(2000);
+                    System.out.println("A chaque fois que vous devrez agir, une ligne de ce type apparaitra :");
+                    waitMs(1500);
+                    System.out.println("Action 1   -   Action 2   - Action 3   -   etc...");
+                    waitMs(1500);
+                    System.out.println("Vous devrez alors taper dans le terminal le numero que vous souhaitez effectuer.");
+                    waitMs(1500);
+                    break;
+                case "3", "quitter":
+                    System.out.println("Fermeture du jeu.");
+                    answered = true;
+                    System.exit(0);
+                    break;
+                default:
                 System.out.println("Commande non reconnue");
                 menu();
                 break;

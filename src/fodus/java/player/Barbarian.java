@@ -6,12 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Barbarian extends Player implements Damage, Tank {
-        
+/**
+ * Barbarian : one of the player available Character.
+ */
+public class Barbarian extends Player implements Damage, Tank {      
     private final int warcryCost = 5;
     private final int stealHealthCost = 15;
     private final int dodgeCost = 5;
     
+    /**
+     * Constructor of Barbarian.
+     * @param playerName Name of the player
+     */
     public Barbarian(String playerName) {
         this.name = playerName;
         this.maxHealthPoints = 45;
@@ -24,7 +30,10 @@ public class Barbarian extends Player implements Damage, Tank {
         this.endurance = 15;
         this.intelligence = 5;
     }
-    
+    /**
+     * Gets all the specific skills of the Barbarian.
+     * @return a list of specific skills
+     */
     @Override
     public List<String> getSpecificSkills() {
         List<String> skills = new ArrayList<>();
@@ -33,6 +42,10 @@ public class Barbarian extends Player implements Damage, Tank {
         skills.add("Vol de vie");
         return skills;
     }
+    /**
+     * Uses a specific skill on the target.
+     * @param target the target of the skill
+     */
     @Override
     public void useSpecificSkill(Character target) {
         Scanner userInput = new Scanner(System.in);
@@ -57,7 +70,10 @@ public class Barbarian extends Player implements Damage, Tank {
             }
         }
     }
-    
+    /**
+     * Basic action to inflict damage to the enemy.
+     * @param target Target of the attack
+     */
     @Override
     public void attack(Character target) {
         System.out.println("Vous attaquez avec votre hache à deux mains !");
@@ -71,19 +87,29 @@ public class Barbarian extends Player implements Damage, Tank {
         }
         target.receiveDamage(damage);
     }
+    /**
+     * Basic action to add block token(s) to the player.
+     */
     @Override
     public void defend() {
         System.out.println("Vous vous preparez a encaisser les coups.");
         Block blockEffect = new Block(1, 50);
         this.addToken(blockEffect);
     }
+    /**
+     * Skill to make the player invicible for a turn.
+     */
     @Override
     public void warcry(){
         if(useMana(warcryCost)){
-        System.out.println("Les dieux vous viennent en aide, vous ne ressentez plus la douleur !");
-        this.isInvulnerable = true;
+            System.out.println("Les dieux vous viennent en aide, vous ne ressentez plus la douleur !");
+            this.isInvulnerable = true;
         }
     }
+    /**
+     * Skill to add Dodge tokens to the player.
+     * It allows him to dodge incoming attacks.
+     */
     @Override    
     public void dodgeMovement(){
         if(useMana(dodgeCost)){
@@ -92,6 +118,10 @@ public class Barbarian extends Player implements Damage, Tank {
             this.addToken(dodgeEffect);
         }
     }
+    /**
+     * Skill to steal health points.
+     * @param target Target of the attack
+     */
     @Override    
     public void stealHealthPoints(Character target){
         if (useMana(stealHealthCost)){

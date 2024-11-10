@@ -6,10 +6,17 @@ import java.util.Scanner;
 import fodus.java.Character;
 import fodus.java.status.*;
 
+/**
+ * Priest : one of the player available Character.
+ */
 public class Priest extends Player implements Healer {
     private final int healManaCost = 10;
     private final int flamesManaCost = 15;
     
+    /**
+     * Constructor of Priest.
+     * @param playerName Name of the player
+     */
     public Priest(String playerName) {
         this.name = playerName;
         this.maxHealthPoints = 40;
@@ -22,7 +29,10 @@ public class Priest extends Player implements Healer {
         this.endurance = 15;
         this.intelligence = 15;
     }
-    
+    /**
+     * Gets all the specific skills of the Priest.
+     * @return a list of specific skills
+     */
     @Override
     public List<String> getSpecificSkills() {
         List<String> skills = new ArrayList<>();
@@ -30,6 +40,10 @@ public class Priest extends Player implements Healer {
         skills.add("Flammes sacrees");
         return skills;
     }
+    /**
+     * Uses a specific skill on the target.
+     * @param target the target of the skill
+     */
     @Override
     public void useSpecificSkill(Character target) {
         Scanner userInput = new Scanner(System.in);
@@ -50,7 +64,10 @@ public class Priest extends Player implements Healer {
             }
         }
     }
-    
+    /**
+     * Basic action to inflict damage to the enemy.
+     * @param target Target of the attack
+     */
     @Override
     public void attack(Character target) {
         System.out.println("Vous attaquez avec votre masse !");
@@ -64,20 +81,30 @@ public class Priest extends Player implements Healer {
         }
         target.receiveDamage(damage);
     }
+    /**
+     * Basic action to add block token(s) to the player.
+     */
     @Override
     public void defend() {
         System.out.println("Vous brandissez votre egide devant vous.");
         Block blockEffect = new Block(1, 50);
         this.addToken(blockEffect);
     }
+    /**
+     * Skill to heal the player.
+     */
     @Override
     public void heal() {
         if (useMana(healManaCost)) { // Vérifie et consomme le mana avec la méthode de Player
             System.out.println(name + " utilise Soins.");
             this.healthPoints = Math.min(this.healthPoints + this.intelligence, maxHealthPoints);
-            System.out.println("Points de vie restaurés.");
+            System.out.println("Points de vie restaures.");
         }
     }
+    /**
+     * Skill to inflict Burn status.
+     * @param target Target of the attack
+     */
     @Override
     public void flammes_sacrees(Character target) {
         if (useMana(flamesManaCost)) { 

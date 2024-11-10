@@ -6,24 +6,34 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Assassin : one of the player available Character.
+ */
 public class Assassin extends Player implements Damage {
-    private final int openVeincost = 10;
-    private final int stealHealthcost = 15;
-    private final int dodgecost=5;
+    private final int openVeinCost = 10;
+    private final int stealHealthCost = 15;
+    private final int dodgeCost = 5;
     
+    /**
+     * Constructor of Assassin.
+     * @param playerName Name of the player
+     */
     public Assassin(String playerName) {
         this.name = playerName;
         this.maxHealthPoints = 30;
         this.healthPoints = maxHealthPoints;
-        this.mana=30;
-        this.maxMana=30;
+        this.mana = 30;
+        this.maxMana = 30;
         this.speed = 15;
         this.strength = 10;
         this.dexterity = 20;
         this.endurance = 10;
         this.intelligence = 15;
     }
-    
+    /**
+     * Gets all the specific skills of the Assassin.
+     * @return a list of specific skills
+     */
     @Override
     public List<String> getSpecificSkills() {
         List<String> skills = new ArrayList<>();
@@ -32,6 +42,10 @@ public class Assassin extends Player implements Damage {
         skills.add("Vol de vie");
         return skills;
     }
+    /**
+     * Uses a specific skill on the target.
+     * @param target the target of the skill
+     */
     @Override
     public void useSpecificSkill(Character target) {
         Scanner userInput = new Scanner(System.in);
@@ -57,7 +71,10 @@ public class Assassin extends Player implements Damage {
         }
     }
     
-    // Basic actions
+    /**
+     * Basic action to inflict damage to the enemy.
+     * @param target Target of the attack
+     */
     @Override
     public void attack(Character target) {
         System.out.println("Vous attaquez avec vos dagues !");
@@ -65,12 +82,15 @@ public class Assassin extends Player implements Damage {
         Strength strengthStatut = (Strength) findTokenType(Strength.class);
         if (strengthStatut != null) {
             int damageBonus = damage * strengthStatut.getStrengthBonus() / 100;
-            System.out.println("Vos dégats sont augmentes de " + damageBonus + "% !");
+            System.out.println("Vos degats sont augmentes de " + damageBonus + "% !");
             damage = damage + damageBonus;
             strengthStatut.updateToken();
         }
         target.receiveDamage(damage);
     }
+    /**
+     * Basic action to add block token(s) to the player.
+     */
     @Override
     public void defend() {
         System.out.println("Vous vous preparez a encaisser les coups.");
@@ -78,26 +98,37 @@ public class Assassin extends Player implements Damage {
         this.addToken(blockEffect);
     }
     
-    // Special attacks and skills of the class
+    /**
+     * Skill to inflict Bleed status.
+     * @param target Target of the attack
+     */
     public void openVein(Character target) {
-        if(useMana(openVeincost)){
+        if(useMana(openVeinCost)){
             System.out.println("Vous taillader votre adversaire a l'aide de votre poignard !");
             target.receiveDamage(this.strength);
             Bleed bleedEffect = new Bleed(3, 2);
             target.addDOT(bleedEffect);
         }
     }
+    /**
+     * Skill to add Dodge tokens to the player.
+     * It allows him to dodge incoming attacks.
+     */
     @Override    
     public void dodgeMovement(){
-        if(useMana(dodgecost)){
+        if(useMana(dodgeCost)){
             System.out.println("Vous vous placez stratégiquement pour esquiver les prochaisn coups.");
             Dodge dodgeEffect = new Dodge(1, 80);
             this.addToken(dodgeEffect);
         }
     }
+    /**
+     * Skill to steal health points.
+     * @param target Target of the attack
+     */
     @Override    
     public void stealHealthPoints(Character target){
-         if (useMana(stealHealthcost)){
+         if (useMana(stealHealthCost)){
             System.out.println("Vous attaquez en volant la vie de votre ennemi !");
             target.receiveDamage(this.strength) ;
             this.healthPoints = Math.min(this.healthPoints + this.intelligence, maxHealthPoints);

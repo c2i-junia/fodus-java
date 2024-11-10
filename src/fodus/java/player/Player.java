@@ -115,7 +115,11 @@ public abstract class Player extends Character{
         }
         useSpecificSkill(target);
     }
-    
+    /**
+     * Checks if the player has enough mana to use the skill.
+     * @param cost the cost in mana of the skill
+     * @return if the player has enough mana to use the skill
+     */
     public boolean useMana(int cost) {
         if (mana >= cost) {
             mana -= cost;
@@ -126,7 +130,10 @@ public abstract class Player extends Character{
             return false;
         }
     }
-
+    /**
+     * Use one of the object in the inventory.
+     * @param target the target of the possible object action
+     */
     public void useCombatObjects(Character target) {
         combatInventory.clear();
         System.out.println("Objets de combat disponibles : ");
@@ -169,6 +176,11 @@ public abstract class Player extends Character{
             System.out.println("Index invalide. Veuillez réessayer.");
         }
     }
+    /**
+     * Prints the available methods for the sword and allow to choose which attack to do.
+     * @param player the player
+     * @param target the target
+     */
     private void displaySwordMethods(Swords sword, Character target) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Méthodes d'attaque disponibles pour " + sword.getName() + ":");
@@ -192,6 +204,11 @@ public abstract class Player extends Character{
             }
         }
     }
+    /**
+     * Prints the available methods for the shield and allow to choose which attack to do.
+     * @param player the player
+     * @param target the target
+     */
     private void displayShieldMethods(Shields shield, Character target) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Méthodes d'attaque disponibles pour " + shield.getName() + ":");
@@ -215,6 +232,9 @@ public abstract class Player extends Character{
             }
         }
     }
+    /**
+     * Prints all the weapons from the player inventory and add them to weaponsInventory for later choice in chooseWeapon().
+     */
     public void printWeaponsFromInventory(){
         System.out.println("Armes disponibles : ");
         String weaponMotherClass;
@@ -229,6 +249,9 @@ public abstract class Player extends Character{
             }
         }
     }
+    /**
+     * Method to choose the weapon to equip at the start of the combat.
+     */
     public void chooseWeapon() {
         Scanner userInput = new Scanner(System.in);
         boolean answer = false;
@@ -245,7 +268,10 @@ public abstract class Player extends Character{
             }
         }
     }
-    
+    /**
+     * Inflicts damage to the entity.
+     * @param damage damage inflicted
+     */
     @Override
     public void receiveDamage(int damage){
         if(this.isInvulnerable){
