@@ -95,7 +95,7 @@ public class Game {
         System.out.println("Vous vous appelez donc " + userName);
         System.out.println("Mais qui etes-vous au fond de vous ? Quelles sont vos forces et qualites en tant qu'aventurier ?");
         while(player == null){
-            System.out.println("1) Paladin  -  2) Pretre  -  3) Barbare  -  4) Assassin");
+            System.out.println("1) Paladin  -  2) Pretre  -  3) Assassin   -  4) Barbare");
             switch(userInput.nextLine().toLowerCase()){
                 case "1", "paladin":
                     System.out.println("Ce guerrier robuste est le défenseur ultime.");
@@ -326,8 +326,8 @@ public class Game {
     */
     public void ending(Player player){
         System.out.println("Bravo à vous, Lord " + player.name + ".");
-        System.out.println("Vous avez terasse le roi demon et sauver ce monde.");
-        System.out.println("Vous avez brave les bugs, le manque d'inspiration et le gameplay douteux cree par les deux createurs de ce monde.");
+        System.out.println("Vous avez terrasse le roi Demon et sauver ce monde.");
+        System.out.println("Vous avez brave les bugs, le manque d'inspiration et le gameplay douteux imagine par les deux createurs de ce monde.");
         System.out.println("Et pour cela, nous vous remercions. Bravo à vous !");
         System.exit(0);
     }

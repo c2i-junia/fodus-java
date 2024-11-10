@@ -117,7 +117,7 @@ public class Assassin extends Player implements Damage {
     @Override    
     public void dodgeMovement(){
         if(useMana(dodgeCost)){
-            System.out.println("Vous vous placez stratégiquement pour esquiver les prochaisn coups.");
+            System.out.println("Vous vous placez strategiquement pour esquiver les prochaisn coups.");
             Dodge dodgeEffect = new Dodge(1, 80);
             this.addToken(dodgeEffect);
         }
@@ -132,7 +132,7 @@ public class Assassin extends Player implements Damage {
             System.out.println("Vous attaquez en volant la vie de votre ennemi !");
             target.receiveDamage(this.strength) ;
             this.healthPoints = Math.min(this.healthPoints + this.intelligence, maxHealthPoints);
-            System.out.println("Points de vie restaurés. Vie actuelle : " + this.healthPoints);
+            System.out.println("Points de vie restaures. Vie actuelle : " + this.healthPoints);
         }    
     }    
 }

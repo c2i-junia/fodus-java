@@ -38,7 +38,8 @@ public class Paladin extends Player implements Tank, Healer {
     public List<String> getSpecificSkills() {
         List<String> skills = new ArrayList<>();
         skills.add("Soins de battailles");
-        skills.add("Ferventes accusations");
+        skills.add("Flammes sacrees");
+        skills.add("Cri de guerre");
         return skills;
     }
     /**
@@ -55,9 +56,13 @@ public class Paladin extends Player implements Tank, Healer {
                     heal();
                     command_executed = true;
                     break;
-                case "ferventes accusations", "2":
+                case "flammes sacrees", "2":
                     flammes_sacrees(target); 
                     command_executed = true;
+                    break;
+                case "cri de guerre", "3":
+                    warcry();
+                    command_executed=true;
                     break;
                 default:
                     System.out.println("Commande non reconnue");

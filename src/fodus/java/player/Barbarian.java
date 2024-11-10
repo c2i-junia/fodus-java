@@ -37,8 +37,8 @@ public class Barbarian extends Player implements Damage, Tank {
     @Override
     public List<String> getSpecificSkills() {
         List<String> skills = new ArrayList<>();
-        skills.add("Warcry");
-        skills.add("Contre");
+        skills.add("Cri de guerre");
+        skills.add("Esquive");
         skills.add("Vol de vie");
         return skills;
     }
@@ -76,7 +76,7 @@ public class Barbarian extends Player implements Damage, Tank {
      */
     @Override
     public void attack(Character target) {
-        System.out.println("Vous attaquez avec votre hache à deux mains !");
+        System.out.println("Vous attaquez avec votre hache a deux mains !");
         int damage = this.strength;
         Strength strengthStatut = (Strength) findTokenType(Strength.class);
         if (strengthStatut != null) {
