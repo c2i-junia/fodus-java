@@ -117,7 +117,7 @@ public class Assassin extends Player implements Damage {
     @Override    
     public void dodgeMovement(){
         if(useMana(dodgeCost)){
-            System.out.println("Vous vous placez strategiquement pour esquiver les prochaisn coups.");
+            System.out.println("Vous vous placez strategiquement pour esquiver les prochains coups.");
             Dodge dodgeEffect = new Dodge(1, 80);
             this.addToken(dodgeEffect);
         }

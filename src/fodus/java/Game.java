@@ -98,8 +98,8 @@ public class Game {
             System.out.println("1) Paladin  -  2) Pretre  -  3) Barbare  -  4) Assassin ");
             switch(userInput.nextLine().toLowerCase()){
                 case "1", "paladin":
-                    System.out.println("Ce guerrier robuste est le défenseur ultime.");
-                    System.out.println("Il peut soigner ses blessures et obliterer ses adversaires grace à sa masse.");
+                    System.out.println("Ce guerrier robuste est le defenseur ultime.");
+                    System.out.println("Il peut soigner ses blessures et obliterer ses adversaires grace a sa masse.");
                     System.out.println("Etes-vous cet aventurier ?");
                     switch(userInput.nextLine().toLowerCase()){
                         case "oui":
@@ -222,12 +222,14 @@ public class Game {
         }
         while(player.getHealth() > 0 && enemy.getHealth() > 0){
             printCombatStats(player, enemy);
+            waitMs(3000);
             player.updateDOTEffects();
             enemy.updateDOTEffects();
             player.updateTokenEffects();
             enemy.updateTokenEffects();
             if(player.speed >= enemy.speed){
                 player.playerAction(enemy);
+                waitMs(2000);
                 if(enemy.getHealth() <= 0){
                     System.out.println("Vous avez triomphe !!");
                     mana_recovery(player);
@@ -235,6 +237,7 @@ public class Game {
                     break;
                 }
                 enemy.enemyAction(player);
+                waitMs(2000);
                 if(player.getHealth() <= 0){
                     System.out.println("Vous avez ete vaincu...");
                     gameOver();
@@ -242,11 +245,13 @@ public class Game {
             }
             else if(player.speed < enemy.speed){
                 enemy.enemyAction(player);
+                waitMs(2000);
                 if(player.getHealth() <= 0){
                     System.out.println("Vous avez ete vaincu...");
                     gameOver();
                 }
                 player.playerAction(enemy);
+                waitMs(2000);
                 if(enemy.getHealth() <= 0){
                     System.out.println("Vous avez triomphe !!");
                     mana_recovery(player);

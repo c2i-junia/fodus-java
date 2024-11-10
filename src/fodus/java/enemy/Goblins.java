@@ -39,7 +39,7 @@ public class Goblins extends Enemy {
     }
     @Override
     public void attack(Character target){
-        System.out.println("Le Gobelin brandit son epee et vous assene un coup !");
+        System.out.println("Le Gobelin brandit sa masse et vous assene un coup !");
         target.receiveDamage(this.strength);
     }
     @Override
@@ -49,7 +49,7 @@ public class Goblins extends Enemy {
         System.out.println("Le Gobelin brandit son bouclier pour encaisser votre attaque.");
     }
     public void specialGoblin(Character target) {
-        System.out.println("Le Gobelin décide de vous poignarder !");
+        System.out.println("Le Gobelin decide de vous poignarder avec sa lame rouillee !");
         Bleed bleedEffect = new Bleed(4, 2);
         target.addDOT(bleedEffect);
     }

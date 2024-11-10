@@ -113,7 +113,7 @@ public class Barbarian extends Player implements Damage, Tank {
     @Override    
     public void dodgeMovement(){
         if(useMana(dodgeCost)){
-            System.out.println("Vous vous placez strategiquement pour esquiver les prochaisn coups.");
+            System.out.println("Vous vous placez strategiquement pour esquiver les prochains coups.");
             Dodge dodgeEffect = new Dodge(1, 80);
             this.addToken(dodgeEffect);
         }
