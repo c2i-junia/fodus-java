@@ -14,7 +14,6 @@ import fodus.java.equipments.Equipments;
 public abstract class Character {
     public String name;
     public int maxHealthPoints, healthPoints, maxMana, mana, speed, strength, dexterity, endurance, intelligence;
-    //public int charisma;
     public boolean isInvulnerable = false;
     public List<DOTs> dot;
     public List<Tokens> tokens;
