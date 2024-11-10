@@ -1,5 +1,9 @@
 package fodus.java.status;
 
+/**
+ * Abstract class representing a generic damage-over-time (DOT) status effect.
+ * DOTs cause a character to take damage over a period of time.
+ */
 public abstract class DOTs {
     public String name;
     public int maxDuration = 3, duration, damage;
