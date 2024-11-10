@@ -127,13 +127,14 @@ public class Game {
                             break;
                     }
                     break;
-                case "3", "assassin":
-                    System.out.println("Ce bandit n'hesite pas a utiliser fourberie et piege pour parvenir a ses fins.");
-                    System.out.println("Sa ruse lui permet de passer inapercu et de tuer sans se faire prendre.");
+                case "3", "barbare":
+                    System.out.println("Derrierre sa rage et sa soif de sang se cache le vide...");
+                    System.out.println("Et la cupabilite.");
+                    System.out.println("Ce berseker devient plus puissant a mesure qu'il subit des blessures.");
                     System.out.println("Etes-vous cet aventurier ?");
                     switch(userInput.nextLine().toLowerCase()){
                         case "oui":
-                            player = new Assassin(userName);
+                            player = new Barbarian(userName);
                             break;
                         case "non":
                             break;
@@ -142,14 +143,13 @@ public class Game {
                             break;
                     }
                     break;
-                case "4", "barbare":
-                    System.out.println("Derrierre sa rage et sa soif de sang se cache le vide...");
-                    System.out.println("Et la cupabilite.");
-                    System.out.println("Ce berseker devient plus puissant a mesure qu'il subit des blessures.");
+                case "4", "assassin":
+                    System.out.println("Ce bandit n'hesite pas a utiliser fourberie et piege pour parvenir a ses fins.");
+                    System.out.println("Sa ruse lui permet de passer inapercu et de tuer sans se faire prendre.");
                     System.out.println("Etes-vous cet aventurier ?");
                     switch(userInput.nextLine().toLowerCase()){
                         case "oui":
-                            player = new Barbarian(userName);
+                            player = new Assassin(userName);
                             break;
                         case "non":
                             break;
