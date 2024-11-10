@@ -3,6 +3,9 @@ package fodus.java.equipments;
 import fodus.java.Character;
 import fodus.java.status.Strength;
 
+/**
+* Ultimate drink to enhance strength and recover.
+*/
 public class GlassOfWine extends Potions {
     public GlassOfWine(){
         this.name="Verre de Vin";
@@ -13,6 +16,10 @@ public class GlassOfWine extends Potions {
         this.intelligence = 5;
     }
     
+    /**
+    * Drink the potion to heal and boost strength.
+    * @param target the target of the attack
+    */
     @Override
     public void usePotion(Character target){
         System.out.println("Vous vous delectez de ce delicieux nectar !");
