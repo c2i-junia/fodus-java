@@ -86,7 +86,7 @@ public class Game {
         System.out.println("Vous vous appelez donc " + userName);
         System.out.println("Mais qui etes-vous au fond de vous ? Quelles sont vos forces et qualites en tant qu'aventurier ?");
         while(player == null){
-            System.out.println("1) Paladin  -  2) Pretre  -  3) Assassin  -  4) Barbare");
+            System.out.println("1) Paladin  -  2) Pretre  -  3) Barbare  -  4) Assassin");
             switch(userInput.nextLine().toLowerCase()){
                 case "1", "paladin":
                     System.out.println("Ce guerrier robuste est le défenseur ultime.");
@@ -163,7 +163,7 @@ public class Game {
         Troll enemyTroll = new Troll();
         combat(player, enemyTroll);
         
-        Dragon_boss enemyDragon = new Dragon_boss();
+        DragonBoss enemyDragon = new DragonBoss();
         combat(player, enemyDragon);
         
         healPlayer(player);
@@ -174,7 +174,7 @@ public class Game {
         Vampire enemyVampire = new Vampire();
         combat(player, enemyVampire);
         
-        Bandit_captain_boss enemyBandit = new Bandit_captain_boss();
+        BanditCaptainBoss enemyBandit = new BanditCaptainBoss();
         combat(player, enemyBandit);
         
         healPlayer(player);
@@ -182,10 +182,10 @@ public class Game {
         Orc enemyOrc = new Orc();
         combat(player, enemyOrc);
         
-        Dark_elemental enemyDarkElemental = new Dark_elemental();
+        DarkElemental enemyDarkElemental = new DarkElemental();
         combat(player, enemyDarkElemental);
         
-        Demon_king_boss enemyDemonKing = new Demon_king_boss();
+        DemonKingBoss enemyDemonKing = new DemonKingBoss();
         combat(player, enemyDemonKing);
     }
     public void combat(Player player, Enemy enemy){

@@ -18,7 +18,7 @@ public class Assassin extends Player implements Damage {
         this.mana=30;
         this.maxMana=30;
         this.speed = 15;
-        this.strength = 5;
+        this.strength = 10;
         this.dexterity = 20;
         this.endurance = 10;
         this.intelligence = 15;

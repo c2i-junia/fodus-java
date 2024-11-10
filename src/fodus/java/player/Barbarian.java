@@ -19,7 +19,7 @@ public class Barbarian extends Player implements Damage, Tank {
         this.mana = 20;
         this.maxMana = 20;
         this.speed = 10;
-        this.strength = 20;
+        this.strength = 17;
         this.dexterity = 10;
         this.endurance = 15;
         this.intelligence = 5;
@@ -98,7 +98,7 @@ public class Barbarian extends Player implements Damage, Tank {
             System.out.println("Vous attaquez en volant la vie de votre ennemi !");
             target.receiveDamage(this.strength) ;
             this.healthPoints = Math.min(this.healthPoints + this.intelligence, maxHealthPoints);
-            System.out.println("Points de vie restaurés. Vie actuelle : " + this.healthPoints);
+            System.out.println("Points de vie restaures. Vie actuelle : " + this.healthPoints);
         }
     }
 }
