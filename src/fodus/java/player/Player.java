@@ -3,24 +3,35 @@ package fodus.java.player;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 import fodus.java.Character;
 import fodus.java.PlayerActions;
 import fodus.java.status.*;
 import fodus.java.equipments.*;
-import java.util.Random;
 
+/**
+* Player
+*/
 public abstract class Player extends Character{
     //public int money;
     public List<Equipments> inventory;
     public List<Equipments> combatInventory;
+    public List<Equipments> weaponsInventory;
     public Equipments equipedWeapon;
     
+    /**
+     * Constructor for the Player class.
+     */
     public Player(){
         inventory = new ArrayList<>();
         combatInventory = new ArrayList<>();
+        weaponsInventory = new ArrayList<>();
         equipedWeapon = null;
     }
-    
+
+    /**
+     * Prints the player's stats.
+     */    
     public void printStats(){
         System.out.println("HP : " + healthPoints + " / " + maxHealthPoints);
         System.out.println("Vitesse : " + speed);
@@ -30,15 +41,19 @@ public abstract class Player extends Character{
         System.out.println("Intelligence : " + intelligence);
     }
     
+    /**
+     * Lets the player choose what to do during combat.
+     * @param target target of the player's action
+     */
     public void playerAction(Character target){
         Scanner userInput = new Scanner(System.in);
         boolean commandExecuted = false;
         List<PlayerActions> actions = this.getAvailableActions();
-        System.out.println("Que faites-vous ?");
-        for(int i = 0; i < actions.size(); i++){
-            System.out.println((i+1) + ") " + actions.get(i).getText());
-        }
         while(!commandExecuted){
+            System.out.println("Que faites-vous ?");
+            for(int i = 0; i < actions.size(); i++){
+                System.out.println((i+1) + ") " + actions.get(i).getText());
+            }
             switch(userInput.nextLine().toLowerCase()){
                 case "attaque", "1":
                     attack(target);
@@ -53,14 +68,23 @@ public abstract class Player extends Character{
                     commandExecuted = true;
                     break;
                 case "objets", "4":
-                    useCombatObjects(target);
-                    commandExecuted = true;
+                    if (this.combatInventory.isEmpty()) {
+                        System.out.println("Aucun objet dans l'inventaire.");
+                    } else {
+                        useCombatObjects(target);
+                        commandExecuted = true;
+                    }
+                    break;
                 default:
                     System.out.println("Commande non reconnue");
                     break;
             }
         }
     }
+    /**
+     * Gets the available actions for the player.
+     * @return a list of available actions
+     */
     public List<PlayerActions> getAvailableActions() {
         List<PlayerActions> actions = new ArrayList<>();
         actions.add(PlayerActions.ATTACK);
@@ -69,8 +93,21 @@ public abstract class Player extends Character{
         actions.add(PlayerActions.OBJECTS);
         return actions;
     }
+    /**
+     * Gets the specific skills of the player.
+     * @return a list of specific skills
+     */
     public abstract List<String> getSpecificSkills();
+    /**
+     * Uses a specific skill on the target.
+     * @param target the target of the skill
+     */
     public abstract void useSpecificSkill(Character target);
+    /**
+     * Executes the specific skills of the player.
+     * @param player the player
+     * @param target the target
+     */
     public void executeSpecificSkills(Character player, Character target){
         List<String> classSkills = this.getSpecificSkills();
         for (int i = 0; i < classSkills.size(); i++) {
@@ -182,11 +219,13 @@ public abstract class Player extends Character{
         System.out.println("Armes disponibles : ");
         String weaponMotherClass;
         int j = 0;
+        this.weaponsInventory.clear();
         for(int i = 0; i < inventory.size(); i++) {
             weaponMotherClass = inventory.get(i).getClass().getSuperclass().getSimpleName();
             if(weaponMotherClass.equals("Swords") || weaponMotherClass.equals("Shields")){
                 j++;
                 System.out.println(j + ") " + inventory.get(i).getName());
+                this.weaponsInventory.add(inventory.get(i));
             }
         }
     }
@@ -197,8 +236,8 @@ public abstract class Player extends Character{
         System.out.print("Choisissez une arme : ");
         while(answer == false){
             int choice = userInput.nextInt();
-            if(choice > 0 && choice <= this.inventory.size()) {
-                this.equipedWeapon = this.inventory.get(choice - 1);
+            if(choice > 0 && choice <= this.weaponsInventory.size()) {
+                this.equipedWeapon = this.weaponsInventory.get(choice - 1);
                 System.out.println("Vous avez choisi : " + this.equipedWeapon.getName());
                 answer = true;
             } else {
