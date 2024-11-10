@@ -4,7 +4,7 @@ package fodus.java.enemy;
 import fodus.java.status.Bleed;
 import fodus.java.status.Block;
 import java.util.Random;
-import fodus.java.equipments.Verre_de_vin;
+import fodus.java.equipments.Glass_of_wine;
 
 
 public class Bandit_captain_boss extends Enemy {
@@ -18,7 +18,7 @@ public class Bandit_captain_boss extends Enemy {
         this.dexterity = 7;
         this.endurance = 8;
         this.intelligence = 12;
-        this.drop = new Verre_de_vin();
+        this.drop = new Glass_of_wine();
     }
     @Override
     public void enemyAction(fodus.java.Character target){
