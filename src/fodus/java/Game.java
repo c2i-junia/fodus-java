@@ -95,7 +95,7 @@ public class Game {
         System.out.println("Vous vous appelez donc " + userName);
         System.out.println("Mais qui etes-vous au fond de vous ? Quelles sont vos forces et qualites en tant qu'aventurier ?");
         while(player == null){
-            System.out.println("1) Paladin  -  2) Pretre  -  3) Assassin   -  4) Barbare");
+            System.out.println("1) Paladin  -  2) Pretre  -  3) Barbare  -  4) Assassin ");
             switch(userInput.nextLine().toLowerCase()){
                 case "1", "paladin":
                     System.out.println("Ce guerrier robuste est le défenseur ultime.");
