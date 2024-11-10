@@ -68,11 +68,11 @@ public abstract class Player extends Character{
                     commandExecuted = true;
                     break;
                 case "objets", "4":
-                    useCombatObjects(target);
-                    if (this.combatInventory.isEmpty()) {
-                        System.out.println("Aucun objet dans l'inventaire.");
-                    } else {
+                    if (!this.combatInventory.isEmpty()) {
+                        useCombatObjects(target);
                         commandExecuted = true;
+                    } else {
+                        System.out.println("Aucun objet dans l'inventaire.");
                     }
                     break;
                 default:
