@@ -183,7 +183,7 @@ public abstract class Player extends Character{
      */
     private void displaySwordMethods(Swords sword, Character target) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Méthodes d'attaque disponibles pour " + sword.getName() + ":");
+        System.out.println("Methodes d'attaque disponibles pour " + sword.getName() + ":");
         System.out.println("1) Attaque standard");
         System.out.println("2) Attaque speciale");
         String attackChoice = scanner.nextLine();
@@ -288,7 +288,7 @@ public abstract class Player extends Character{
                 riposteStatut.updateToken();
                 return;
             } else {
-                System.out.println("Vous n'avez pas réussi à esquiver !");
+                System.out.println("Vous n'avez pas reussi a esquiver !");
             }
             riposteStatut.updateToken();
         }

@@ -19,7 +19,7 @@ public class BanditCaptainBoss extends Enemy {
         this.strength = 10;
         this.dexterity = 7;
         this.endurance = 8;
-        this.intelligence = 12;
+        this.intelligence = 2;
         this.drop = new GlassOfWine();
     }
     @Override
@@ -40,14 +40,14 @@ public class BanditCaptainBoss extends Enemy {
 
     @Override
     public void attack(fodus.java.Character target){
-        System.out.println("Le Capitaine des bandits vous assene un coup de griffe !");
+        System.out.println("Le Capitaine des bandits vous assene un coup d'epee !");
         target.receiveDamage(this.strength);
     }
     @Override
     public void defend(){
         Block blockEffect = new Block(2, 50);
         this.addToken(blockEffect);
-        System.out.println("Le Capitaine des bandits se cache derriere ses ailes pour se defendre.");
+        System.out.println("Le Capitaine des bandits se prepare a encaisser votre attaque.");
     }
     public void specialAttackBanditCaptain(fodus.java.Character target){
         System.out.println("Le bandit avec sa roubladise vous surprend et vous blesse !");
