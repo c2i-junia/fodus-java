@@ -5,11 +5,11 @@ import java.util.Random;
 import fodus.java.Character;
 import fodus.java.status.Block;
 import fodus.java.status.Burn;
-import fodus.java.equipments.Dragon_Sword;
+import fodus.java.equipments.DragonSword;
 
-public class Dragon_boss extends Enemy {
+public class DragonBoss extends Enemy {
     Random r = new Random();
-    public Dragon_boss(){
+    public DragonBoss(){
         this.name = "Dragon";
         this.maxHealthPoints = 50;
         this.healthPoints = this.maxHealthPoints;
@@ -18,7 +18,7 @@ public class Dragon_boss extends Enemy {
         this.dexterity = 5;
         this.endurance = 7;
         this.intelligence = 10;
-        this.drop = new Dragon_Sword();
+        this.drop = new DragonSword();
     }
     @Override
     public void enemyAction(Character target){

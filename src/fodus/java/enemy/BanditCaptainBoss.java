@@ -1,15 +1,17 @@
 
 package fodus.java.enemy;
 
+import java.util.Random;
 import fodus.java.status.Bleed;
 import fodus.java.status.Block;
-import java.util.Random;
-import fodus.java.equipments.Glass_of_wine;
+import fodus.java.equipments.GlassOfWine;
 
-
-public class Bandit_captain_boss extends Enemy {
+/**
+ * Bandit Captain : the second boss.
+ */
+public class BanditCaptainBoss extends Enemy {
    Random r = new Random();
-    public Bandit_captain_boss(){
+    public BanditCaptainBoss(){
         this.name = "Capitaine des bandits";
         this.maxHealthPoints = 60;
         this.healthPoints = this.maxHealthPoints;
@@ -18,7 +20,7 @@ public class Bandit_captain_boss extends Enemy {
         this.dexterity = 7;
         this.endurance = 8;
         this.intelligence = 12;
-        this.drop = new Glass_of_wine();
+        this.drop = new GlassOfWine();
     }
     @Override
     public void enemyAction(fodus.java.Character target){
@@ -31,7 +33,7 @@ public class Bandit_captain_boss extends Enemy {
                 defend();
                 break;
             case 3:
-                spe_Bandit_Captain(target);
+                specialAttackBanditCaptain(target);
                 break;
         }
     }
@@ -47,7 +49,7 @@ public class Bandit_captain_boss extends Enemy {
         this.addToken(blockEffect);
         System.out.println("Le Capitaine des bandits se cache derriere ses ailes pour se defendre.");
     }
-    public void spe_Bandit_Captain(fodus.java.Character target){
+    public void specialAttackBanditCaptain(fodus.java.Character target){
         System.out.println("Le bandit avec sa roubladise vous surprend et vous blesse !");
         target.receiveDamage(this.intelligence);
         Bleed bleedEffect = new Bleed(5, 3);

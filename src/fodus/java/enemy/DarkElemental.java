@@ -1,11 +1,11 @@
 package fodus.java.enemy;
-import fodus.java.equipments.Sword_of_darkness;
+import fodus.java.equipments.SwordOfDarkness;
 import fodus.java.status.Block;
 import java.util.Random;
 
-public class Dark_elemental extends Enemy {
+public class DarkElemental extends Enemy {
     Random r = new Random();
-    public Dark_elemental(){
+    public DarkElemental(){
         this.name = "Elementaire des ténèbres";
         this.maxHealthPoints = 25;
         this.healthPoints = this.maxHealthPoints;
@@ -14,7 +14,7 @@ public class Dark_elemental extends Enemy {
         this.dexterity = 6;
         this.endurance = 15;
         this.intelligence = 7;
-        this.drop = new Sword_of_darkness();
+        this.drop = new SwordOfDarkness();
     }
     @Override
     public void enemyAction(fodus.java.Character target){

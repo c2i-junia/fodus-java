@@ -7,9 +7,9 @@ import fodus.java.status.Poison;
 import java.util.Random;
 
 
-public class Demon_king_boss extends Enemy {
+public class DemonKingBoss extends Enemy {
     Random r = new Random();
-    public Demon_king_boss(){
+    public DemonKingBoss(){
         this.name = "Roi des Démons";
         this.maxHealthPoints = 80;
         this.healthPoints = this.maxHealthPoints;

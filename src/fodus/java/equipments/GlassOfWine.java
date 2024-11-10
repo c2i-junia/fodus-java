@@ -3,8 +3,8 @@ package fodus.java.equipments;
 import fodus.java.Character;
 import fodus.java.status.Strength;
 
-public class Glass_of_wine extends Potions {
-    public Glass_of_wine(){
+public class GlassOfWine extends Potions {
+    public GlassOfWine(){
         this.name="Verre de Vin";
         this.throwable = false;
         this.maxHealthPoints = 10;

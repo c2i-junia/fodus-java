@@ -1,7 +1,7 @@
 package fodus.java.equipments;
 
-public class Piercing_Shield extends Shields {
-    public Piercing_Shield(){
+public class PiercingShield extends Shields {
+    public PiercingShield(){
         this.name="Bouclier Perforant";
         this.maxHealthPoints=10;
         this.intelligence=5;

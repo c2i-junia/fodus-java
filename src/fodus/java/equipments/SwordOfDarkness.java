@@ -1,7 +1,7 @@
 package fodus.java.equipments;
 
-public class Sword_of_darkness extends Swords {
-    public Sword_of_darkness(){
+public class SwordOfDarkness extends Swords {
+    public SwordOfDarkness(){
         this.name = "Epee des tenebres";
         this.strength = 10;
         this.speed = 10;

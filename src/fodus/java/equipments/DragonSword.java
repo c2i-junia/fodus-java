@@ -1,7 +1,7 @@
 package fodus.java.equipments;
 
-public class Dragon_Sword extends Swords {
-    public Dragon_Sword(){
+public class DragonSword extends Swords {
+    public DragonSword(){
         this.name = "Epee du dragon";
         this.strength = 10;
         this.dexterity = 10;
