@@ -4,8 +4,15 @@ import fodus.java.Character;
 import fodus.java.equipments.Equipments;
 import fodus.java.status.*;
 
+/**
+ * Abstract class that represents all of the ennemies the player will face.
+ */
 public abstract class Enemy extends Character {
     public Equipments drop;
+    /**
+     * Randomly chooses which action the enemy will do.
+     * @param target the target (most likely the player)
+     */
     public abstract void enemyAction(Character target);
     
     @Override

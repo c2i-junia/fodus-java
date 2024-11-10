@@ -5,6 +5,9 @@ import fodus.java.Character;
 import fodus.java.equipments.PotionOfRage;
 import fodus.java.status.Block;
 
+/**
+ * Orc : one of the many enemies.
+ */
 public class Orc extends Enemy{
     Random r = new Random();
     public Orc(){
@@ -29,7 +32,7 @@ public class Orc extends Enemy{
                 defend();
                 break;
             case 5:
-                spe_orc();
+                specialOrc();
                 break;
         }
     }
@@ -44,7 +47,7 @@ public class Orc extends Enemy{
         Block blockEffect = new Block(1, 50);
         this.addToken(blockEffect);
     }
-    public void spe_orc(){
+    public void specialOrc(){
         System.out.println("L'Orc augmente sa force !");
         this.strength += 2;
     }

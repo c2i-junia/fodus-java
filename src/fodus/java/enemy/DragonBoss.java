@@ -7,6 +7,9 @@ import fodus.java.status.Block;
 import fodus.java.status.Burn;
 import fodus.java.equipments.DragonSword;
 
+/**
+ * Dragon : the first boss.
+ */
 public class DragonBoss extends Enemy {
     Random r = new Random();
     public DragonBoss(){
@@ -31,7 +34,7 @@ public class DragonBoss extends Enemy {
                 defend();
                 break;
             case 4:
-                spe_Dragon_Boss(target);
+                specialDragon(target);
                 break;
                 
         }
@@ -48,7 +51,7 @@ public class DragonBoss extends Enemy {
         Block blockEffect = new Block(2, 50);
         this.addToken(blockEffect);
     }
-    public void spe_Dragon_Boss(Character target){
+    public void specialDragon(Character target){
         System.out.println("Le Dragon crache ses flammes gigantesques et vous brule !");
         target.receiveDamage(this.intelligence);
         Burn burnEffect = new Burn(5, 3);

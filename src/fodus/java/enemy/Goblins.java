@@ -6,6 +6,9 @@ import fodus.java.Character;
 import fodus.java.equipments.PiercingShield;
 import fodus.java.status.Block;
 
+/**
+ * Goblins : one of the many enemies.
+ */
 public class Goblins extends Enemy {
     Random r = new Random();
     public Goblins(){
@@ -30,7 +33,7 @@ public class Goblins extends Enemy {
                 defend();
                 break;
             case 3:
-                spe_goblin(target);
+                specialGoblin(target);
                 break;
         }
     }
@@ -45,7 +48,7 @@ public class Goblins extends Enemy {
         this.addToken(blockEffect);
         System.out.println("Le Gobelin brandit son bouclier pour encaisser votre attaque.");
     }
-    public void spe_goblin(Character target) {
+    public void specialGoblin(Character target) {
         System.out.println("Le Gobelin décide de vous poignarder !");
         Bleed bleedEffect = new Bleed(4, 2);
         target.addDOT(bleedEffect);

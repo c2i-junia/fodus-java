@@ -5,6 +5,9 @@ import fodus.java.Character;
 import fodus.java.equipments.PotionOfPoison;
 import fodus.java.status.Block;
 
+/**
+ * Skeleton : one of the many enemies.
+ */
 public class Skeleton extends Enemy{
     Random r = new Random();
     public Skeleton(){
