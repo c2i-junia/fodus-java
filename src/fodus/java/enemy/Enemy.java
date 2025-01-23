@@ -4,15 +4,9 @@ import fodus.java.Character;
 import fodus.java.equipments.Equipments;
 import fodus.java.status.*;
 
-/**
- * Abstract class that represents all of the ennemies the player will face.
- */
 public abstract class Enemy extends Character {
     public Equipments drop;
-    /**
-     * Randomly chooses which action the enemy will do.
-     * @param target the target (most likely the player)
-     */
+    
     public abstract void enemyAction(Character target);
     
     @Override
@@ -24,10 +18,9 @@ public abstract class Enemy extends Character {
             System.out.println("Degats reduits de " + defenseStatut.getDamageReduction() + "% !");
             defenseStatut.updateToken();
         }
-        if(this.healthPoints <= damage){
+        if (this.healthPoints <= damage) {
             this.healthPoints = 0;
-        }
-        else{
+        } else {
             this.healthPoints -= damage;
         }
         System.out.println(this.name + " recoit " + damage + " dommages !");

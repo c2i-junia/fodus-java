@@ -36,7 +36,7 @@ public class Skeleton extends Enemy{
     @Override
     public void attack(Character target){
         System.out.println("Le Squelette brandit son epee et vous assene un coup !");
-        target.receiveDamage(this.strength);
+        super.attack(target);
     }
     @Override
     public void defend(){

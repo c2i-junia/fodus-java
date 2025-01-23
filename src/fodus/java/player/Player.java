@@ -9,29 +9,20 @@ import fodus.java.PlayerActions;
 import fodus.java.status.*;
 import fodus.java.equipments.*;
 
-/**
-* Player
-*/
 public abstract class Player extends Character{
-    //public int money;
+    public int money;
     public List<Equipments> inventory;
     public List<Equipments> combatInventory;
     public List<Equipments> weaponsInventory;
     public Equipments equipedWeapon;
     
-    /**
-     * Constructor for the Player class.
-     */
     public Player(){
         inventory = new ArrayList<>();
         combatInventory = new ArrayList<>();
         weaponsInventory = new ArrayList<>();
         equipedWeapon = null;
     }
-
-    /**
-     * Prints the player's stats.
-     */    
+   
     public void printStats(){
         System.out.println("HP : " + healthPoints + " / " + maxHealthPoints);
         System.out.println("Vitesse : " + speed);
@@ -41,10 +32,6 @@ public abstract class Player extends Character{
         System.out.println("Intelligence : " + intelligence);
     }
     
-    /**
-     * Lets the player choose what to do during combat.
-     * @param target target of the player's action
-     */
     public void playerAction(Character target){
         Scanner userInput = new Scanner(System.in);
         boolean commandExecuted = false;
@@ -81,10 +68,7 @@ public abstract class Player extends Character{
             }
         }
     }
-    /**
-     * Gets the available actions for the player.
-     * @return a list of available actions
-     */
+    
     public List<PlayerActions> getAvailableActions() {
         List<PlayerActions> actions = new ArrayList<>();
         actions.add(PlayerActions.ATTACK);
@@ -93,21 +77,11 @@ public abstract class Player extends Character{
         actions.add(PlayerActions.OBJECTS);
         return actions;
     }
-    /**
-     * Gets the specific skills of the player.
-     * @return a list of specific skills
-     */
+    
     public abstract List<String> getSpecificSkills();
-    /**
-     * Uses a specific skill on the target.
-     * @param target the target of the skill
-     */
+    
     public abstract void useSpecificSkill(Character target);
-    /**
-     * Executes the specific skills of the player.
-     * @param player the player
-     * @param target the target
-     */
+    
     public void executeSpecificSkills(Character player, Character target){
         List<String> classSkills = this.getSpecificSkills();
         for (int i = 0; i < classSkills.size(); i++) {
@@ -115,12 +89,8 @@ public abstract class Player extends Character{
         }
         useSpecificSkill(target);
     }
-    /**
-     * Checks if the player has enough mana to use the skill.
-     * @param cost the cost in mana of the skill
-     * @return if the player has enough mana to use the skill
-     */
-    public boolean useMana(int cost) {
+    
+    public boolean checkMana(int cost) {
         if (mana >= cost) {
             mana -= cost;
             return true; 
@@ -130,10 +100,7 @@ public abstract class Player extends Character{
             return false;
         }
     }
-    /**
-     * Use one of the object in the inventory.
-     * @param target the target of the possible object action
-     */
+    
     public void useCombatObjects(Character target) {
         combatInventory.clear();
         System.out.println("Objets de combat disponibles : ");
@@ -176,11 +143,7 @@ public abstract class Player extends Character{
             System.out.println("Index invalide. Veuillez reessayer.");
         }
     }
-    /**
-     * Prints the available methods for the sword and allow to choose which attack to do.
-     * @param player the player
-     * @param target the target
-     */
+    
     private void displaySwordMethods(Swords sword, Character target) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Methodes d'attaque disponibles pour " + sword.getName() + ":");
@@ -204,11 +167,7 @@ public abstract class Player extends Character{
             }
         }
     }
-    /**
-     * Prints the available methods for the shield and allow to choose which attack to do.
-     * @param player the player
-     * @param target the target
-     */
+    
     private void displayShieldMethods(Shields shield, Character target) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Méthodes d'attaque disponibles pour " + shield.getName() + ":");
@@ -232,9 +191,7 @@ public abstract class Player extends Character{
             }
         }
     }
-    /**
-     * Prints all the weapons from the player inventory and add them to weaponsInventory for later choice in chooseWeapon().
-     */
+    
     public void printWeaponsFromInventory(){
         System.out.println("Armes disponibles : ");
         String weaponMotherClass;
@@ -249,9 +206,7 @@ public abstract class Player extends Character{
             }
         }
     }
-    /**
-     * Method to choose the weapon to equip at the start of the combat.
-     */
+    
     public void chooseWeapon() {
         Scanner userInput = new Scanner(System.in);
         boolean answer = false;
@@ -268,10 +223,7 @@ public abstract class Player extends Character{
             }
         }
     }
-    /**
-     * Inflicts damage to the entity.
-     * @param damage damage inflicted
-     */
+    
     @Override
     public void receiveDamage(int damage){
         if(this.isInvulnerable){
@@ -299,10 +251,9 @@ public abstract class Player extends Character{
             System.out.println("Degats reduits de " + defenseStatut.getDamageReduction() + "% !");
             defenseStatut.updateToken();
         }
-        if(this.healthPoints <= damage){
+        if (this.healthPoints <= damage) {
             this.healthPoints = 0;
-        }
-        else{
+        } else {
             this.healthPoints -= damage;
         }
         System.out.println("Vous recevez " + damage + " dommages !");

@@ -5,11 +5,7 @@ import fodus.java.Character;
 import fodus.java.equipments.PotionOfRage;
 import fodus.java.status.Block;
 
-/**
- * Orc : one of the many enemies.
- */
-public class Orc extends Enemy{
-    Random r = new Random();
+public class Orc extends Enemy{    
     public Orc(){
         this.name = "Orc";
         this.maxHealthPoints = 30;
@@ -21,14 +17,16 @@ public class Orc extends Enemy{
         this.intelligence = 10;
         this.drop = new PotionOfRage();
     }
+    
     @Override
     public void enemyAction(Character target){
-        int action = r.nextInt(6);
+    	Random r = new Random();
+    	int action = r.nextInt(6);
         switch(action){
-            case 0,1,2:
+            case 0, 1, 2:
                 attack(target);
                 break;
-            case 3,4:
+            case 3, 4:
                 defend();
                 break;
             case 5:
@@ -36,6 +34,7 @@ public class Orc extends Enemy{
                 break;
         }
     }
+    
     @Override
     public void attack(Character target){
         System.out.println("L'Orc brandit son epee et vous assene un coup !");

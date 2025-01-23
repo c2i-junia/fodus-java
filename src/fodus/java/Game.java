@@ -10,10 +10,6 @@ import fodus.java.status.*;
  * Manage game loop, turn-based combat and player interactions.
  */
 public class Game {
-    /**
-    * Method primarly used to wait before printing next sentence.
-    * @param t the time to wait in milliseconds
-    */
     public static void waitMs(int t){
         try {
             Thread.sleep(t);
@@ -21,9 +17,7 @@ public class Game {
             System.err.println("Le thread a été interrompu.");
         }
     }
-    /**
-    * Display the intro.
-    */
+    
     public void intro(){
         System.out.println("Je connais bien l'echec... j'ai en effet failli a ma tache.");
         waitMs(3000);
@@ -44,9 +38,7 @@ public class Game {
                            .%%.......%%%%...%%%%%....%%%%....%%%%..
                            ........................................""");
     }
-    /**
-    * Display the menu with the different options (Play, How to play and Quit).
-    */
+    
     public void menu(){
         Scanner userInput = new Scanner(System.in);
         boolean answered = false;
@@ -81,10 +73,8 @@ public class Game {
             }
         }
     }
-    /**
-    * Method to create the player character.
-    */
-    public Player characterCreation(){
+    
+    public Player characterCreation() {
         Scanner userInput = new Scanner(System.in);
         Player player = null;
         System.out.println("Vous y etes...");
@@ -94,7 +84,7 @@ public class Game {
         String userName = userInput.nextLine();
         System.out.println("Vous vous appelez donc " + userName);
         System.out.println("Mais qui etes-vous au fond de vous ? Quelles sont vos forces et qualites en tant qu'aventurier ?");
-        while(player == null){
+        while(player == null) {
             System.out.println("1) Paladin  -  2) Pretre  -  3) Barbare  -  4) Assassin ");
             switch(userInput.nextLine().toLowerCase()){
                 case "1", "paladin":
@@ -165,10 +155,7 @@ public class Game {
         }
         return player;
     }
-    /**
-    * Method to start the main part of the game : the combats.
-    * @param player instance of the player, used to start the combat
-    */
+    
     public void mainGame(Player player){
         Goblins enemygoblin = new Goblins();
         combat(player, enemygoblin);
@@ -201,11 +188,7 @@ public class Game {
         DemonKingBoss enemyDemonKing = new DemonKingBoss();
         combat(player, enemyDemonKing);
     }
-    /**
-    * Method primarly used to wait before printing next sentence.
-    * @param player instance of the player
-    * @param enemy enemy that the player has to face
-    */
+    
     public void combat(Player player, Enemy enemy){
         System.out.println(enemy.name + " apparait ! Le combat debute.");
         waitMs(2000);
@@ -222,7 +205,7 @@ public class Game {
         }
         while(player.getHealth() > 0 && enemy.getHealth() > 0){
             printCombatStats(player, enemy);
-            waitMs(3000);
+            waitMs(2000);
             player.updateDOTEffects();
             enemy.updateDOTEffects();
             player.updateTokenEffects();
@@ -232,7 +215,7 @@ public class Game {
                 waitMs(2000);
                 if(enemy.getHealth() <= 0){
                     System.out.println("Vous avez triomphe !!");
-                    mana_recovery(player);
+                    recoverMana(player);
                     enemy.giveDrop(enemy, player);
                     break;
                 }
@@ -254,34 +237,23 @@ public class Game {
                 waitMs(2000);
                 if(enemy.getHealth() <= 0){
                     System.out.println("Vous avez triomphe !!");
-                    mana_recovery(player);
+                    recoverMana(player);
                     enemy.giveDrop(enemy, player);
                     break;
                 }
             }
         }
     }
-    /**
-    * Heal the player --> called to heal the player after each boss.
-    * @param player instance of the player
-    */
+    
     public void healPlayer(Player player){
         player.healthPoints = player.maxHealthPoints;
         System.out.println("Points de vie restaures");
     }
-    /**
-    * Restore player's mana --> called after each combat
-    * @param player instance of the player
-    */
-    public void mana_recovery(Player player){
-        player.mana=player.maxMana;
+    public void recoverMana(Player player){
+        player.mana = player.maxMana;
         System.out.println("Mana restaure");
     }
-    /**
-    * Method to print the stats of the enemy and the player during the battle.
-    * @param player instance of the player
-    * @param enemy enemy that the player has to face
-    */
+    
     public void printCombatStats(Character player, Enemy enemy){
         System.out.println("--------------------------------------------------------------");
         System.out.println(player.name + " :");
@@ -301,15 +273,13 @@ public class Game {
         }        
         System.out.println("--------------------------------------------------------------");
     }
-    /**
-    * Called after the player has lost a combat, it lets him choose if he wants to restart or quit.
-    */
+    
     public void gameOver(){
         Scanner userInput = new Scanner(System.in);
         System.out.println("Une longue route... et une fin abrupte.");
         System.out.println("Voulez-vous reessayer ?");
         boolean answer = false;
-        while(answer == false){
+        while(answer == false) {
             switch(userInput.nextLine().toLowerCase()){
                 case "oui":
                     answer = true;
@@ -325,10 +295,7 @@ public class Game {
             } 
         }
     }
-    /**
-    * Prints the "ending" text after the player has win the game.
-    * @param player instance of the player
-    */
+    
     public void ending(Player player){
         System.out.println("Bravo à vous, Lord " + player.name + ".");
         System.out.println("Vous avez terrasse le roi Demon et sauver ce monde.");
