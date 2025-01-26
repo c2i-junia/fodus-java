@@ -23,12 +23,14 @@ public class MainUI {
 	public void createMenu() {
 		JLabel title = new JLabel("Fodus");
 		JLabel introLabel = new JLabel();
+		JPanel mainMenuPanel = new JPanel();
 		
 		JButton startButton = new JButton("Start");
 		startButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				playIntro(introLabel);
+				createMainUI();
 			}
 		});
 		
@@ -36,7 +38,7 @@ public class MainUI {
 		howToPlayButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.print("Salut le tuto !");
+				System.out.print("In progress");
 			}
 		});
 		
@@ -48,15 +50,60 @@ public class MainUI {
 			}
 		});
 		
-		JPanel container = new JPanel();
+		mainMenuPanel.add(startButton);
+		mainMenuPanel.add(howToPlayButton);
+		mainMenuPanel.add(quitButton);
+		mainMenuPanel.add(title);
+		mainMenuPanel.add(introLabel);
 		
-		container.add(startButton);
-		container.add(howToPlayButton);
-		container.add(quitButton);
-		container.add(title);
-		container.add(introLabel);
+		window.setContentPane(mainMenuPanel);
+		window.revalidate();
+        window.repaint();
+	}
+	
+	public void createMainUI() {
+		JPanel mainUIPanel = new JPanel();
+		JLabel chooseLabel = new JLabel("Who are you ?");
 		
-		window.setContentPane(container);
+		JButton knightButton = new JButton("Knight");
+		knightButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.print("Knight");
+			}
+		});
+		
+		JButton thiefButton = new JButton("Thief");
+		thiefButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.print("Thief");
+			}
+		});
+		
+		JButton mageButton = new JButton("Mage");
+		mageButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.print("Mage");
+			}
+		});
+		
+		JButton priestButton = new JButton("Priest");
+		priestButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.print("Priest");
+			}
+		});
+		
+		mainUIPanel.add(chooseLabel);
+		mainUIPanel.add(knightButton);
+		mainUIPanel.add(thiefButton);
+		mainUIPanel.add(mageButton);
+		mainUIPanel.add(priestButton);
+		
+		window.setContentPane(mainUIPanel);
 		window.revalidate();
         window.repaint();
 	}
